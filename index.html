@@ -321,13 +321,13 @@
   
 <section class="slider">
   <div class="slides">
-    <img src="imagen1.jpg" class="slide active">
-    <img src="imagen2.jpg" class="slide">
-    <img src="imagen3.jpg" class="slide">
+    <img src="imagen1.jpg" class="slide active" alt="Banner 1">
+    <img src="imagen2.jpg" class="slide" alt="Banner 2">
+    <img src="imagen3.jpg" class="slide" alt="Banner 3">
   </div>
 
-  <button class="arrow left" onclick="prevSlide()">❮</button>
-  <button class="arrow right" onclick="nextSlide()">❯</button>
+  <button class="arrow left" id="prevBtn" type="button">❮</button>
+  <button class="arrow right" id="nextBtn" type="button">❯</button>
 </section>
 
   <main>
@@ -453,11 +453,45 @@ function prevSlide() {
 setInterval(() => {
   nextSlide();
 }, 5000);
-    
+    // ===== SLIDER (robusto) =====
+window.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".slide");
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
+
+  if (!slides.length) {
+    console.log("No se encontraron .slide (revisa el HTML del slider)");
+    return;
+  }
+
+  let currentSlide = 0;
+
+  function showSlide(i) {
+    slides.forEach(s => s.classList.remove("active"));
+    slides[i].classList.add("active");
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  nextBtn.addEventListener("click", nextSlide);
+  prevBtn.addEventListener("click", prevSlide);
+
+  // Auto-rotación
+  setInterval(nextSlide, 5000);
+});
   </script>
 
 </body>
 </html>
+
 
 
 
