@@ -3,9 +3,346 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Página en blanco</title>
+  <title>JR-Dent</title>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f6f7fb; color: #111; }
+
+    /* ====== TOP BAR ====== */
+    .topbar {
+      background: #15144A; /* <-- cambia este color al que quieras */
+      color: white;
+      padding: 10px 0;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .brand-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #22c55e;
+      display: grid;
+      place-items: center;
+      color: #0b1020;
+      font-weight: 900;
+    }
+
+    .search {
+      flex: 1;
+      display: flex;
+      gap: 8px;
+      max-width: 520px;
+      margin: 0 12px;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+    }
+
+    .search button {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      background: #2563eb;
+      color: white;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .linkbtn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.35);
+      color: white;
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .primary {
+      border: none;
+      background: #f59e0b;
+      color: #111;
+    }
+
+    /* ====== SUB BAR (opcional: categorías) ====== */
+    .subbar {
+      background: #111827;
+      color: rgba(255,255,255,0.9);
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    .subbar ul {
+      list-style: none;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .subbar a { color: inherit; text-decoration: none; opacity: 0.9; }
+    .subbar a:hover { opacity: 1; text-decoration: underline; }
+
+    /* ====== MAIN ====== */
+    main { padding: 28px 0; }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+
+    /* ====== MODAL ====== */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 999;
+    }
+    .overlay.open { display: flex; }
+
+    .modal {
+      width: min(420px, 100%);
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      position: relative;
+    }
+    .modal h2 { margin-bottom: 10px; }
+    .modal p { color: #555; margin-bottom: 12px; }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: none;
+      background: #eee;
+      border-radius: 10px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .tab {
+      flex: 1;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .tab.active {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+
+    form { display: grid; gap: 10px; }
+    label { font-size: 14px; font-weight: 700; }
+    input {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      outline: none;
+    }
+    input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.12); }
+
+    .submit {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: 900;
+      background: #22c55e;
+      color: #0b1020;
+      margin-top: 4px;
+    }
+
+    .hint { font-size: 12px; color: #666; margin-top: 8px; }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 760px) {
+      .search { display: none; } /* como MercadoLibre en móvil */
+    }
+  </style>
 </head>
+
 <body>
-<h1>Hola
+
+  <!-- BANDA SUPERIOR -->
+  <header class="topbar">
+    <div class="container topbar-row">
+      <div class="brand">
+        <div class="brand-badge">JR</div>
+        <span>JR-Dent</span>
+      </div>
+
+      <div class="search">
+        <input type="text" placeholder="Buscar productos, repuestos, servicios..." />
+        <button type="button">Buscar</button>
+      </div>
+
+      <div class="actions">
+        <button class="linkbtn" id="btnLogin" type="button">Iniciar sesión</button>
+        <button class="linkbtn primary" id="btnRegister" type="button">Crear cuenta</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- BARRA DE CATEGORÍAS (opcional) -->
+  <nav class="subbar">
+    <div class="container">
+      <ul>
+        <li><a href="#">Categorías</a></li>
+        <li><a href="#">Repuestos</a></li>
+        <li><a href="#">Piezas de mano</a></li>
+        <li><a href="#">Servicio técnico</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="card">
+        <h1>Bienvenido a JR-Dent</h1>
+        <p>Tu página ya tiene la banda superior. Ahora iremos armando el resto (banner, productos, etc.).</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL LOGIN/REGISTRO -->
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <button class="close" id="btnClose" type="button">X</button>
+
+      <h2 id="modalTitle">Accede a tu cuenta</h2>
+      <p id="modalDesc">Inicia sesión para ver tus pedidos y guardar favoritos.</p>
+
+      <div class="tabs">
+        <button class="tab active" id="tabLogin" type="button">Login</button>
+        <button class="tab" id="tabRegister" type="button">Registro</button>
+      </div>
+
+      <form id="authForm">
+        <div id="nameField" style="display:none;">
+          <label for="name">Nombre</label>
+          <input id="name" type="text" placeholder="Tu nombre" />
+        </div>
+
+        <div>
+          <label for="email">Correo</label>
+          <input id="email" type="email" placeholder="correo@email.com" required />
+        </div>
+
+        <div>
+          <label for="password">Contraseña</label>
+          <input id="password" type="password" placeholder="••••••••" required />
+        </div>
+
+        <button class="submit" type="button" id="btnSubmit">Entrar</button>
+
+        <div class="hint">
+          * Esto es demo (solo interfaz). Para login real se conecta a Firebase/Supabase.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById("overlay");
+    const btnLogin = document.getElementById("btnLogin");
+    const btnRegisterTop = document.getElementById("btnRegister");
+    const btnClose = document.getElementById("btnClose");
+
+    const tabLogin = document.getElementById("tabLogin");
+    const tabRegister = document.getElementById("tabRegister");
+
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDesc = document.getElementById("modalDesc");
+    const nameField = document.getElementById("nameField");
+    const btnSubmit = document.getElementById("btnSubmit");
+
+    function openModal(mode) {
+      overlay.classList.add("open");
+      setMode(mode);
+    }
+
+    function closeModal() {
+      overlay.classList.remove("open");
+    }
+
+    function setMode(mode) {
+      const isLogin = mode === "login";
+
+      tabLogin.classList.toggle("active", isLogin);
+      tabRegister.classList.toggle("active", !isLogin);
+
+      nameField.style.display = isLogin ? "none" : "block";
+      btnSubmit.textContent = isLogin ? "Entrar" : "Crear cuenta";
+
+      modalTitle.textContent = isLogin ? "Accede a tu cuenta" : "Crea tu cuenta";
+      modalDesc.textContent = isLogin
+        ? "Inicia sesión para ver tus pedidos y guardar favoritos."
+        : "Regístrate para comprar más rápido y ver tu historial.";
+    }
+
+    btnLogin.addEventListener("click", () => openModal("login"));
+    btnRegisterTop.addEventListener("click", () => openModal("register"));
+    btnClose.addEventListener("click", closeModal);
+
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeModal();
+    });
+
+    tabLogin.addEventListener("click", () => setMode("login"));
+    tabRegister.addEventListener("click", () => setMode("register"));
+
+    btnSubmit.addEventListener("click", () => {
+      alert("Demo: aquí iría el login/registro real.");
+      closeModal();
+    });
+  </script>
+
 </body>
 </html>
