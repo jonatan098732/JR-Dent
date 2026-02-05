@@ -78,18 +78,17 @@
 
     .linkbtn {
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.35);
+      border: 2px solid white;
       color: white;
-      padding: 8px 10px;
+      padding: 8px 14px;
       border-radius: 10px;
       cursor: pointer;
       font-weight: 700;
+      transition: 0.3s;
     }
-
-    .primary {
-      border: none;
-      background: #f59e0b;
-      color: #111;
+    .linkbtn:hover {
+  background: white;
+  color: #111;
     }
 
     /* ====== SUB BAR ====== */
@@ -160,6 +159,33 @@
     .arrow:hover {
       background: rgba(0,0,0,0.8);
     }
+.cart-btn{
+  position: relative;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  font-size: 20px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cart-btn:hover{
+  background:white;
+  color:#111;
+}
+
+.cart-count{
+  position:absolute;
+  top:-6px;
+  right:-6px;
+  background:red;
+  color:white;
+  font-size:12px;
+  padding:2px 6px;
+  border-radius:50%;
+}
 
     /* ====== MAIN ====== */
     main { padding: 28px 0; }
@@ -273,8 +299,16 @@
 
       <div class="actions">
         <button class="linkbtn" id="btnLogin" type="button">Iniciar sesión</button>
-        <button class="linkbtn primary" id="btnRegister" type="button">Crear cuenta</button>
-      </div>
+        <button class="linkbtn" id="btnRegister" type="button">Crear cuenta</button>
+       Mis compras
+  </button>
+
+  <button class="cart-btn">
+    🛒
+    <span class="cart-count">0</span>
+  </button>
+
+</div>
     </div>
   </header>
 
@@ -444,6 +478,7 @@
 
 </body>
 </html>
+
 
 
 
