@@ -11,7 +11,7 @@
 
     /* ====== TOP BAR ====== */
     .topbar {
-      background: #99D5F7; /* <-- cambia este color al que quieras */
+      background: #99D5F7;
       color: white;
       padding: 10px 0;
     }
@@ -20,62 +20,7 @@
       width: min(1100px, 92%);
       margin: 0 auto;
     }
-    
-    .logo-img {
-  height: 80px;   /* puedes subir o bajar este número */
-  width: auto;
-}
 
-    /* ===== SLIDER ===== */
-.slider {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  margin: 20px auto;
-  overflow: hidden;
-  border-radius: 16px;
-}
-
-.slides {
-  position: relative;
-  height: 380px;
-}
-
-.slide {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-.slide.active {
-  opacity: 1;
-}
-
-/* Flechas */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  border: none;
-  color: white;
-  font-size: 32px;
-  padding: 10px 14px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.arrow.left { left: 15px; }
-.arrow.right { right: 15px; }
-
-.arrow:hover {
-  background: rgba(0,0,0,0.8);
-}
-    
     .topbar-row {
       display: flex;
       align-items: center;
@@ -91,15 +36,10 @@
       letter-spacing: 0.3px;
     }
 
-    .brand-badge {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: #22c55e;
-      display: grid;
-      place-items: center;
-      color: #0b1020;
-      font-weight: 900;
+    .logo-img {
+      height: 80px;
+      width: auto;
+      display: block;
     }
 
     .search {
@@ -152,7 +92,7 @@
       color: #111;
     }
 
-    /* ====== SUB BAR (opcional: categorías) ====== */
+    /* ====== SUB BAR ====== */
     .subbar {
       background: #111827;
       color: rgba(255,255,255,0.9);
@@ -167,6 +107,58 @@
     }
     .subbar a { color: inherit; text-decoration: none; opacity: 0.9; }
     .subbar a:hover { opacity: 1; text-decoration: underline; }
+
+    /* ===== SLIDER ===== */
+    .slider {
+      position: relative;
+      width: min(1200px, 92%);
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #e5e7eb;
+    }
+
+    .slides {
+      position: relative;
+      height: 380px;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    /* Flechas */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: white;
+      font-size: 32px;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+    }
+
+    .arrow.left { left: 15px; }
+    .arrow.right { right: 15px; }
+
+    .arrow:hover {
+      background: rgba(0,0,0,0.8);
+    }
 
     /* ====== MAIN ====== */
     main { padding: 28px 0; }
@@ -257,41 +249,20 @@
 
     /* ====== RESPONSIVE ====== */
     @media (max-width: 760px) {
-      .search { display: none; } /* como MercadoLibre en móvil */
+      .search { display: none; }
+      .slides { height: 260px; }
+      .logo-img { height: 60px; }
     }
   </style>
 </head>
-  
-<script>
-  let currentSlide = 0;
-  const slides = document.querySelectorAll(".slide");
 
-  function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    slides[index].classList.add("active");
-  }
-
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  // Cambio automático cada 5 segundos
-  setInterval(nextSlide, 5000);
-</script>
-  
 <body>
 
   <!-- BANDA SUPERIOR -->
   <header class="topbar">
     <div class="container topbar-row">
       <div class="brand">
-       <img src="logojr.png" alt="JR DENT" class="logo-img">
+        <img src="logojr.png" alt="JR DENT" class="logo-img">
       </div>
 
       <div class="search">
@@ -306,7 +277,7 @@
     </div>
   </header>
 
-  <!-- BARRA DE CATEGORÍAS (opcional) -->
+  <!-- BARRA DE CATEGORÍAS -->
   <nav class="subbar">
     <div class="container">
       <ul>
@@ -318,17 +289,18 @@
       </ul>
     </div>
   </nav>
-  
-<section class="slider">
-  <div class="slides">
-    <img src="imagen1.jpg" class="slide active" alt="Banner 1">
-    <img src="imagen2.jpg" class="slide" alt="Banner 2">
-    <img src="imagen3.jpg" class="slide" alt="Banner 3">
-  </div>
 
-  <button class="arrow left" id="prevBtn" type="button">❮</button>
-  <button class="arrow right" id="nextBtn" type="button">❯</button>
-</section>
+  <!-- SLIDER -->
+  <section class="slider" id="homeSlider">
+    <div class="slides">
+      <img src="imagen1.jpg" class="slide active" alt="Banner 1">
+      <img src="imagen2.jpg" class="slide" alt="Banner 2">
+      <img src="imagen3.jpg" class="slide" alt="Banner 3">
+    </div>
+
+    <button class="arrow left" id="prevBtn" type="button">❮</button>
+    <button class="arrow right" id="nextBtn" type="button">❯</button>
+  </section>
 
   <main>
     <div class="container">
@@ -377,7 +349,9 @@
     </div>
   </div>
 
+  <!-- JS: LOGIN + SLIDER (al final, para que encuentre los elementos) -->
   <script>
+    // ===== MODAL LOGIN/REGISTRO =====
     const overlay = document.getElementById("overlay");
     const btnLogin = document.getElementById("btnLogin");
     const btnRegisterTop = document.getElementById("btnRegister");
@@ -430,68 +404,45 @@
       alert("Demo: aquí iría el login/registro real.");
       closeModal();
     });
-    // ===== SLIDER =====
-let currentSlide = 0;
-const slides = document.querySelectorAll(".slide");
 
-function showSlide(index) {
-  slides.forEach(slide => slide.classList.remove("active"));
-  slides[index].classList.add("active");
-}
+    // ===== SLIDER (funciona sí o sí) =====
+    document.addEventListener("DOMContentLoaded", () => {
+      const slider = document.getElementById("homeSlider");
+      const slides = slider ? slider.querySelectorAll(".slide") : [];
+      const nextBtn = document.getElementById("nextBtn");
+      const prevBtn = document.getElementById("prevBtn");
 
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % slides.length;
-  showSlide(currentSlide);
-}
+      if (!slider || slides.length === 0 || !nextBtn || !prevBtn) {
+        console.log("Slider no inicializado: revisa IDs/HTML/imagenes.");
+        return;
+      }
 
-function prevSlide() {
-  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-  showSlide(currentSlide);
-}
+      let current = 0;
 
-// Auto-rotación cada 5 segundos
-setInterval(() => {
-  nextSlide();
-}, 5000);
-    // ===== SLIDER (robusto) =====
-window.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll(".slide");
-  const nextBtn = document.getElementById("nextBtn");
-  const prevBtn = document.getElementById("prevBtn");
+      function show(i) {
+        slides.forEach(s => s.classList.remove("active"));
+        slides[i].classList.add("active");
+      }
 
-  if (!slides.length) {
-    console.log("No se encontraron .slide (revisa el HTML del slider)");
-    return;
-  }
+      function next() {
+        current = (current + 1) % slides.length;
+        show(current);
+      }
 
-  let currentSlide = 0;
+      function prev() {
+        current = (current - 1 + slides.length) % slides.length;
+        show(current);
+      }
 
-  function showSlide(i) {
-    slides.forEach(s => s.classList.remove("active"));
-    slides[i].classList.add("active");
-  }
+      nextBtn.addEventListener("click", next);
+      prevBtn.addEventListener("click", prev);
 
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  nextBtn.addEventListener("click", nextSlide);
-  prevBtn.addEventListener("click", prevSlide);
-
-  // Auto-rotación
-  setInterval(nextSlide, 5000);
-});
+      setInterval(next, 5000);
+    });
   </script>
 
 </body>
 </html>
-
 
 
 
