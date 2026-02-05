@@ -28,19 +28,9 @@
       gap: 12px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      letter-spacing: 0.3px;
-    }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px; }
 
-    .logo-img {
-      height: 80px;
-      width: auto;
-      display: block;
-    }
+    .logo-img { height: 80px; width: auto; display:block; }
 
     .search {
       flex: 1;
@@ -86,9 +76,30 @@
       font-weight: 700;
       transition: 0.3s;
     }
-    .linkbtn:hover {
-  background: white;
-  color: #111;
+    .linkbtn:hover { background: white; color: #111; }
+
+    .cart-btn{
+      position: relative;
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      font-size: 20px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .cart-btn:hover{ background:white; color:#111; }
+
+    .cart-count{
+      position:absolute;
+      top:-6px;
+      right:-6px;
+      background:red;
+      color:white;
+      font-size:12px;
+      padding:2px 6px;
+      border-radius:50%;
     }
 
     /* ====== SUB BAR ====== */
@@ -116,12 +127,7 @@
       border-radius: 16px;
       background: #e5e7eb;
     }
-
-    .slides {
-      position: relative;
-      height: 480px;
-    }
-
+    .slides { position: relative; height: 480px; }
     .slide {
       position: absolute;
       inset: 0;
@@ -133,12 +139,8 @@
       opacity: 0;
       transition: opacity 0.6s ease;
     }
+    .slide.active { opacity: 1; }
 
-    .slide.active {
-      opacity: 1;
-    }
-
-    /* Flechas */
     .arrow {
       position: absolute;
       top: 50%;
@@ -152,40 +154,9 @@
       border-radius: 50%;
       z-index: 10;
     }
-
     .arrow.left { left: 15px; }
     .arrow.right { right: 15px; }
-
-    .arrow:hover {
-      background: rgba(0,0,0,0.8);
-    }
-.cart-btn{
-  position: relative;
-  background: transparent;
-  border: 2px solid white;
-  color: white;
-  font-size: 20px;
-  padding: 8px 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.cart-btn:hover{
-  background:white;
-  color:#111;
-}
-
-.cart-count{
-  position:absolute;
-  top:-6px;
-  right:-6px;
-  background:red;
-  color:white;
-  font-size:12px;
-  padding:2px 6px;
-  border-radius:50%;
-}
+    .arrow:hover { background: rgba(0,0,0,0.8); }
 
     /* ====== MAIN ====== */
     main { padding: 28px 0; }
@@ -196,72 +167,55 @@
       box-shadow: 0 10px 24px rgba(0,0,0,0.08);
     }
 
-    /* ====== MODAL ====== */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      z-index: 999;
+    /* ====== AUTH SECTION (debajo de subbar) ====== */
+    .auth-wrap {
+      width: min(520px, 92%);
+      margin: 22px auto 10px;
     }
-    .overlay.open { display: flex; }
-
-    .modal {
-      width: min(420px, 100%);
+    .auth-card {
       background: white;
       border-radius: 16px;
       padding: 18px;
-      position: relative;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.10);
     }
-    .modal h2 { margin-bottom: 10px; }
-    .modal p { color: #555; margin-bottom: 12px; }
+    .auth-title { font-size: 28px; margin-bottom: 6px; }
+    .auth-sub { color:#666; margin-bottom: 14px; }
 
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      border: none;
-      background: #eee;
-      border-radius: 10px;
-      padding: 6px 10px;
-      cursor: pointer;
-      font-weight: 800;
+    .auth-tabs {
+      display:flex;
+      gap:10px;
+      margin-bottom: 14px;
     }
-
-    .tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .tab {
-      flex: 1;
-      padding: 10px;
+    .auth-tab {
+      flex:1;
+      padding:10px 12px;
       border-radius: 12px;
       border: 1px solid #e5e7eb;
-      background: #f9fafb;
-      cursor: pointer;
+      background:#f9fafb;
+      cursor:pointer;
       font-weight: 800;
     }
-    .tab.active {
-      background: #2563eb;
-      color: white;
-      border-color: #2563eb;
-    }
+    .auth-tab.active { background:#2563eb; color:white; border-color:#2563eb; }
 
-    form { display: grid; gap: 10px; }
-    label { font-size: 14px; font-weight: 700; }
+    .grid2 { display:grid; gap:10px; grid-template-columns: 1fr 1fr; }
+    .grid1 { display:grid; gap:10px; grid-template-columns: 1fr; }
+
+    label { font-size: 13px; font-weight: 800; color:#111; }
     input {
+      width:100%;
       padding: 10px 12px;
       border-radius: 12px;
       border: 1px solid #e5e7eb;
       outline: none;
     }
-    input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.12); }
+    input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
 
-    .submit {
+    .btn-row { display:grid; gap:10px; margin-top: 12px; }
+
+    .btn-primary {
       padding: 10px 12px;
       border-radius: 12px;
       border: none;
@@ -269,22 +223,38 @@
       font-weight: 900;
       background: #22c55e;
       color: #0b1020;
-      margin-top: 4px;
     }
+    .btn-google {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      cursor: pointer;
+      font-weight: 900;
+      background: white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    .google-dot { width:10px; height:10px; border-radius:50%; background:#ea4335; box-shadow: 12px 0 0 #4285f4, 24px 0 0 #34a853, 36px 0 0 #fbbc05; }
 
-    .hint { font-size: 12px; color: #666; margin-top: 8px; }
+    .auth-hint { font-size: 12px; color:#666; margin-top: 10px; }
+    .auth-error { color:#b91c1c; font-weight:800; margin-top:10px; display:none; }
+    .auth-ok { color:#166534; font-weight:800; margin-top:10px; display:none; }
+
+    .hidden { display:none !important; }
 
     /* ====== RESPONSIVE ====== */
     @media (max-width: 760px) {
       .search { display: none; }
       .slides { height: 260px; }
       .logo-img { height: 60px; }
+      .grid2 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
-
   <!-- BANDA SUPERIOR -->
   <header class="topbar">
     <div class="container topbar-row">
@@ -300,13 +270,11 @@
       <div class="actions">
         <button class="linkbtn" id="btnLogin" type="button">Iniciar sesión</button>
         <button class="linkbtn" id="btnRegister" type="button">Crear cuenta</button>
-        <button class="linkbtn" id="btnOrders">Mis compras</button>
-    <button class="cart-btn">
-    🛒
-    <span class="cart-count">0</span>
-  </button>
-
-</div>
+        <button class="linkbtn" id="btnOrders" type="button">Mis compras</button>
+        <button class="cart-btn" type="button" id="btnCart">
+          🛒 <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -314,7 +282,7 @@
   <nav class="subbar">
     <div class="container">
       <ul>
-        <li><a href="#">Categorías</a></li>
+        <li><a href="#" id="navHome">Inicio</a></li>
         <li><a href="#">Repuestos</a></li>
         <li><a href="#">Piezas de mano</a></li>
         <li><a href="#">Servicio técnico</a></li>
@@ -323,232 +291,374 @@
     </div>
   </nav>
 
-  <!-- SLIDER -->
-  <section class="slider" id="homeSlider">
-    <div class="slides">
-      <img src="imagen1.jpg" class="slide active" alt="Banner 1">
-      <img src="imagen2.jpg" class="slide" alt="Banner 2">
-      <img src="imagen3.jpg" class="slide" alt="Banner 3">
-    </div>
+  <!-- ====== HOME SECTION (slider + contenido) ====== -->
+  <section id="homeSection">
+    <section class="slider" id="homeSlider">
+      <div class="slides">
+        <img src="imagen1.jpg" class="slide active" alt="Banner 1">
+        <img src="imagen2.jpg" class="slide" alt="Banner 2">
+        <img src="imagen3.jpg" class="slide" alt="Banner 3">
+      </div>
+      <button class="arrow left" id="prevBtn" type="button">❮</button>
+      <button class="arrow right" id="nextBtn" type="button">❯</button>
+    </section>
 
-    <button class="arrow left" id="prevBtn" type="button">❮</button>
-    <button class="arrow right" id="nextBtn" type="button">❯</button>
+    <main>
+      <div class="container">
+        <div class="card">
+          <h1>Bienvenido a JR DENT</h1>
+          <p>Tu página ya tiene la banda superior. Ahora iremos armando el resto (banner, productos, etc.).</p>
+        </div>
+      </div>
+    </main>
   </section>
 
-  <main>
-    <div class="container">
-      <div class="card">
-        <h1>Bienvenido a JR DENT</h1>
-        <p>Tu página ya tiene la banda superior. Ahora iremos armando el resto (banner, productos, etc.).</p>
+  <!-- ====== AUTH SECTION (solo cambia esta parte debajo de la subbar) ====== -->
+  <section id="authSection" class="hidden">
+    <div class="auth-wrap">
+      <div class="auth-card">
+        <h2 class="auth-title" id="authTitle">Iniciar sesión</h2>
+        <p class="auth-sub" id="authSub">Accede para ver tus compras y guardar favoritos.</p>
+
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tabLogin" type="button">Login</button>
+          <button class="auth-tab" id="tabRegister" type="button">Registro</button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <div id="loginForm">
+          <div class="grid1">
+            <div>
+              <label for="loginEmail">Correo</label>
+              <input id="loginEmail" type="email" placeholder="correo@email.com" />
+            </div>
+            <div>
+              <label for="loginPassword">Contraseña</label>
+              <input id="loginPassword" type="password" placeholder="••••••••" />
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-primary" id="btnDoLogin" type="button">Entrar</button>
+            <button class="btn-google" id="btnGoogleLogin" type="button">
+              <span class="google-dot"></span> Continuar con Google
+            </button>
+          </div>
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div id="registerForm" class="hidden">
+          <div class="grid2">
+            <div>
+              <label for="regName">Nombre</label>
+              <input id="regName" type="text" placeholder="Tu nombre completo" />
+            </div>
+            <div>
+              <label for="regPhone">Teléfono</label>
+              <input id="regPhone" type="tel" placeholder="Ej: 999 999 999" />
+            </div>
+          </div>
+
+          <div class="grid2" style="margin-top:10px;">
+            <div>
+              <label for="regCountry">País</label>
+              <input id="regCountry" type="text" placeholder="Ej: Perú" />
+            </div>
+            <div>
+              <label for="regDistrict">Distrito</label>
+              <input id="regDistrict" type="text" placeholder="Ej: Los Olivos" />
+            </div>
+          </div>
+
+          <div class="grid1" style="margin-top:10px;">
+            <div>
+              <label for="regAddress">Dirección</label>
+              <input id="regAddress" type="text" placeholder="Ej: Av. ... #..." />
+            </div>
+          </div>
+
+          <div class="grid1" style="margin-top:10px;">
+            <div>
+              <label for="regEmail">Correo</label>
+              <input id="regEmail" type="email" placeholder="correo@email.com" />
+            </div>
+          </div>
+
+          <div class="grid2" style="margin-top:10px;">
+            <div>
+              <label for="regPassword">Contraseña</label>
+              <input id="regPassword" type="password" placeholder="••••••••" />
+            </div>
+            <div>
+              <label for="regPassword2">Confirmar contraseña</label>
+              <input id="regPassword2" type="password" placeholder="••••••••" />
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-primary" id="btnDoRegister" type="button">Crear cuenta</button>
+            <button class="btn-google" id="btnGoogleRegister" type="button">
+              <span class="google-dot"></span Registrarme con Google
+            </button>
+          </div>
+        </div>
+
+        <div class="auth-error" id="authError"></div>
+        <div class="auth-ok" id="authOk"></div>
+
+        <div class="auth-hint">
+          * El registro guarda tus datos en Firebase (Auth + Firestore).
+        </div>
       </div>
     </div>
-  </main>
+  </section>
 
-  <!-- MODAL LOGIN/REGISTRO -->
-  <div class="overlay" id="overlay">
-    <div class="modal">
-      <button class="close" id="btnClose" type="button">X</button>
-
-      <h2 id="modalTitle">Accede a tu cuenta</h2>
-      <p id="modalDesc">Inicia sesión para ver tus pedidos y guardar favoritos.</p>
-
-      <div class="tabs">
-        <button class="tab active" id="tabLogin" type="button">Login</button>
-        <button class="tab" id="tabRegister" type="button">Registro</button>
-      </div>
-
-      <form id="authForm">
-        <div id="nameField" style="display:none;">
-          <label for="name">Nombre</label>
-          <input id="name" type="text" placeholder="Tu nombre" />
-        </div>
-
-        <div>
-          <label for="email">Correo</label>
-          <input id="email" type="email" placeholder="correo@email.com" required />
-        </div>
-
-        <div>
-          <label for="password">Contraseña</label>
-          <input id="password" type="password" placeholder="••••••••" required />
-        </div>
-
-        <button class="submit" type="button" id="btnSubmit">Entrar</button>
-        <button class="submit" type="button" onclick="loginGoogle()">
-           Continuar con Google
-        </button>
-        <div class="hint">
-          * Esto es demo (solo interfaz). Para login real se conecta a Firebase/Supabase.
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- JS: LOGIN + SLIDER (al final, para que encuentre los elementos) -->
+  <!-- ====== JS UI + SLIDER (normal) ====== -->
   <script>
-    // ===== MODAL LOGIN/REGISTRO =====
-    const overlay = document.getElementById("overlay");
+    const homeSection = document.getElementById("homeSection");
+    const authSection = document.getElementById("authSection");
+
     const btnLogin = document.getElementById("btnLogin");
-    const btnRegisterTop = document.getElementById("btnRegister");
-    const btnClose = document.getElementById("btnClose");
+    const btnRegister = document.getElementById("btnRegister");
+    const navHome = document.getElementById("navHome");
 
     const tabLogin = document.getElementById("tabLogin");
     const tabRegister = document.getElementById("tabRegister");
 
-    const modalTitle = document.getElementById("modalTitle");
-    const modalDesc = document.getElementById("modalDesc");
-    const nameField = document.getElementById("nameField");
-    const btnSubmit = document.getElementById("btnSubmit");
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
 
-    function openModal(mode) {
-      overlay.classList.add("open");
-      setMode(mode);
+    const authTitle = document.getElementById("authTitle");
+    const authSub = document.getElementById("authSub");
+
+    const authError = document.getElementById("authError");
+    const authOk = document.getElementById("authOk");
+
+    function showError(msg) {
+      authOk.style.display = "none";
+      authError.style.display = "block";
+      authError.textContent = msg;
+    }
+    function showOk(msg) {
+      authError.style.display = "none";
+      authOk.style.display = "block";
+      authOk.textContent = msg;
+    }
+    function clearMsgs() {
+      authError.style.display = "none";
+      authOk.style.display = "none";
+      authError.textContent = "";
+      authOk.textContent = "";
     }
 
-    function closeModal() {
-      overlay.classList.remove("open");
+    function showHome() {
+      clearMsgs();
+      authSection.classList.add("hidden");
+      homeSection.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function setMode(mode) {
+    function showAuth(mode) {
+      clearMsgs();
+      homeSection.classList.add("hidden");
+      authSection.classList.remove("hidden");
+      setAuthMode(mode);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function setAuthMode(mode) {
       const isLogin = mode === "login";
-
       tabLogin.classList.toggle("active", isLogin);
       tabRegister.classList.toggle("active", !isLogin);
+      loginForm.classList.toggle("hidden", !isLogin);
+      registerForm.classList.toggle("hidden", isLogin);
 
-      nameField.style.display = isLogin ? "none" : "block";
-      btnSubmit.textContent = isLogin ? "Entrar" : "Crear cuenta";
-
-      modalTitle.textContent = isLogin ? "Accede a tu cuenta" : "Crea tu cuenta";
-      modalDesc.textContent = isLogin
-        ? "Inicia sesión para ver tus pedidos y guardar favoritos."
+      authTitle.textContent = isLogin ? "Iniciar sesión" : "Crear cuenta";
+      authSub.textContent = isLogin
+        ? "Accede para ver tus compras y guardar favoritos."
         : "Regístrate para comprar más rápido y ver tu historial.";
     }
 
-    btnLogin.addEventListener("click", () => openModal("login"));
-    btnRegisterTop.addEventListener("click", () => openModal("register"));
-    btnClose.addEventListener("click", closeModal);
+    btnLogin.addEventListener("click", () => showAuth("login"));
+    btnRegister.addEventListener("click", () => showAuth("register"));
+    navHome.addEventListener("click", (e) => { e.preventDefault(); showHome(); });
 
-    overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) closeModal();
-    });
+    tabLogin.addEventListener("click", () => setAuthMode("login"));
+    tabRegister.addEventListener("click", () => setAuthMode("register"));
 
-    tabLogin.addEventListener("click", () => setMode("login"));
-    tabRegister.addEventListener("click", () => setMode("register"));
-
-    btnSubmit.addEventListener("click", () => {
-      alert("Demo: aquí iría el login/registro real.");
-      closeModal();
-    });
-
-    // ===== SLIDER (funciona sí o sí) =====
+    // ===== SLIDER =====
     document.addEventListener("DOMContentLoaded", () => {
       const slider = document.getElementById("homeSlider");
       const slides = slider ? slider.querySelectorAll(".slide") : [];
       const nextBtn = document.getElementById("nextBtn");
       const prevBtn = document.getElementById("prevBtn");
 
-      if (!slider || slides.length === 0 || !nextBtn || !prevBtn) {
-        console.log("Slider no inicializado: revisa IDs/HTML/imagenes.");
-        return;
-      }
+      if (!slider || slides.length === 0 || !nextBtn || !prevBtn) return;
 
       let current = 0;
-
       function show(i) {
         slides.forEach(s => s.classList.remove("active"));
         slides[i].classList.add("active");
       }
-
-      function next() {
-        current = (current + 1) % slides.length;
-        show(current);
-      }
-
-      function prev() {
-        current = (current - 1 + slides.length) % slides.length;
-        show(current);
-      }
+      function next() { current = (current + 1) % slides.length; show(current); }
+      function prev() { current = (current - 1 + slides.length) % slides.length; show(current); }
 
       nextBtn.addEventListener("click", next);
       prevBtn.addEventListener("click", prev);
-
       setInterval(next, 5000);
     });
   </script>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDFSDPcgPmtDiNWVHZg46RKxE8ygPV99FM",
-    authDomain: "jr-dent.firebaseapp.com",
-    projectId: "jr-dent",
-    storageBucket: "jr-dent.firebasestorage.app",
-    messagingSenderId: "981855232370",
-    appId: "1:981855232370:web:9c915085a08563503f7deb",
-    measurementId: "G-6E1LVQLC2T"
-  };
+  <!-- ====== FIREBASE (1 sola vez, bien) ====== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup,
+             createUserWithEmailAndPassword, signInWithEmailAndPassword } from
+             "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from
+             "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-<script type="module">
-import { getAuth, signInWithPopup, GoogleAuthProvider, 
-         createUserWithEmailAndPassword, signInWithEmailAndPassword } 
-from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+    // ✅ Tu config real (la que pegaste)
+    const firebaseConfig = {
+      apiKey: "AIzaSyDFSDPcgPmtDiNWVHZg46RKxE8ygPV99FM",
+      authDomain: "jr-dent.firebaseapp.com",
+      projectId: "jr-dent",
+      storageBucket: "jr-dent.firebasestorage.app",
+      messagingSenderId: "981855232370",
+      appId: "1:981855232370:web:9c915085a08563503f7deb",
+      measurementId: "G-6E1LVQLC2T"
+    };
 
-import { initializeApp } 
-from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDFSDPcgPmtDiNWVHZg46RKxE8ygPV99FM",
-  authDomain: "jr-dent.firebaseapp.com",
-  projectId: "jr-dent",
-  storageBucket: "jr-dent.firebasestorage.app",
-  messagingSenderId: "981855232370",
-  appId: "1:981855232370:web:9c915085a08563503f7deb"
-};
+    // UI helpers (del script normal)
+    const authError = document.getElementById("authError");
+    const authOk = document.getElementById("authOk");
+    function showError(msg) {
+      authOk.style.display = "none";
+      authError.style.display = "block";
+      authError.textContent = msg;
+    }
+    function showOk(msg) {
+      authError.style.display = "none";
+      authOk.style.display = "block";
+      authOk.textContent = msg;
+    }
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+    // Inputs login
+    const loginEmail = document.getElementById("loginEmail");
+    const loginPassword = document.getElementById("loginPassword");
+    const btnDoLogin = document.getElementById("btnDoLogin");
+    const btnGoogleLogin = document.getElementById("btnGoogleLogin");
 
+    // Inputs register
+    const regName = document.getElementById("regName");
+    const regPhone = document.getElementById("regPhone");
+    const regCountry = document.getElementById("regCountry");
+    const regDistrict = document.getElementById("regDistrict");
+    const regAddress = document.getElementById("regAddress");
+    const regEmail = document.getElementById("regEmail");
+    const regPassword = document.getElementById("regPassword");
+    const regPassword2 = document.getElementById("regPassword2");
+    const btnDoRegister = document.getElementById("btnDoRegister");
+    const btnGoogleRegister = document.getElementById("btnGoogleRegister");
 
-// LOGIN GOOGLE
-window.loginGoogle = () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      alert("Bienvenido " + result.user.email);
-    })
-    .catch((error) => {
-      alert(error.message);
+    async function saveUserProfile(uid, data) {
+      // Guardamos en: users/{uid}
+      await setDoc(doc(db, "users", uid), {
+        ...data,
+        updatedAt: new Date().toISOString()
+      }, { merge: true });
+    }
+
+    // ===== LOGIN EMAIL =====
+    btnDoLogin.addEventListener("click", async () => {
+      try {
+        const email = (loginEmail.value || "").trim();
+        const pass = loginPassword.value || "";
+        if (!email || !pass) return showError("Completa correo y contraseña.");
+
+        await signInWithEmailAndPassword(auth, email, pass);
+        showOk("✅ Sesión iniciada. Bienvenido.");
+        // si quieres, aquí luego redirigimos a “Mis compras”
+        // showHome() está en el script normal:
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch (e) {
+        showError(e.message);
+      }
     });
-};
 
+    // ===== LOGIN GOOGLE =====
+    btnGoogleLogin.addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        // (opcional) guardar displayName/email si deseas
+        await saveUserProfile(result.user.uid, {
+          email: result.user.email || "",
+          nombre: result.user.displayName || ""
+        });
+        showOk("✅ Entraste con Google: " + (result.user.email || ""));
+      } catch (e) {
+        showError(e.message);
+      }
+    });
 
-// REGISTRO EMAIL
-window.registerEmail = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(() => alert("Cuenta creada"))
-    .catch(err => alert(err.message));
-};
+    // ===== REGISTER EMAIL + PERFIL =====
+    btnDoRegister.addEventListener("click", async () => {
+      try {
+        const nombre = (regName.value || "").trim();
+        const telefono = (regPhone.value || "").trim();
+        const pais = (regCountry.value || "").trim();
+        const distrito = (regDistrict.value || "").trim();
+        const direccion = (regAddress.value || "").trim();
 
+        const email = (regEmail.value || "").trim();
+        const pass = regPassword.value || "";
+        const pass2 = regPassword2.value || "";
 
-// LOGIN EMAIL
-window.loginEmail = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password)
-    .then(() => alert("Sesión iniciada"))
-    .catch(err => alert(err.message));
-};
-</script>  
+        if (!nombre || !pais || !distrito || !direccion || !telefono) {
+          return showError("Completa: Nombre, País, Distrito, Dirección y Teléfono.");
+        }
+        if (!email || !pass || !pass2) return showError("Completa correo y contraseñas.");
+        if (pass.length < 6) return showError("La contraseña debe tener mínimo 6 caracteres.");
+        if (pass !== pass2) return showError("Las contraseñas no coinciden.");
+
+        const cred = await createUserWithEmailAndPassword(auth, email, pass);
+
+        await saveUserProfile(cred.user.uid, {
+          nombre, pais, distrito, direccion, telefono,
+          email
+        });
+
+        showOk("✅ Cuenta creada y datos guardados.");
+      } catch (e) {
+        showError(e.message);
+      }
+    });
+
+    // ===== REGISTER GOOGLE (Google + pedir datos después) =====
+    btnGoogleRegister.addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+
+        // Guardamos lo básico, y luego tú puedes exigir completar el perfil.
+        await saveUserProfile(result.user.uid, {
+          email: result.user.email || "",
+          nombre: result.user.displayName || ""
+        });
+
+        showOk("✅ Registrado con Google: " + (result.user.email || "") + ". (Ahora completa tus datos si deseas)");
+      } catch (e) {
+        showError(e.message);
+      }
+    });
+  </script>
 </body>
 </html>
+
 
 
 
