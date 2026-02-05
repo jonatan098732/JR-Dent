@@ -533,7 +533,6 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
     const provider = new GoogleAuthProvider();
-    const db = getFirestore(app);
 
     // UI helpers (del script normal)
     const authError = document.getElementById("authError");
@@ -586,10 +585,13 @@
         showOk("✅ Sesión iniciada. Bienvenido.");
         // si quieres, aquí luego redirigimos a “Mis compras”
         // showHome() está en el script normal:
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } catch (e) {
-        showError(e.message);
-      }
+       setTimeout(() => {
+      document.getElementById("navHome").click();
+    }, 800);
+  } catch (e) {
+    showError(e.message);
+  }
+});
     });
 
     // ===== LOGIN GOOGLE =====
@@ -659,6 +661,7 @@
   </script>
 </body>
 </html>
+
 
 
 
