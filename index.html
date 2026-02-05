@@ -374,7 +374,9 @@
         </div>
 
         <button class="submit" type="button" id="btnSubmit">Entrar</button>
-
+        <button class="submit" type="button" onclick="loginGoogle()">
+           Continuar con Google
+        </button>
         <div class="hint">
           * Esto es demo (solo interfaz). Para login real se conecta a Firebase/Supabase.
         </div>
@@ -496,8 +498,58 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
+<script type="module">
+import { getAuth, signInWithPopup, GoogleAuthProvider, 
+         createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+import { initializeApp } 
+from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDFSDPcgPmtDiNWVHZg46RKxE8ygPV99FM",
+  authDomain: "jr-dent.firebaseapp.com",
+  projectId: "jr-dent",
+  storageBucket: "jr-dent.firebasestorage.app",
+  messagingSenderId: "981855232370",
+  appId: "1:981855232370:web:9c915085a08563503f7deb"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+
+// LOGIN GOOGLE
+window.loginGoogle = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      alert("Bienvenido " + result.user.email);
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+};
+
+
+// REGISTRO EMAIL
+window.registerEmail = (email, password) => {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(() => alert("Cuenta creada"))
+    .catch(err => alert(err.message));
+};
+
+
+// LOGIN EMAIL
+window.loginEmail = (email, password) => {
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => alert("Sesión iniciada"))
+    .catch(err => alert(err.message));
+};
+</script>  
 </body>
 </html>
+
 
 
 
