@@ -515,9 +515,9 @@
     import { getAuth, GoogleAuthProvider, signInWithPopup,
              createUserWithEmailAndPassword, signInWithEmailAndPassword } from
              "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-    import { getFirestore, doc, setDoc } from
-             "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
-
+    import { getFirestore, doc, setDoc } 
+            from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+    
     // ✅ Tu config real (la que pegaste)
     const firebaseConfig = {
       apiKey: "AIzaSyDFSDPcgPmtDiNWVHZg46RKxE8ygPV99FM",
@@ -533,6 +533,7 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
     const provider = new GoogleAuthProvider();
+    const db = getFirestore(app);
 
     // UI helpers (del script normal)
     const authError = document.getElementById("authError");
@@ -658,6 +659,7 @@
   </script>
 </body>
 </html>
+
 
 
 
