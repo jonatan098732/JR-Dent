@@ -10,21 +10,60 @@
     body { font-family: Arial, sans-serif; background: #f6f7fb; color: #111; }
 
     /* ====== TOP BAR ====== */
-    .topbar { background: #99D5F7; color: white; padding: 10px 0; }
+    .topbar {
+      background: #99D5F7;
+      color: white;
+      padding: 10px 0;
+    }
 
-    .container { width: min(1100px, 92%); margin: 0 auto; }
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
 
-    .topbar-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .topbar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
 
     .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px; }
-
     .logo-img { height: 80px; width: auto; display:block; }
 
-    .search { flex: 1; display: flex; gap: 8px; max-width: 520px; margin: 0 12px; }
-    .search input { width: 100%; padding: 10px 12px; border-radius: 10px; border: none; outline: none; }
-    .search button { padding: 10px 12px; border-radius: 10px; border: none; cursor: pointer; font-weight: 700; background: #2563eb; color: white; }
+    .search {
+      flex: 1;
+      display: flex;
+      gap: 8px;
+      max-width: 520px;
+      margin: 0 12px;
+    }
 
-    .actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .search input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+    }
+
+    .search button {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      background: #2563eb;
+      color: white;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
 
     .linkbtn {
       background: transparent;
@@ -62,14 +101,68 @@
       border-radius:50%;
     }
 
+    /* PERFIL */
+    .userpill{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius: 999px;
+      border: 2px solid white;
+      background: rgba(255,255,255,0.12);
+      color: white;
+      cursor:pointer;
+      font-weight:900;
+      transition: .25s;
+    }
+    .userpill:hover{
+      background: white;
+      color:#111;
+    }
+    .avatar{
+      width:34px;
+      height:34px;
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      background: rgba(0,0,0,0.18);
+      font-weight: 900;
+    }
+    .userpill:hover .avatar{
+      background: rgba(0,0,0,0.12);
+    }
+    .username{
+      max-width: 140px;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     /* ====== SUB BAR ====== */
-    .subbar { background: #1B0561; color: rgba(255,255,255,0.9); padding: 8px 0; font-size: 14px; }
-    .subbar ul { list-style: none; display: flex; gap: 14px; flex-wrap: wrap; }
+    .subbar {
+      background: #1B0561;
+      color: rgba(255,255,255,0.9);
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    .subbar ul {
+      list-style: none;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
     .subbar a { color: inherit; text-decoration: none; opacity: 0.9; }
     .subbar a:hover { opacity: 1; text-decoration: underline; }
 
     /* ===== SLIDER ===== */
-    .slider { position: relative; width: min(1200px, 92%); margin: 20px auto; overflow: hidden; border-radius: 16px; background: #e5e7eb; }
+    .slider {
+      position: relative;
+      width: min(1200px, 92%);
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #e5e7eb;
+    }
     .slides { position: relative; height: 480px; }
     .slide {
       position: absolute;
@@ -103,21 +196,34 @@
 
     /* ====== MAIN ====== */
     main { padding: 28px 0; }
-    .card { background: white; border-radius: 16px; padding: 18px; box-shadow: 0 10px 24px rgba(0,0,0,0.08); }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
 
-    /* ====== AUTH SECTION (debajo de subbar) ====== */
-    .auth-wrap { width: min(520px, 92%); margin: 22px auto 10px; }
+    /* ====== AUTH SECTION ====== */
+    .auth-wrap {
+      width: min(520px, 92%);
+      margin: 22px auto 10px;
+    }
     .auth-card {
       background: white;
       border-radius: 16px;
       padding: 18px;
       box-shadow: 0 10px 24px rgba(0,0,0,0.10);
-      position: relative; /* para overlay */
+      position: relative;
+      overflow: hidden;
     }
     .auth-title { font-size: 28px; margin-bottom: 6px; }
     .auth-sub { color:#666; margin-bottom: 14px; }
 
-    .auth-tabs { display:flex; gap:10px; margin-bottom: 14px; }
+    .auth-tabs {
+      display:flex;
+      gap:10px;
+      margin-bottom: 14px;
+    }
     .auth-tab {
       flex:1;
       padding:10px 12px;
@@ -140,7 +246,10 @@
       border: 1px solid #e5e7eb;
       outline: none;
     }
-    input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.12); }
+    input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
 
     .btn-row { display:grid; gap:10px; margin-top: 12px; }
 
@@ -153,6 +262,7 @@
       background: #22c55e;
       color: #0b1020;
     }
+
     .btn-google {
       padding: 10px 12px;
       border-radius: 12px;
@@ -165,7 +275,7 @@
       justify-content:center;
       gap:10px;
     }
-    .google-icon { width:18px; height:18px; display:block; }
+    .gicon { width:18px; height:18px; display:block; }
 
     .auth-hint { font-size: 12px; color:#666; margin-top: 10px; }
     .auth-error { color:#b91c1c; font-weight:800; margin-top:10px; display:none; }
@@ -173,50 +283,42 @@
 
     .hidden { display:none !important; }
 
-    /* ===== SUCCESS OVERLAY (registro/login) ===== */
+    /* OVERLAY success dentro del cuadro */
     .success-overlay{
-      position: absolute;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-      z-index: 50;
-    }
-    .success-overlay .backdrop{
       position:absolute;
       inset:0;
-      border-radius:16px;
-      background: rgba(255,255,255,0.65);
-      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(6px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index: 50;
     }
-    .success-overlay .content{
-      position: relative;
-      z-index: 51;
-      text-align: center;
-      background: rgba(255,255,255,0.92);
-      border: 1px solid #e5e7eb;
+    .success-overlay.show{ display:flex; }
+    .success-box{
+      background:white;
       border-radius: 16px;
-      padding: 18px 16px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
-      width: min(360px, 88%);
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+      text-align:center;
+      width: min(360px, 92%);
     }
-    .success-overlay .check{
-      width: 64px;
-      height: 64px;
+    .success-check{
+      width:52px; height:52px;
       border-radius: 999px;
-      display: grid;
-      place-items: center;
+      display:grid;
+      place-items:center;
+      background:#22c55e;
+      color:white;
+      font-size: 30px;
       margin: 0 auto 10px;
-      background: #22c55e;
-      color: #0b1020;
-      font-size: 34px;
       font-weight: 900;
     }
-    .success-overlay h3{ margin-bottom: 6px; font-size: 20px; }
-    .success-overlay p{ color:#444; }
-    .success-overlay.show{ display:flex; }
+    .success-title{ font-size: 18px; font-weight: 900; margin-bottom: 6px; }
+    .success-text{ color:#444; font-size: 14px; }
 
+    /* ====== RESPONSIVE ====== */
     @media (max-width: 760px) {
       .search { display: none; }
       .slides { height: 260px; }
@@ -227,7 +329,7 @@
 </head>
 
 <body>
-  <!-- BANDA SUPERIOR -->
+  <!-- TOP BAR -->
   <header class="topbar">
     <div class="container topbar-row">
       <div class="brand">
@@ -242,7 +344,16 @@
       <div class="actions">
         <button class="linkbtn" id="btnLogin" type="button">Iniciar sesión</button>
         <button class="linkbtn" id="btnRegister" type="button">Crear cuenta</button>
+
+        <!-- PERFIL (solo logueado) -->
+        <button class="userpill hidden" id="userPill" type="button" title="Mi cuenta">
+          <span class="avatar" id="avatarInitials">JR</span>
+          <span class="username" id="userName">Usuario</span>
+        </button>
+
         <button class="linkbtn" id="btnOrders" type="button">Mis compras</button>
+        <button class="linkbtn hidden" id="btnLogout" type="button">Salir</button>
+
         <button class="cart-btn" type="button" id="btnCart">
           🛒 <span class="cart-count" id="cartCount">0</span>
         </button>
@@ -250,7 +361,7 @@
     </div>
   </header>
 
-  <!-- BARRA DE CATEGORÍAS -->
+  <!-- SUB BAR -->
   <nav class="subbar">
     <div class="container">
       <ul>
@@ -288,7 +399,16 @@
   <!-- AUTH -->
   <section id="authSection" class="hidden">
     <div class="auth-wrap">
-      <div class="auth-card">
+      <div class="auth-card" id="authCard">
+        <!-- Overlay success -->
+        <div class="success-overlay" id="successOverlay">
+          <div class="success-box">
+            <div class="success-check">✓</div>
+            <div class="success-title" id="successTitle">¡Listo!</div>
+            <div class="success-text" id="successText">Ya te has registrado.</div>
+          </div>
+        </div>
+
         <h2 class="auth-title" id="authTitle">Iniciar sesión</h2>
         <p class="auth-sub" id="authSub">Accede para ver tus compras y guardar favoritos.</p>
 
@@ -312,8 +432,15 @@
 
           <div class="btn-row">
             <button class="btn-primary" id="btnDoLogin" type="button">Entrar</button>
+
             <button class="btn-google" id="btnGoogleLogin" type="button">
-              <img class="google-icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+              <!-- Google G (SVG) -->
+              <svg class="gicon" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#EA4335" d="M24 9.5c3.54 0 6.02 1.53 7.41 2.81l5.41-5.41C33.6 4.02 29.2 2 24 2 14.62 2 6.51 7.38 2.69 15.19l6.78 5.26C11.27 14.57 17.12 9.5 24 9.5z"/>
+                <path fill="#4285F4" d="M46.5 24.5c0-1.64-.15-2.83-.47-4.07H24v7.72h12.84c-.26 2.07-1.68 5.19-4.84 7.28l7.43 5.76c4.32-4 7.07-9.88 7.07-16.69z"/>
+                <path fill="#FBBC05" d="M9.47 28.45c-.42-1.26-.66-2.6-.66-3.95s.24-2.69.65-3.95l-6.78-5.26C1.06 18.62 0 21.48 0 24.5c0 3.02 1.06 5.88 2.68 8.21l6.79-4.26z"/>
+                <path fill="#34A853" d="M24 47c6.2 0 11.4-2.05 15.2-5.58l-7.43-5.76c-2 1.39-4.7 2.37-7.77 2.37-6.88 0-12.73-5.07-14.53-11.95l-6.79 4.26C6.51 40.62 14.62 47 24 47z"/>
+              </svg>
               Continuar con Google
             </button>
           </div>
@@ -370,8 +497,14 @@
 
           <div class="btn-row">
             <button class="btn-primary" id="btnDoRegister" type="button">Crear cuenta</button>
+
             <button class="btn-google" id="btnGoogleRegister" type="button">
-              <img class="google-icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+              <svg class="gicon" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#EA4335" d="M24 9.5c3.54 0 6.02 1.53 7.41 2.81l5.41-5.41C33.6 4.02 29.2 2 24 2 14.62 2 6.51 7.38 2.69 15.19l6.78 5.26C11.27 14.57 17.12 9.5 24 9.5z"/>
+                <path fill="#4285F4" d="M46.5 24.5c0-1.64-.15-2.83-.47-4.07H24v7.72h12.84c-.26 2.07-1.68 5.19-4.84 7.28l7.43 5.76c4.32-4 7.07-9.88 7.07-16.69z"/>
+                <path fill="#FBBC05" d="M9.47 28.45c-.42-1.26-.66-2.6-.66-3.95s.24-2.69.65-3.95l-6.78-5.26C1.06 18.62 0 21.48 0 24.5c0 3.02 1.06 5.88 2.68 8.21l6.79-4.26z"/>
+                <path fill="#34A853" d="M24 47c6.2 0 11.4-2.05 15.2-5.58l-7.43-5.76c-2 1.39-4.7 2.37-7.77 2.37-6.88 0-12.73-5.07-14.53-11.95l-6.79 4.26C6.51 40.62 14.62 47 24 47z"/>
+              </svg>
               Registrarme con Google
             </button>
           </div>
@@ -383,28 +516,23 @@
         <div class="auth-hint">
           * El registro guarda tus datos en Firebase (Auth + Firestore).
         </div>
-
-        <!-- Overlay de éxito -->
-        <div class="success-overlay" id="successOverlay">
-          <div class="backdrop"></div>
-          <div class="content">
-            <div class="check">✓</div>
-            <h3 id="successTitle">Listo</h3>
-            <p id="successText">Ya te has registrado.</p>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ====== JS UI + SLIDER (normal) ====== -->
+  <!-- ====== JS UI + SLIDER ====== -->
   <script>
     const homeSection = document.getElementById("homeSection");
     const authSection = document.getElementById("authSection");
 
     const btnLogin = document.getElementById("btnLogin");
     const btnRegister = document.getElementById("btnRegister");
+    const btnOrders = document.getElementById("btnOrders");
+    const btnLogout = document.getElementById("btnLogout");
+    const userPill = document.getElementById("userPill");
+    const avatarInitials = document.getElementById("avatarInitials");
+    const userName = document.getElementById("userName");
+
     const navHome = document.getElementById("navHome");
 
     const tabLogin = document.getElementById("tabLogin");
@@ -418,6 +546,10 @@
 
     const authError = document.getElementById("authError");
     const authOk = document.getElementById("authOk");
+
+    const successOverlay = document.getElementById("successOverlay");
+    const successTitle = document.getElementById("successTitle");
+    const successText = document.getElementById("successText");
 
     function showError(msg) {
       authOk.style.display = "none";
@@ -436,13 +568,22 @@
       authOk.textContent = "";
     }
 
+    function showSuccessOverlay(title, text, autoHideMs = 1200) {
+      successTitle.textContent = title || "¡Listo!";
+      successText.textContent = text || "Operación exitosa.";
+      successOverlay.classList.add("show");
+      if (autoHideMs) {
+        setTimeout(() => successOverlay.classList.remove("show"), autoHideMs);
+      }
+    }
+    window.showSuccessOverlay = showSuccessOverlay;
+
     function showHome() {
       clearMsgs();
       authSection.classList.add("hidden");
       homeSection.classList.remove("hidden");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-    window.showHome = showHome;
 
     function showAuth(mode) {
       clearMsgs();
@@ -472,24 +613,12 @@
     tabLogin.addEventListener("click", () => setAuthMode("login"));
     tabRegister.addEventListener("click", () => setAuthMode("register"));
 
-    // ===== Overlay de éxito =====
-    const successOverlay = document.getElementById("successOverlay");
-    const successTitle = document.getElementById("successTitle");
-    const successText = document.getElementById("successText");
+    // PERFIL click (por ahora demo)
+    userPill.addEventListener("click", () => {
+      alert("Aquí luego irá: Mi cuenta / Perfil");
+    });
 
-    function showSuccess(title, text, goHome = true) {
-      successTitle.textContent = title;
-      successText.textContent = text;
-      successOverlay.classList.add("show");
-
-      setTimeout(() => {
-        successOverlay.classList.remove("show");
-        if (goHome) showHome();
-      }, 1500);
-    }
-    window.showSuccess = showSuccess;
-
-    // ===== SLIDER =====
+    // Slider
     document.addEventListener("DOMContentLoaded", () => {
       const slider = document.getElementById("homeSlider");
       const slides = slider ? slider.querySelectorAll(".slide") : [];
@@ -510,17 +639,48 @@
       prevBtn.addEventListener("click", prev);
       setInterval(next, 5000);
     });
+
+    // ===== Topbar: mostrar/ocultar según sesión =====
+    function setTopbarUser(userData) {
+      if (!userData) {
+        btnLogin.classList.remove("hidden");
+        btnRegister.classList.remove("hidden");
+        userPill.classList.add("hidden");
+        btnLogout.classList.add("hidden");
+        avatarInitials.textContent = "JR";
+        userName.textContent = "Usuario";
+        return;
+      }
+
+      btnLogin.classList.add("hidden");
+      btnRegister.classList.add("hidden");
+      userPill.classList.remove("hidden");
+      btnLogout.classList.remove("hidden");
+
+      const name = (userData.nombre || userData.displayName || userData.email || "Usuario").trim();
+
+      const parts = name.split(/\s+/).filter(Boolean);
+      let initials = parts[0]?.[0] || "U";
+      if (parts.length >= 2) initials += parts[1][0];
+      initials = initials.toUpperCase();
+
+      avatarInitials.textContent = initials;
+      userName.textContent = name;
+    }
+    window.setTopbarUser = setTopbarUser;
   </script>
 
-  <!-- ====== FIREBASE (1 sola vez, corregido) ====== -->
+  <!-- ====== FIREBASE (todo en 1 solo módulo, sin duplicados) ====== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
     import {
       getAuth, GoogleAuthProvider, signInWithPopup,
-      createUserWithEmailAndPassword, signInWithEmailAndPassword
+      createUserWithEmailAndPassword, signInWithEmailAndPassword,
+      onAuthStateChanged, signOut, updateProfile
     } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-    import { getFirestore, doc, setDoc }
-      from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+    import {
+      getFirestore, doc, setDoc, getDoc
+    } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
     // ✅ Tu config real
     const firebaseConfig = {
@@ -538,29 +698,15 @@
     const db = getFirestore(app);
     const provider = new GoogleAuthProvider();
 
-    // Mensajes (fallback por si quieres)
+    // UI elements
     const authError = document.getElementById("authError");
     const authOk = document.getElementById("authOk");
-    function showError(msg) {
-      authOk.style.display = "none";
-      authError.style.display = "block";
-      authError.textContent = msg;
-      console.error("[AUTH ERROR]", msg);
-    }
-    function showOk(msg) {
-      authError.style.display = "none";
-      authOk.style.display = "block";
-      authOk.textContent = msg;
-      console.log("[AUTH OK]", msg);
-    }
 
-    // Inputs login
     const loginEmail = document.getElementById("loginEmail");
     const loginPassword = document.getElementById("loginPassword");
     const btnDoLogin = document.getElementById("btnDoLogin");
     const btnGoogleLogin = document.getElementById("btnGoogleLogin");
 
-    // Inputs register
     const regName = document.getElementById("regName");
     const regPhone = document.getElementById("regPhone");
     const regCountry = document.getElementById("regCountry");
@@ -572,6 +718,19 @@
     const btnDoRegister = document.getElementById("btnDoRegister");
     const btnGoogleRegister = document.getElementById("btnGoogleRegister");
 
+    const btnLogout = document.getElementById("btnLogout");
+
+    function showError(msg) {
+      authOk.style.display = "none";
+      authError.style.display = "block";
+      authError.textContent = msg;
+    }
+    function showOk(msg) {
+      authError.style.display = "none";
+      authOk.style.display = "block";
+      authOk.textContent = msg;
+    }
+
     async function saveUserProfile(uid, data) {
       await setDoc(doc(db, "users", uid), {
         ...data,
@@ -579,7 +738,30 @@
       }, { merge: true });
     }
 
-    // ===== LOGIN EMAIL =====
+    async function loadProfile(uid) {
+      const snap = await getDoc(doc(db, "users", uid));
+      return snap.exists() ? snap.data() : null;
+    }
+
+    // ====== Estado de sesión ======
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.setTopbarUser?.(null);
+        return;
+      }
+
+      // Intentar traer nombre desde Firestore
+      let profile = null;
+      try { profile = await loadProfile(user.uid); } catch(e) {}
+
+      window.setTopbarUser?.({
+        nombre: profile?.nombre || user.displayName || "",
+        email: user.email || "",
+        displayName: user.displayName || ""
+      });
+    });
+
+    // ====== LOGIN EMAIL ======
     btnDoLogin.addEventListener("click", async () => {
       try {
         const email = (loginEmail.value || "").trim();
@@ -587,13 +769,17 @@
         if (!email || !pass) return showError("Completa correo y contraseña.");
 
         await signInWithEmailAndPassword(auth, email, pass);
-        window.showSuccess?.("✅ Bienvenido", "Sesión iniciada correctamente.");
+        showOk("✅ Sesión iniciada.");
+        window.showSuccessOverlay?.("¡Bienvenido!", "Sesión iniciada correctamente.", 900);
+
+        // volver al inicio
+        setTimeout(() => document.getElementById("navHome").click(), 900);
       } catch (e) {
-        showError(e?.message || String(e));
+        showError(e.message);
       }
     });
 
-    // ===== LOGIN GOOGLE =====
+    // ====== LOGIN GOOGLE ======
     btnGoogleLogin.addEventListener("click", async () => {
       try {
         const result = await signInWithPopup(auth, provider);
@@ -603,13 +789,20 @@
           nombre: result.user.displayName || ""
         });
 
-        window.showSuccess?.("✅ Bienvenido", "Entraste con Google: " + (result.user.email || ""));
+        window.setTopbarUser?.({
+          nombre: result.user.displayName || "",
+          email: result.user.email || ""
+        });
+
+        showOk("✅ Entraste con Google.");
+        window.showSuccessOverlay?.("¡Bienvenido!", "Entraste con Google.", 900);
+        setTimeout(() => document.getElementById("navHome").click(), 900);
       } catch (e) {
-        showError(e?.message || String(e));
+        showError(e.message);
       }
     });
 
-    // ===== REGISTER EMAIL + PERFIL =====
+    // ====== REGISTER EMAIL ======
     btnDoRegister.addEventListener("click", async () => {
       try {
         const nombre = (regName.value || "").trim();
@@ -631,17 +824,27 @@
 
         const cred = await createUserWithEmailAndPassword(auth, email, pass);
 
+        // poner displayName en Auth
+        try { await updateProfile(cred.user, { displayName: nombre }); } catch(e){}
+
         await saveUserProfile(cred.user.uid, {
-          nombre, pais, distrito, direccion, telefono, email
+          nombre, pais, distrito, direccion, telefono,
+          email
         });
 
-        window.showSuccess?.("✅ Cuenta creada", "Ya te has registrado. Bienvenido a JR DENT.");
+        window.setTopbarUser?.({ nombre, email });
+
+        showOk("✅ Cuenta creada y datos guardados.");
+        window.showSuccessOverlay?.("✅ Registro completo", "Ya te has registrado.", 1100);
+
+        // volver al inicio
+        setTimeout(() => document.getElementById("navHome").click(), 1100);
       } catch (e) {
-        showError(e?.message || String(e));
+        showError(e.message);
       }
     });
 
-    // ===== REGISTER GOOGLE =====
+    // ====== REGISTER GOOGLE ======
     btnGoogleRegister.addEventListener("click", async () => {
       try {
         const result = await signInWithPopup(auth, provider);
@@ -651,14 +854,35 @@
           nombre: result.user.displayName || ""
         });
 
-        window.showSuccess?.("✅ Registrado", "Ya te has registrado con Google.");
+        window.setTopbarUser?.({
+          nombre: result.user.displayName || "",
+          email: result.user.email || ""
+        });
+
+        showOk("✅ Registrado con Google.");
+        window.showSuccessOverlay?.("✅ Registro con Google", "Ya estás dentro.", 1000);
+        setTimeout(() => document.getElementById("navHome").click(), 1000);
       } catch (e) {
-        showError(e?.message || String(e));
+        showError(e.message);
+      }
+    });
+
+    // ====== LOGOUT ======
+    btnLogout.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+        window.setTopbarUser?.(null);
+        showOk("Sesión cerrada.");
+        window.showSuccessOverlay?.("Hasta luego", "Sesión cerrada.", 900);
+        setTimeout(() => document.getElementById("navHome").click(), 900);
+      } catch (e) {
+        showError(e.message);
       }
     });
   </script>
 </body>
 </html>
+
 
 
 
