@@ -138,21 +138,58 @@
       white-space: nowrap;
     }
 
-    /* ====== SUB BAR ====== */
+    /* =========================================================
+       ✅ SUB BAR NUEVA (ESTILO RITO: centrada + grande + botones)
+       ========================================================= */
     .subbar {
       background: #1B0561;
-      color: rgba(255,255,255,0.9);
-      padding: 8px 0;
-      font-size: 14px;
+      color: rgba(255,255,255,0.95);
+      padding: 16px 0;            /* más alta */
+      font-size: 16px;            /* letra más grande */
+      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
     }
+
+    .subbar .container {
+      display: flex;
+      justify-content: center;    /* centrado */
+      align-items: center;
+    }
+
     .subbar ul {
       list-style: none;
       display: flex;
-      gap: 14px;
+      gap: 16px;
       flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
     }
-    .subbar a { color: inherit; text-decoration: none; opacity: 0.9; }
-    .subbar a:hover { opacity: 1; text-decoration: underline; }
+
+    .subbar a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;         /* “cuadros” grandes */
+      border-radius: 14px;
+      color: white;
+      text-decoration: none;
+      opacity: 1;
+      font-weight: 800;
+      background: rgba(255,255,255,0.10);
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+
+    .subbar a:hover {
+      background: rgba(255,255,255,0.22);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+      text-decoration: none;
+    }
+
+    /* “Activo” opcional si luego quieres marcar sección */
+    .subbar a.active {
+      background: rgba(255,255,255,0.28);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+    }
 
     /* ===== SLIDER ===== */
     .slider {
@@ -324,6 +361,9 @@
       .slides { height: 260px; }
       .logo-img { height: 60px; }
       .grid2 { grid-template-columns: 1fr; }
+
+      .subbar { padding: 12px 0; font-size: 15px; }
+      .subbar a { padding: 9px 16px; border-radius: 12px; }
     }
   </style>
 </head>
@@ -365,7 +405,7 @@
   <nav class="subbar">
     <div class="container">
       <ul>
-        <li><a href="#" id="navHome">Inicio</a></li>
+        <li><a href="#" id="navHome" class="active">Inicio</a></li>
         <li><a href="#">Repuestos</a></li>
         <li><a href="#">Piezas de mano</a></li>
         <li><a href="#">Servicio técnico</a></li>
