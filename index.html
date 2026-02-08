@@ -139,56 +139,102 @@
     }
 
     /* =========================================================
-       ✅ SUB BAR NUEVA (ESTILO RITO: centrada + grande + botones)
+       ✅ SUBBAR ESTILO RITO
+       - fondo blanco
+       - links sin "pastilla"
+       - separadores con líneas rectas
+       - botón izquierdo "Todos nuestros productos"
        ========================================================= */
-    .subbar {
-      background: #1B0561;
-      color: rgba(255,255,255,0.95);
-      padding: 16px 0;            /* más alta */
-      font-size: 16px;            /* letra más grande */
-      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+
+    :root{
+      --jrBlue:#1B0561;       /* el azul actual de tu subbar */
+      --jrBlue2:#0f3f9a;      /* opcional hover del botón */
+      --line:#e6e8ef;
+      --text:#111827;
+      --muted:#4b5563;
     }
 
-    .subbar .container {
-      display: flex;
-      justify-content: center;    /* centrado */
-      align-items: center;
+    .subbar{
+      background:#fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
     }
 
-    .subbar ul {
-      list-style: none;
-      display: flex;
+    .subbar .container{
+      display:flex;
+      align-items: stretch;
+      justify-content: space-between;
       gap: 16px;
+      padding: 0;
+    }
+
+    /* Bloque All products */
+    .all-products{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 14px 18px;
+      background: var(--jrBlue);
+      color: #fff;
+      font-weight: 900;
+      text-decoration:none;
+      white-space: nowrap;
+      user-select:none;
+      border-right: 1px solid rgba(255,255,255,0.18);
+      transition: .2s;
+    }
+    .all-products:hover{
+      background: var(--jrBlue2);
+    }
+    .all-products .hamb{
+      font-size: 18px;
+      line-height: 1;
+      transform: translateY(-1px);
+      opacity: .95;
+    }
+
+    /* Menú */
+    .subbar ul{
+      list-style:none;
+      display:flex;
+      align-items: stretch;
+      gap: 0;               /* sin gaps, porque usamos separadores */
       flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
+      margin: 0;
+      padding: 0;
+      flex: 1;
     }
 
-    .subbar a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 22px;         /* “cuadros” grandes */
-      border-radius: 14px;
-      color: white;
-      text-decoration: none;
-      opacity: 1;
+    .subbar li{
+      display:flex;
+      align-items: stretch;
+    }
+
+    /* Separadores verticales */
+    .subbar li + li{
+      border-left: 1px solid var(--line);
+    }
+
+    .subbar a.navlink{
+      display:flex;
+      align-items:center;
+      padding: 14px 18px;
+      color: var(--text);
       font-weight: 800;
-      background: rgba(255,255,255,0.10);
-      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+      text-decoration:none;
+      letter-spacing: .2px;
+      transition: .15s ease;
     }
 
-    .subbar a:hover {
-      background: rgba(255,255,255,0.22);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
-      text-decoration: none;
+    .subbar a.navlink:hover{
+      background: rgba(27, 5, 97, 0.06);
+      color: var(--jrBlue);
     }
 
-    /* “Activo” opcional si luego quieres marcar sección */
-    .subbar a.active {
-      background: rgba(255,255,255,0.28);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+    .subbar a.navlink.active{
+      color: var(--jrBlue);
+      background: rgba(27, 5, 97, 0.08);
     }
 
     /* ===== SLIDER ===== */
@@ -362,8 +408,9 @@
       .logo-img { height: 60px; }
       .grid2 { grid-template-columns: 1fr; }
 
-      .subbar { padding: 12px 0; font-size: 15px; }
-      .subbar a { padding: 9px 16px; border-radius: 12px; }
+      .subbar .container{ gap:10px; }
+      .all-products{ padding: 12px 12px; }
+      .subbar a.navlink{ padding: 12px 12px; }
     }
   </style>
 </head>
@@ -401,15 +448,20 @@
     </div>
   </header>
 
-  <!-- SUB BAR -->
+  <!-- SUB BAR (RITO) -->
   <nav class="subbar">
     <div class="container">
+      <a class="all-products" href="#" id="navAllProducts">
+        <span class="hamb">☰</span>
+        Todos nuestros productos
+      </a>
+
       <ul>
-        <li><a href="#" id="navHome" class="active">Inicio</a></li>
-        <li><a href="#">Repuestos</a></li>
-        <li><a href="#">Piezas de mano</a></li>
-        <li><a href="#">Servicio técnico</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="#" id="navHome" class="navlink active">Inicio</a></li>
+        <li><a href="#" class="navlink">Repuestos</a></li>
+        <li><a href="#" class="navlink">Piezas de mano</a></li>
+        <li><a href="#" class="navlink">Servicio técnico</a></li>
+        <li><a href="#" class="navlink">Contacto</a></li>
       </ul>
     </div>
   </nav>
@@ -574,6 +626,7 @@
     const userName = document.getElementById("userName");
 
     const navHome = document.getElementById("navHome");
+    const navAllProducts = document.getElementById("navAllProducts");
 
     const tabLogin = document.getElementById("tabLogin");
     const tabRegister = document.getElementById("tabRegister");
@@ -623,6 +676,9 @@
       authSection.classList.add("hidden");
       homeSection.classList.remove("hidden");
       window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // marcar activo en subbar
+      setActiveNav(navHome);
     }
 
     function showAuth(mode) {
@@ -648,7 +704,15 @@
 
     btnLogin.addEventListener("click", () => showAuth("login"));
     btnRegister.addEventListener("click", () => showAuth("register"));
+
     navHome.addEventListener("click", (e) => { e.preventDefault(); showHome(); });
+
+    // “Todos nuestros productos” (por ahora vuelve a Home, luego lo conectamos a catálogo)
+    navAllProducts.addEventListener("click", (e) => {
+      e.preventDefault();
+      showHome();
+      setActiveNav(null); // no marcar el nav normal
+    });
 
     tabLogin.addEventListener("click", () => setAuthMode("login"));
     tabRegister.addEventListener("click", () => setAuthMode("register"));
@@ -679,6 +743,12 @@
       prevBtn.addEventListener("click", prev);
       setInterval(next, 5000);
     });
+
+    // ===== Subbar activo (opcional) =====
+    function setActiveNav(linkEl){
+      document.querySelectorAll(".subbar a.navlink").forEach(a => a.classList.remove("active"));
+      if (linkEl && linkEl.classList.contains("navlink")) linkEl.classList.add("active");
+    }
 
     // ===== Topbar: mostrar/ocultar según sesión =====
     function setTopbarUser(userData) {
@@ -790,7 +860,6 @@
         return;
       }
 
-      // Intentar traer nombre desde Firestore
       let profile = null;
       try { profile = await loadProfile(user.uid); } catch(e) {}
 
@@ -811,8 +880,6 @@
         await signInWithEmailAndPassword(auth, email, pass);
         showOk("✅ Sesión iniciada.");
         window.showSuccessOverlay?.("¡Bienvenido!", "Sesión iniciada correctamente.", 900);
-
-        // volver al inicio
         setTimeout(() => document.getElementById("navHome").click(), 900);
       } catch (e) {
         showError(e.message);
@@ -864,7 +931,6 @@
 
         const cred = await createUserWithEmailAndPassword(auth, email, pass);
 
-        // poner displayName en Auth
         try { await updateProfile(cred.user, { displayName: nombre }); } catch(e){}
 
         await saveUserProfile(cred.user.uid, {
@@ -876,8 +942,6 @@
 
         showOk("✅ Cuenta creada y datos guardados.");
         window.showSuccessOverlay?.("✅ Registro completo", "Ya te has registrado.", 1100);
-
-        // volver al inicio
         setTimeout(() => document.getElementById("navHome").click(), 1100);
       } catch (e) {
         showError(e.message);
@@ -922,6 +986,7 @@
   </script>
 </body>
 </html>
+
 
 
 
