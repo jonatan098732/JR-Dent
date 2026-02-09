@@ -88,28 +88,36 @@ body {
   height: 22px;
   display: block;
 }
-    .cart-btn{
-      position: relative;
-      background: transparent;
-      border: 2px solid #1B0561;
-      color: #1B0561;
-      font-size: 20px;
-      padding: 8px 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
+    .cart-btn {
+  position: relative;
+  display: flex;              /* 👈 importante */
+  align-items: center;        /* 👈 centra vertical */
+  justify-content: center;    /* 👈 centra horizontal */
+  background: transparent;
+  border: 2px solid #1B0561;
+  color: #1B0561;
+  width: 44px;                /* 👈 tamaño fijo */
+  height: 44px;               /* 👈 tamaño fijo */
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
     }
     .cart-btn:hover{ background:white; color:#111; }
 
-    .cart-count{
-      position:absolute;
-      top:-6px;
-      right:-6px;
-      background:red;
-      color:white;
-      font-size:12px;
-      padding:2px 6px;
-      border-radius:50%;
+    .cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
     }
 
     /* PERFIL */
@@ -1011,6 +1019,7 @@ body {
   </script>
 </body>
 </html>
+
 
 
 
