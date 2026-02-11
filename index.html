@@ -1124,11 +1124,18 @@ body {
     window.setTopbarUser = setTopbarUser;
   </script>
 <script>
-  // ====== CAMBIO DE PÁGINAS ======
+document.addEventListener("DOMContentLoaded", () => {
   const pageHome = document.getElementById("pageHome");
   const pageRepuestos = document.getElementById("pageRepuestos");
 
+  const navHome = document.getElementById("navHome");
+  const navRepuestos = document.getElementById("navRepuestos");
+
   function goPage(name){
+    if(!pageHome || !pageRepuestos) {
+      console.error("No encuentro pageHome/pageRepuestos");
+      return;
+    }
     pageHome.classList.add("hidden");
     pageRepuestos.classList.add("hidden");
 
@@ -1138,46 +1145,24 @@ body {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // links del menú (ajusta IDs si ya los tienes)
-  document.getElementById("navHome")?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("home"); });
+  // Debug (para que veas si lo encuentra)
+  console.log("navRepuestos:", navRepuestos);
+  console.log("pageRepuestos:", pageRepuestos);
 
-  // Si tu link "Repuestos" no tiene id, ponle id="navRepuestos"
-  document.getElementById("navRepuestos")?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("repuestos"); });
-
-  // ====== FILTRO DE CATEGORÍAS ======
-  const productsGrid = document.getElementById("productsGrid");
-  const productsTitle = document.getElementById("productsTitle");
-  const productsMeta = document.getElementById("productsMeta");
-
-  function filterCat(cat){
-    const cards = [...productsGrid.querySelectorAll(".pcard")];
-    let shown = 0;
-
-    cards.forEach(c=>{
-      const ok = (cat === "todo") || (c.dataset.cat === cat);
-      c.style.display = ok ? "" : "none";
-      if(ok) shown++;
+  if(navHome){
+    navHome.addEventListener("click", (e) => {
+      e.preventDefault();
+      goPage("home");
     });
-
-    const nameMap = {
-      todo: "Todos los productos",
-      turbinas: "Turbinas",
-      rodamientos: "Rodamientos",
-      micromotor: "Micromotor",
-      herramientas: "Herramientas"
-    };
-    productsTitle.textContent = nameMap[cat] || "Productos";
-    productsMeta.textContent = `Mostrando ${shown} productos`;
   }
 
-  document.querySelectorAll(".cat-item").forEach(item=>{
-    item.addEventListener("click", ()=>{
-      filterCat(item.dataset.cat);
+  if(navRepuestos){
+    navRepuestos.addEventListener("click", (e) => {
+      e.preventDefault();
+      goPage("repuestos");
     });
-  });
-
-  // Por defecto
-  filterCat("todo");
+  }
+});
 </script>
   <!-- ====== FIREBASE (todo en 1 solo módulo, sin duplicados) ====== -->
   <script type="module">
@@ -1391,6 +1376,7 @@ body {
   </script>
 </body>
 </html>
+
 
 
 
