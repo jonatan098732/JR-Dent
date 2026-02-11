@@ -451,6 +451,184 @@ body {
       .all-products{
         justify-content:center;
       }
+      /* ====== SECCIONES ====== */
+.page { padding: 18px 0 40px; }
+.hidden { display: none !important; }
+
+/* ====== BANNER LARGO (debajo de subbar) ====== */
+.hero-wide{
+  width: min(1200px, 92%);
+  margin: 18px auto 18px;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  background: #e5e7eb;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.10);
+}
+.hero-wide img{
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display:block;
+}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.55), rgba(0,0,0,0.10) 60%, rgba(0,0,0,0.00));
+}
+.hero-content{
+  position:absolute;
+  left: 26px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  max-width: 520px;
+}
+.hero-title{
+  font-size: 34px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.hero-text{
+  font-size: 14px;
+  opacity: .95;
+  line-height: 1.45;
+}
+
+/* ====== LAYOUT CATÁLOGO ====== */
+.catalog{
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 18px;
+}
+
+/* Sidebar categorías */
+.cat-box{
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+.cat-head{
+  background: #1B0561;
+  color: white;
+  padding: 14px 16px;
+  font-weight: 900;
+}
+.cat-list{
+  list-style:none;
+}
+.cat-item{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  border-bottom: 1px solid #eef2f7;
+  color:#111;
+  cursor:pointer;
+  font-weight: 800;
+  transition: .15s;
+}
+.cat-item:hover{ background:#f5f7ff; }
+.cat-item small{ opacity:.55; font-weight:900; }
+
+/* Área productos */
+.products-area{
+  background: transparent;
+}
+
+/* Barra superior productos */
+.products-top{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.products-title{
+  font-size: 22px;
+  font-weight: 900;
+  color:#111;
+}
+.products-meta{
+  font-size: 12px;
+  color:#666;
+  font-weight: 800;
+}
+
+/* Grid productos */
+.products-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.pcard{
+  background: white;
+  border-radius: 16px;
+  overflow:hidden;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.pcard:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+}
+.pimg{
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  background:#e5e7eb;
+  display:block;
+}
+.pbody{
+  padding: 12px 12px 14px;
+}
+.ptitle{
+  font-weight: 900;
+  margin-bottom: 6px;
+  color:#111;
+}
+.pdesc{
+  font-size: 12px;
+  color:#666;
+  line-height: 1.35;
+  margin-bottom: 10px;
+  min-height: 32px;
+}
+.pbottom{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap:10px;
+}
+.pprice{
+  font-weight: 900;
+  color:#1B0561;
+}
+.pbtn{
+  border:none;
+  background:#2563eb;
+  color:white;
+  font-weight: 900;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor:pointer;
+}
+.pbtn:hover{ filter: brightness(1.06); }
+
+/* Responsive */
+@media (max-width: 980px){
+  .catalog{ grid-template-columns: 1fr; }
+  .products-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px){
+  .hero-wide img{ height: 200px; }
+  .hero-title{ font-size: 24px; }
+  .products-grid{ grid-template-columns: 1fr; }
+}
     }
   </style>
 </head>
@@ -545,7 +723,128 @@ body {
       </div>
     </main>
   </section>
+<!-- REPUETOS / PRODUCTOS -->
+<section id="pageRepuestos" class="page hidden">
 
+  <!-- Banner largo -->
+  <div class="hero-wide">
+    <img src="banner-repuestos.jpg" alt="JR DENT - Repuestos">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-title">Repuestos y Accesorios</div>
+      <div class="hero-text">
+        Repuestos para piezas de mano, turbinas, micromotores y más.
+        Envíos a todo Perú • Atención rápida • Garantía.
+      </div>
+    </div>
+  </div>
+
+  <!-- Layout tipo Rito (sidebar + productos) -->
+  <div class="catalog">
+
+    <!-- Sidebar categorías -->
+    <aside class="cat-box">
+      <div class="cat-head">Categorías</div>
+      <ul class="cat-list">
+        <li class="cat-item" data-cat="todo">Todos <small>›</small></li>
+        <li class="cat-item" data-cat="turbinas">Turbinas <small>›</small></li>
+        <li class="cat-item" data-cat="rodamientos">Rodamientos <small>›</small></li>
+        <li class="cat-item" data-cat="micromotor">Micromotor <small>›</small></li>
+        <li class="cat-item" data-cat="herramientas">Herramientas <small>›</small></li>
+      </ul>
+    </aside>
+
+    <!-- Productos -->
+    <section class="products-area">
+      <div class="products-top">
+        <div class="products-title" id="productsTitle">Repuestos</div>
+        <div class="products-meta" id="productsMeta">Mostrando 6 productos</div>
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+        <!-- Producto 1 -->
+        <article class="pcard" data-cat="turbinas">
+          <img class="pimg" src="p1.jpg" alt="Cartucho Turbina">
+          <div class="pbody">
+            <div class="ptitle">Cartucho para turbina</div>
+            <div class="pdesc">Compatible con modelos estándar. Alta duración.</div>
+            <div class="pbottom">
+              <div class="pprice">S/ 129.00</div>
+              <button class="pbtn" type="button">Ver</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 2 -->
+        <article class="pcard" data-cat="rodamientos">
+          <img class="pimg" src="p2.jpg" alt="Rodamiento">
+          <div class="pbody">
+            <div class="ptitle">Rodamiento cerámico</div>
+            <div class="pdesc">Menos ruido • Mayor velocidad • Mejor rendimiento.</div>
+            <div class="pbottom">
+              <div class="pprice">S/ 39.00</div>
+              <button class="pbtn" type="button">Ver</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 3 -->
+        <article class="pcard" data-cat="micromotor">
+          <img class="pimg" src="p3.jpg" alt="Carbones micromotor">
+          <div class="pbody">
+            <div class="ptitle">Carbones para micromotor</div>
+            <div class="pdesc">Repuesto original • Instalación sencilla.</div>
+            <div class="pbottom">
+              <div class="pprice">S/ 25.00</div>
+              <button class="pbtn" type="button">Ver</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 4 -->
+        <article class="pcard" data-cat="herramientas">
+          <img class="pimg" src="p4.jpg" alt="Llave">
+          <div class="pbody">
+            <div class="ptitle">Llave para turbina</div>
+            <div class="pdesc">Ajuste preciso • Metal reforzado.</div>
+            <div class="pbottom">
+              <div class="pprice">S/ 18.00</div>
+              <button class="pbtn" type="button">Ver</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 5 -->
+        <article class="pcard" data-cat="turbinas">
+          <img class="pimg" src="p5.jpg" alt="O-rings">
+          <div class="pbody">
+            <div class="ptitle">Kit de O-rings</div>
+            <div class="pdesc">Set completo para mantenimiento.</div>
+            <div class="pbottom">
+              <div class="pprice">S/ 15.00</div>
+              <button class="pbtn" type="button">Ver</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 6 -->
+        <article class="pcard" data-cat="rodamientos">
+          <img class="pimg" src="p6.jpg" alt="Rotor">
+          <div class="pbody">
+            <div class="ptitle">Rotor para turbina</div>
+            <div class="pdesc">Balanceado • Compatible • Alta calidad.</div>
+            <div class="pbottom">
+              <div class="pprice">S/ 99.00</div>
+              <button class="pbtn" type="button">Ver</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </div>
+</section> 
   <!-- AUTH -->
   <section id="authSection" class="hidden">
     <div class="auth-wrap">
@@ -824,7 +1123,62 @@ body {
     }
     window.setTopbarUser = setTopbarUser;
   </script>
+<script>
+  // ====== CAMBIO DE PÁGINAS ======
+  const pageHome = document.getElementById("pageHome");
+  const pageRepuestos = document.getElementById("pageRepuestos");
 
+  function goPage(name){
+    pageHome.classList.add("hidden");
+    pageRepuestos.classList.add("hidden");
+
+    if(name === "repuestos") pageRepuestos.classList.remove("hidden");
+    else pageHome.classList.remove("hidden");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // links del menú (ajusta IDs si ya los tienes)
+  document.getElementById("navHome")?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("home"); });
+
+  // Si tu link "Repuestos" no tiene id, ponle id="navRepuestos"
+  document.getElementById("navRepuestos")?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("repuestos"); });
+
+  // ====== FILTRO DE CATEGORÍAS ======
+  const productsGrid = document.getElementById("productsGrid");
+  const productsTitle = document.getElementById("productsTitle");
+  const productsMeta = document.getElementById("productsMeta");
+
+  function filterCat(cat){
+    const cards = [...productsGrid.querySelectorAll(".pcard")];
+    let shown = 0;
+
+    cards.forEach(c=>{
+      const ok = (cat === "todo") || (c.dataset.cat === cat);
+      c.style.display = ok ? "" : "none";
+      if(ok) shown++;
+    });
+
+    const nameMap = {
+      todo: "Todos los productos",
+      turbinas: "Turbinas",
+      rodamientos: "Rodamientos",
+      micromotor: "Micromotor",
+      herramientas: "Herramientas"
+    };
+    productsTitle.textContent = nameMap[cat] || "Productos";
+    productsMeta.textContent = `Mostrando ${shown} productos`;
+  }
+
+  document.querySelectorAll(".cat-item").forEach(item=>{
+    item.addEventListener("click", ()=>{
+      filterCat(item.dataset.cat);
+    });
+  });
+
+  // Por defecto
+  filterCat("todo");
+</script>
   <!-- ====== FIREBASE (todo en 1 solo módulo, sin duplicados) ====== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
@@ -1037,6 +1391,7 @@ body {
   </script>
 </body>
 </html>
+
 
 
 
