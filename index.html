@@ -6,13 +6,16 @@
   <title>JR DENT</title>
 
   <style>
-   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400; /* normal */
-  background: #f6f7fb;
-  color: #111;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      background: #f6f7fb;
+      color: #111;
+    }
 
     /* ====== TOP BAR ====== */
     .topbar {
@@ -50,6 +53,8 @@ body {
       border-radius: 10px;
       border: none;
       outline: none;
+      background: #eaf1ff;
+      color:#111;
     }
 
     .search button {
@@ -80,44 +85,39 @@ body {
       font-weight: 700;
       transition: 0.3s;
     }
-    .linkbtn:hover { background: white; color: #111; 
-     }
+    .linkbtn:hover { background: white; color: #111; }
 
-  .cart-icon{
-  width: 22px;
-  height: 22px;
-  display: block;
-}
+    /* carrito */
     .cart-btn {
-  position: relative;
-  display: flex;              /* 👈 importante */
-  align-items: center;        /* 👈 centra vertical */
-  justify-content: center;    /* 👈 centra horizontal */
-  background: transparent;
-  border: 2px solid #1B0561;
-  color: #1B0561;
-  width: 44px;                /* 👈 tamaño fijo */
-  height: 44px;               /* 👈 tamaño fijo */
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.3s;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 2px solid #1B0561;
+      color: #1B0561;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
     }
     .cart-btn:hover{ background:white; color:#111; }
 
     .cart-count {
-  position: absolute;
-  top: -6px;
-  right: -5px;
-  background: red;
-  color: white;
-  font-size: 12px;
-  font-weight: 700;
-  min-width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
+      position: absolute;
+      top: -6px;
+      right: -5px;
+      background: red;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      min-width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
     }
 
     /* PERFIL */
@@ -144,11 +144,11 @@ body {
       border-radius: 999px;
       display:grid;
       place-items:center;
-      background: rgba(0,0,0,0.18);
+      background: rgba(27,5,97,0.12);
       font-weight: 900;
     }
     .userpill:hover .avatar{
-      background: rgba(0,0,0,0.12);
+      background: rgba(0,0,0,0.08);
     }
     .username{
       max-width: 140px;
@@ -158,112 +158,98 @@ body {
     }
 
     /* =========================================================
-       ✅ SUBBAR NUEVA estilo RITO (blanca + separadores + “All products”)
+       SUBBAR estilo RITO (blanca + separadores + “Todos nuestros productos”)
        ========================================================= */
     .subbar {
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
-  padding: 4px 0; /* delgada */
-}
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+      padding: 4px 0;
+    }
 
-/* ✅ OJO: lleva punto */
-.subbar-inner{
-  width: min(1100px, 92%);
-  margin: 0 auto;
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  padding: 2px 0;
+    .subbar-inner{
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 2px 0;
+      flex-wrap: nowrap;
+    }
 
-  flex-wrap: nowrap;       /* ✅ para que NO se parta en 2 filas */
-}
+    .all-products{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: #1B0561;
+      color: #fff;
+      font-weight: 900;
+      cursor: pointer;
+      user-select:none;
+      transition: .2s;
+      white-space: nowrap;
+      flex: 0 0 auto;
+      width: auto;
+    }
+    .all-products:hover{ filter: brightness(1.08); }
 
-/* Bloque izquierdo: Todos nuestros productos */
-.all-products{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding: 10px 14px;       /* ✅ un poco más delgado */
-  border-radius: 14px;
-  background: #1B0561;
-  color: #fff;
-  font-weight: 900;
-  cursor: pointer;
-  user-select:none;
-  transition: .2s;
-  white-space: nowrap;
+    .hamburger{
+      width: 18px;
+      height: 12px;
+      position: relative;
+      display:inline-block;
+    }
+    .hamburger span{
+      position:absolute;
+      left:0; right:0;
+      height: 2px;
+      background:#fff;
+      border-radius: 2px;
+    }
+    .hamburger span:nth-child(1){ top:0; }
+    .hamburger span:nth-child(2){ top:5px; opacity:.9; }
+    .hamburger span:nth-child(3){ top:10px; opacity:.85; }
 
-  flex: 0 0 auto;          /* ✅ no se estira */
-  width: auto;             /* ✅ no ocupa todo */
-}
-.all-products:hover{ filter: brightness(1.08); }
+    .subbar ul{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      flex-wrap: nowrap;
+      gap: 0;
+      margin-left: 6px;
+      flex: 1;
+      justify-content: center;
+    }
 
-.hamburger{
-  width: 18px;
-  height: 12px;
-  position: relative;
-  display:inline-block;
-}
-.hamburger span{
-  position:absolute;
-  left:0; right:0;
-  height: 2px;
-  background:#fff;
-  border-radius: 2px;
-}
-.hamburger span:nth-child(1){ top:0; }
-.hamburger span:nth-child(2){ top:5px; opacity:.9; }
-.hamburger span:nth-child(3){ top:10px; opacity:.85; }
+    .subbar li{
+      display:flex;
+      align-items:center;
+    }
 
-/* Menú */
-.subbar ul{
-  list-style:none;
-  display:flex;
-  align-items:center;
+    .subbar a{
+      color:#1B0561;
+      text-decoration:none;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 12px 14px;
+      line-height: 1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition: .18s;
+    }
 
-  flex-wrap: nowrap;       /* ✅ antes estaba wrap */
-  gap: 0;
-  margin-left: 6px;
+    .subbar li + li{
+      border-left: 1px solid #e5e7eb;
+    }
 
-  flex: 1;                 /* ✅ usa el espacio restante */
-  justify-content: center; /* ✅ centrado tipo Rito */
-}
+    .subbar a:hover{
+      color:#2563eb;
+      background: rgba(37,99,235,0.06);
+    }
 
-.subbar li{
-  display:flex;
-  align-items:center;
-}
-
-/* Links sin fondo */
-.subbar a{
-  color:#1B0561;
-  text-decoration:none;
-  font-weight: 800;
-  font-size: 15px;
-  padding: 12px 14px;      /* ✅ más delgado (antes 16px) */
-  line-height: 1;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  transition: .18s;
-}
-
-/* Separadores verticales */
-.subbar li + li{
-  border-left: 1px solid #e5e7eb;
-}
-
-.subbar a:hover{
-  color:#2563eb;
-  background: rgba(37,99,235,0.06);
-}
-
-/* ✅ En celular sí permitimos que baje a otra fila */
-@media (max-width: 860px){
-  .subbar-inner{ flex-wrap: wrap; }
-  .subbar ul{ justify-content: flex-start; flex-wrap: wrap; }
-}
     /* ===== SLIDER ===== */
     .slider {
       position: relative;
@@ -429,7 +415,190 @@ body {
     .success-title{ font-size: 18px; font-weight: 900; margin-bottom: 6px; }
     .success-text{ color:#444; font-size: 14px; }
 
-    /* ====== RESPONSIVE ====== */
+    /* ====== SECCIONES ====== */
+    .page { padding: 18px 0 40px; }
+
+    /* ====== BANNER LARGO (debajo de subbar) ====== */
+    .hero-wide{
+      width: min(1200px, 92%);
+      margin: 18px auto 18px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      background: #e5e7eb;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.10);
+    }
+    .hero-wide img{
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display:block;
+    }
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background: linear-gradient(90deg, rgba(0,0,0,0.55), rgba(0,0,0,0.10) 60%, rgba(0,0,0,0.00));
+    }
+    .hero-content{
+      position:absolute;
+      left: 26px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      max-width: 520px;
+    }
+    .hero-title{
+      font-size: 34px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    .hero-text{
+      font-size: 14px;
+      opacity: .95;
+      line-height: 1.45;
+    }
+
+    /* ====== LAYOUT CATÁLOGO ====== */
+    .catalog{
+      width: min(1200px, 92%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 18px;
+    }
+
+    /* Sidebar categorías */
+    .cat-box{
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .cat-head{
+      background: #1B0561;
+      color: white;
+      padding: 14px 16px;
+      font-weight: 900;
+    }
+    .cat-list{
+      list-style:none;
+    }
+    .cat-item{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      padding: 13px 16px;
+      border-bottom: 1px solid #eef2f7;
+      color:#111;
+      cursor:pointer;
+      font-weight: 800;
+      transition: .15s;
+    }
+    .cat-item:hover{ background:#f5f7ff; }
+    .cat-item small{ opacity:.55; font-weight:900; }
+
+    /* Área productos */
+    .products-area{
+      background: transparent;
+    }
+
+    /* Barra superior productos */
+    .products-top{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .products-title{
+      font-size: 22px;
+      font-weight: 900;
+      color:#111;
+    }
+    .products-meta{
+      font-size: 12px;
+      color:#666;
+      font-weight: 800;
+    }
+
+    /* Grid productos */
+    .products-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .pcard{
+      background: white;
+      border-radius: 16px;
+      overflow:hidden;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .pcard:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+    }
+    .pimg{
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      background:#e5e7eb;
+      display:block;
+    }
+    .pbody{
+      padding: 12px 12px 14px;
+    }
+    .ptitle{
+      font-weight: 900;
+      margin-bottom: 6px;
+      color:#111;
+    }
+    .pdesc{
+      font-size: 12px;
+      color:#666;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      min-height: 32px;
+    }
+    .pbottom{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap:10px;
+    }
+    .pprice{
+      font-weight: 900;
+      color:#1B0561;
+    }
+    .pbtn{
+      border:none;
+      background:#2563eb;
+      color:white;
+      font-weight: 900;
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+    }
+    .pbtn:hover{ filter: brightness(1.06); }
+
+    /* Responsive general */
+    @media (max-width: 980px){
+      .catalog{ grid-template-columns: 1fr; }
+      .products-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px){
+      .hero-wide img{ height: 200px; }
+      .hero-title{ font-size: 24px; }
+      .products-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Responsive top/sub */
+    @media (max-width: 860px){
+      .subbar-inner{ flex-wrap: wrap; }
+      .subbar ul{ justify-content: flex-start; flex-wrap: wrap; }
+    }
+
     @media (max-width: 760px) {
       .search { display: none; }
       .slides { height: 260px; }
@@ -451,184 +620,6 @@ body {
       .all-products{
         justify-content:center;
       }
-      /* ====== SECCIONES ====== */
-.page { padding: 18px 0 40px; }
-.hidden { display: none !important; }
-
-/* ====== BANNER LARGO (debajo de subbar) ====== */
-.hero-wide{
-  width: min(1200px, 92%);
-  margin: 18px auto 18px;
-  border-radius: 18px;
-  overflow: hidden;
-  position: relative;
-  background: #e5e7eb;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.10);
-}
-.hero-wide img{
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  display:block;
-}
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.55), rgba(0,0,0,0.10) 60%, rgba(0,0,0,0.00));
-}
-.hero-content{
-  position:absolute;
-  left: 26px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: white;
-  max-width: 520px;
-}
-.hero-title{
-  font-size: 34px;
-  font-weight: 900;
-  margin-bottom: 8px;
-}
-.hero-text{
-  font-size: 14px;
-  opacity: .95;
-  line-height: 1.45;
-}
-
-/* ====== LAYOUT CATÁLOGO ====== */
-.catalog{
-  width: min(1200px, 92%);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 18px;
-}
-
-/* Sidebar categorías */
-.cat-box{
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
-  overflow: hidden;
-}
-.cat-head{
-  background: #1B0561;
-  color: white;
-  padding: 14px 16px;
-  font-weight: 900;
-}
-.cat-list{
-  list-style:none;
-}
-.cat-item{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  padding: 13px 16px;
-  border-bottom: 1px solid #eef2f7;
-  color:#111;
-  cursor:pointer;
-  font-weight: 800;
-  transition: .15s;
-}
-.cat-item:hover{ background:#f5f7ff; }
-.cat-item small{ opacity:.55; font-weight:900; }
-
-/* Área productos */
-.products-area{
-  background: transparent;
-}
-
-/* Barra superior productos */
-.products-top{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.products-title{
-  font-size: 22px;
-  font-weight: 900;
-  color:#111;
-}
-.products-meta{
-  font-size: 12px;
-  color:#666;
-  font-weight: 800;
-}
-
-/* Grid productos */
-.products-grid{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.pcard{
-  background: white;
-  border-radius: 16px;
-  overflow:hidden;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
-  transition: transform .12s ease, box-shadow .12s ease;
-}
-.pcard:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.12);
-}
-.pimg{
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
-  background:#e5e7eb;
-  display:block;
-}
-.pbody{
-  padding: 12px 12px 14px;
-}
-.ptitle{
-  font-weight: 900;
-  margin-bottom: 6px;
-  color:#111;
-}
-.pdesc{
-  font-size: 12px;
-  color:#666;
-  line-height: 1.35;
-  margin-bottom: 10px;
-  min-height: 32px;
-}
-.pbottom{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  gap:10px;
-}
-.pprice{
-  font-weight: 900;
-  color:#1B0561;
-}
-.pbtn{
-  border:none;
-  background:#2563eb;
-  color:white;
-  font-weight: 900;
-  padding: 10px 12px;
-  border-radius: 12px;
-  cursor:pointer;
-}
-.pbtn:hover{ filter: brightness(1.06); }
-
-/* Responsive */
-@media (max-width: 980px){
-  .catalog{ grid-template-columns: 1fr; }
-  .products-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 560px){
-  .hero-wide img{ height: 200px; }
-  .hero-title{ font-size: 24px; }
-  .products-grid{ grid-template-columns: 1fr; }
-}
     }
   </style>
 </head>
@@ -659,30 +650,26 @@ body {
         <button class="linkbtn" id="btnOrders" type="button">Mis compras</button>
         <button class="linkbtn hidden" id="btnLogout" type="button">Salir</button>
 
-        <button class="cart-btn" type="button" id="btnCart">
-
-  <svg xmlns="http://www.w3.org/2000/svg" 
-       width="22" height="22" 
-       viewBox="0 0 24 24" 
-       fill="none" 
-       stroke="currentColor" 
-       stroke-width="2" 
-       stroke-linecap="round" 
-       stroke-linejoin="round">
-    <circle cx="9" cy="21" r="1"/>
-    <circle cx="20" cy="21" r="1"/>
-    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 
-             2 1.61h9.72a2 2 0 0 0 
-             2-1.61L23 6H6"/>
-  </svg>
-
-  <span class="cart-count" id="cartCount">0</span>
-</button>
+        <button class="cart-btn" type="button" id="btnCart" aria-label="Carrito">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               width="22" height="22"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- SUB BAR NUEVA -->
+  <!-- SUB BAR -->
   <nav class="subbar">
     <div class="subbar-inner">
       <div class="all-products" id="allProductsBtn" title="Ver todos los productos">
@@ -695,9 +682,9 @@ body {
       <ul>
         <li><a href="#" id="navHome">Inicio</a></li>
         <li><a href="#" id="navRepuestos">Repuestos</a></li>
-        <li><a href="#">Piezas de mano</a></li>
-        <li><a href="#">Servicio técnico</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="#" id="navPiezas">Piezas de mano</a></li>
+        <li><a href="#" id="navServicio">Servicio técnico</a></li>
+        <li><a href="#" id="navContacto">Contacto</a></li>
       </ul>
     </div>
   </nav>
@@ -723,133 +710,127 @@ body {
       </div>
     </main>
   </section>
-<!-- REPUETOS / PRODUCTOS -->
-<section id="pageRepuestos" class="page hidden">
 
-  <!-- Banner largo -->
-  <div class="hero-wide">
-    <img src="banner-repuestos.jpg" alt="JR DENT - Repuestos">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-title">Repuestos y Accesorios</div>
-      <div class="hero-text">
-        Repuestos para piezas de mano, turbinas, micromotores y más.
-        Envíos a todo Perú • Atención rápida • Garantía.
+  <!-- REPUETOS / PRODUCTOS -->
+  <section id="pageRepuestos" class="page hidden">
+
+    <!-- Banner largo -->
+    <div class="hero-wide">
+      <img src="banner-repuestos.jpg" alt="JR DENT - Repuestos">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-title">Repuestos y Accesorios</div>
+        <div class="hero-text">
+          Repuestos para piezas de mano, turbinas, micromotores y más.
+          Envíos a todo Perú • Atención rápida • Garantía.
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Layout tipo Rito (sidebar + productos) -->
-  <div class="catalog">
+    <!-- Layout tipo Rito (sidebar + productos) -->
+    <div class="catalog">
 
-    <!-- Sidebar categorías -->
-    <aside class="cat-box">
-      <div class="cat-head">Categorías</div>
-      <ul class="cat-list">
-        <li class="cat-item" data-cat="todo">Todos <small>›</small></li>
-        <li class="cat-item" data-cat="turbinas">Turbinas <small>›</small></li>
-        <li class="cat-item" data-cat="rodamientos">Rodamientos <small>›</small></li>
-        <li class="cat-item" data-cat="micromotor">Micromotor <small>›</small></li>
-        <li class="cat-item" data-cat="herramientas">Herramientas <small>›</small></li>
-      </ul>
-    </aside>
+      <!-- Sidebar categorías -->
+      <aside class="cat-box">
+        <div class="cat-head">Categorías</div>
+        <ul class="cat-list">
+          <li class="cat-item" data-cat="todo">Todos <small>›</small></li>
+          <li class="cat-item" data-cat="turbinas">Turbinas <small>›</small></li>
+          <li class="cat-item" data-cat="rodamientos">Rodamientos <small>›</small></li>
+          <li class="cat-item" data-cat="micromotor">Micromotor <small>›</small></li>
+          <li class="cat-item" data-cat="herramientas">Herramientas <small>›</small></li>
+        </ul>
+      </aside>
 
-    <!-- Productos -->
-    <section class="products-area">
-      <div class="products-top">
-        <div class="products-title" id="productsTitle">Repuestos</div>
-        <div class="products-meta" id="productsMeta">Mostrando 6 productos</div>
-      </div>
+      <!-- Productos -->
+      <section class="products-area">
+        <div class="products-top">
+          <div class="products-title" id="productsTitle">Repuestos</div>
+          <div class="products-meta" id="productsMeta">Mostrando 6 productos</div>
+        </div>
 
-      <div class="products-grid" id="productsGrid">
-        <!-- Producto 1 -->
-        <article class="pcard" data-cat="turbinas">
-          <img class="pimg" src="p1.jpg" alt="Cartucho Turbina">
-          <div class="pbody">
-            <div class="ptitle">Cartucho para turbina</div>
-            <div class="pdesc">Compatible con modelos estándar. Alta duración.</div>
-            <div class="pbottom">
-              <div class="pprice">S/ 129.00</div>
-              <button class="pbtn" type="button">Ver</button>
+        <div class="products-grid" id="productsGrid">
+          <article class="pcard" data-cat="turbinas">
+            <img class="pimg" src="p1.jpg" alt="Cartucho Turbina">
+            <div class="pbody">
+              <div class="ptitle">Cartucho para turbina</div>
+              <div class="pdesc">Compatible con modelos estándar. Alta duración.</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 129.00</div>
+                <button class="pbtn" type="button">Ver</button>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- Producto 2 -->
-        <article class="pcard" data-cat="rodamientos">
-          <img class="pimg" src="p2.jpg" alt="Rodamiento">
-          <div class="pbody">
-            <div class="ptitle">Rodamiento cerámico</div>
-            <div class="pdesc">Menos ruido • Mayor velocidad • Mejor rendimiento.</div>
-            <div class="pbottom">
-              <div class="pprice">S/ 39.00</div>
-              <button class="pbtn" type="button">Ver</button>
+          <article class="pcard" data-cat="rodamientos">
+            <img class="pimg" src="p2.jpg" alt="Rodamiento">
+            <div class="pbody">
+              <div class="ptitle">Rodamiento cerámico</div>
+              <div class="pdesc">Menos ruido • Mayor velocidad • Mejor rendimiento.</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 39.00</div>
+                <button class="pbtn" type="button">Ver</button>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- Producto 3 -->
-        <article class="pcard" data-cat="micromotor">
-          <img class="pimg" src="p3.jpg" alt="Carbones micromotor">
-          <div class="pbody">
-            <div class="ptitle">Carbones para micromotor</div>
-            <div class="pdesc">Repuesto original • Instalación sencilla.</div>
-            <div class="pbottom">
-              <div class="pprice">S/ 25.00</div>
-              <button class="pbtn" type="button">Ver</button>
+          <article class="pcard" data-cat="micromotor">
+            <img class="pimg" src="p3.jpg" alt="Carbones micromotor">
+            <div class="pbody">
+              <div class="ptitle">Carbones para micromotor</div>
+              <div class="pdesc">Repuesto original • Instalación sencilla.</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 25.00</div>
+                <button class="pbtn" type="button">Ver</button>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- Producto 4 -->
-        <article class="pcard" data-cat="herramientas">
-          <img class="pimg" src="p4.jpg" alt="Llave">
-          <div class="pbody">
-            <div class="ptitle">Llave para turbina</div>
-            <div class="pdesc">Ajuste preciso • Metal reforzado.</div>
-            <div class="pbottom">
-              <div class="pprice">S/ 18.00</div>
-              <button class="pbtn" type="button">Ver</button>
+          <article class="pcard" data-cat="herramientas">
+            <img class="pimg" src="p4.jpg" alt="Llave">
+            <div class="pbody">
+              <div class="ptitle">Llave para turbina</div>
+              <div class="pdesc">Ajuste preciso • Metal reforzado.</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 18.00</div>
+                <button class="pbtn" type="button">Ver</button>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- Producto 5 -->
-        <article class="pcard" data-cat="turbinas">
-          <img class="pimg" src="p5.jpg" alt="O-rings">
-          <div class="pbody">
-            <div class="ptitle">Kit de O-rings</div>
-            <div class="pdesc">Set completo para mantenimiento.</div>
-            <div class="pbottom">
-              <div class="pprice">S/ 15.00</div>
-              <button class="pbtn" type="button">Ver</button>
+          <article class="pcard" data-cat="turbinas">
+            <img class="pimg" src="p5.jpg" alt="O-rings">
+            <div class="pbody">
+              <div class="ptitle">Kit de O-rings</div>
+              <div class="pdesc">Set completo para mantenimiento.</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 15.00</div>
+                <button class="pbtn" type="button">Ver</button>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- Producto 6 -->
-        <article class="pcard" data-cat="rodamientos">
-          <img class="pimg" src="p6.jpg" alt="Rotor">
-          <div class="pbody">
-            <div class="ptitle">Rotor para turbina</div>
-            <div class="pdesc">Balanceado • Compatible • Alta calidad.</div>
-            <div class="pbottom">
-              <div class="pprice">S/ 99.00</div>
-              <button class="pbtn" type="button">Ver</button>
+          <article class="pcard" data-cat="rodamientos">
+            <img class="pimg" src="p6.jpg" alt="Rotor">
+            <div class="pbody">
+              <div class="ptitle">Rotor para turbina</div>
+              <div class="pdesc">Balanceado • Compatible • Alta calidad.</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 99.00</div>
+                <button class="pbtn" type="button">Ver</button>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
+  </section>
 
-  </div>
-</section> 
   <!-- AUTH -->
   <section id="authSection" class="hidden">
     <div class="auth-wrap">
       <div class="auth-card" id="authCard">
-        <!-- Overlay success -->
         <div class="success-overlay" id="successOverlay">
           <div class="success-box">
             <div class="success-check">✓</div>
@@ -883,7 +864,6 @@ body {
             <button class="btn-primary" id="btnDoLogin" type="button">Entrar</button>
 
             <button class="btn-google" id="btnGoogleLogin" type="button">
-              <!-- Google G (SVG) -->
               <svg class="gicon" viewBox="0 0 48 48" aria-hidden="true">
                 <path fill="#EA4335" d="M24 9.5c3.54 0 6.02 1.53 7.41 2.81l5.41-5.41C33.6 4.02 29.2 2 24 2 14.62 2 6.51 7.38 2.69 15.19l6.78 5.26C11.27 14.57 17.12 9.5 24 9.5z"/>
                 <path fill="#4285F4" d="M46.5 24.5c0-1.64-.15-2.83-.47-4.07H24v7.72h12.84c-.26 2.07-1.68 5.19-4.84 7.28l7.43 5.76c4.32-4 7.07-9.88 7.07-16.69z"/>
@@ -969,9 +949,10 @@ body {
     </div>
   </section>
 
-  <!-- ====== JS UI + SLIDER ====== -->
+  <!-- ====== JS UI + SLIDER + NAV (corregido) ====== -->
   <script>
     const homeSection = document.getElementById("homeSection");
+    const pageRepuestos = document.getElementById("pageRepuestos");
     const authSection = document.getElementById("authSection");
 
     const btnLogin = document.getElementById("btnLogin");
@@ -983,16 +964,15 @@ body {
     const userName = document.getElementById("userName");
 
     const navHome = document.getElementById("navHome");
+    const navRepuestos = document.getElementById("navRepuestos");
+    const allProductsBtn = document.getElementById("allProductsBtn");
 
     const tabLogin = document.getElementById("tabLogin");
     const tabRegister = document.getElementById("tabRegister");
-
     const loginForm = document.getElementById("loginForm");
     const registerForm = document.getElementById("registerForm");
-
     const authTitle = document.getElementById("authTitle");
     const authSub = document.getElementById("authSub");
-
     const authError = document.getElementById("authError");
     const authOk = document.getElementById("authOk");
 
@@ -1021,22 +1001,30 @@ body {
       successTitle.textContent = title || "¡Listo!";
       successText.textContent = text || "Operación exitosa.";
       successOverlay.classList.add("show");
-      if (autoHideMs) {
-        setTimeout(() => successOverlay.classList.remove("show"), autoHideMs);
-      }
+      if (autoHideMs) setTimeout(() => successOverlay.classList.remove("show"), autoHideMs);
     }
     window.showSuccessOverlay = showSuccessOverlay;
 
     function showHome() {
       clearMsgs();
       authSection.classList.add("hidden");
+      pageRepuestos?.classList.add("hidden");
       homeSection.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showRepuestos() {
+      clearMsgs();
+      authSection.classList.add("hidden");
+      homeSection.classList.add("hidden");
+      pageRepuestos.classList.remove("hidden");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function showAuth(mode) {
       clearMsgs();
       homeSection.classList.add("hidden");
+      pageRepuestos?.classList.add("hidden");
       authSection.classList.remove("hidden");
       setAuthMode(mode);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1057,17 +1045,13 @@ body {
 
     btnLogin.addEventListener("click", () => showAuth("login"));
     btnRegister.addEventListener("click", () => showAuth("register"));
+
     navHome.addEventListener("click", (e) => { e.preventDefault(); showHome(); });
+    navRepuestos.addEventListener("click", (e) => { e.preventDefault(); showRepuestos(); });
 
-    tabLogin.addEventListener("click", () => setAuthMode("login"));
-    tabRegister.addEventListener("click", () => setAuthMode("register"));
+    allProductsBtn.addEventListener("click", () => showRepuestos());
 
-    // ✅ All products (por ahora demo)
-    document.getElementById("allProductsBtn").addEventListener("click", () => {
-      alert("Aquí luego irá: catálogo / todos los productos");
-    });
-
-    // PERFIL click (por ahora demo)
+    // PERFIL click (demo)
     userPill.addEventListener("click", () => {
       alert("Aquí luego irá: Mi cuenta / Perfil");
     });
@@ -1123,48 +1107,8 @@ body {
     }
     window.setTopbarUser = setTopbarUser;
   </script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const pageHome = document.getElementById("pageHome");
-  const pageRepuestos = document.getElementById("pageRepuestos");
 
-  const navHome = document.getElementById("navHome");
-  const navRepuestos = document.getElementById("navRepuestos");
-
-  function goPage(name){
-    if(!pageHome || !pageRepuestos) {
-      console.error("No encuentro pageHome/pageRepuestos");
-      return;
-    }
-    pageHome.classList.add("hidden");
-    pageRepuestos.classList.add("hidden");
-
-    if(name === "repuestos") pageRepuestos.classList.remove("hidden");
-    else pageHome.classList.remove("hidden");
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  // Debug (para que veas si lo encuentra)
-  console.log("navRepuestos:", navRepuestos);
-  console.log("pageRepuestos:", pageRepuestos);
-
-  if(navHome){
-    navHome.addEventListener("click", (e) => {
-      e.preventDefault();
-      goPage("home");
-    });
-  }
-
-  if(navRepuestos){
-    navRepuestos.addEventListener("click", (e) => {
-      e.preventDefault();
-      goPage("repuestos");
-    });
-  }
-});
-</script>
-  <!-- ====== FIREBASE (todo en 1 solo módulo, sin duplicados) ====== -->
+  <!-- ====== FIREBASE (módulo) ====== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
     import {
@@ -1176,7 +1120,6 @@ document.addEventListener("DOMContentLoaded", () => {
       getFirestore, doc, setDoc, getDoc
     } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-    // ✅ Tu config real
     const firebaseConfig = {
       apiKey: "AIzaSyDFSDPcgPmtDiNWVHZg46RKxE8ygPV99FM",
       authDomain: "jr-dent.firebaseapp.com",
@@ -1192,7 +1135,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const db = getFirestore(app);
     const provider = new GoogleAuthProvider();
 
-    // UI elements
     const authError = document.getElementById("authError");
     const authOk = document.getElementById("authOk");
 
@@ -1237,14 +1179,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return snap.exists() ? snap.data() : null;
     }
 
-    // ====== Estado de sesión ======
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
         window.setTopbarUser?.(null);
         return;
       }
 
-      // Intentar traer nombre desde Firestore
       let profile = null;
       try { profile = await loadProfile(user.uid); } catch(e) {}
 
@@ -1255,7 +1195,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // ====== LOGIN EMAIL ======
+    // LOGIN EMAIL
     btnDoLogin.addEventListener("click", async () => {
       try {
         const email = (loginEmail.value || "").trim();
@@ -1266,14 +1206,13 @@ document.addEventListener("DOMContentLoaded", () => {
         showOk("✅ Sesión iniciada.");
         window.showSuccessOverlay?.("¡Bienvenido!", "Sesión iniciada correctamente.", 900);
 
-        // volver al inicio
         setTimeout(() => document.getElementById("navHome").click(), 900);
       } catch (e) {
         showError(e.message);
       }
     });
 
-    // ====== LOGIN GOOGLE ======
+    // LOGIN GOOGLE
     btnGoogleLogin.addEventListener("click", async () => {
       try {
         const result = await signInWithPopup(auth, provider);
@@ -1296,7 +1235,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // ====== REGISTER EMAIL ======
+    // REGISTER EMAIL
     btnDoRegister.addEventListener("click", async () => {
       try {
         const nombre = (regName.value || "").trim();
@@ -1318,12 +1257,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const cred = await createUserWithEmailAndPassword(auth, email, pass);
 
-        // poner displayName en Auth
         try { await updateProfile(cred.user, { displayName: nombre }); } catch(e){}
 
         await saveUserProfile(cred.user.uid, {
-          nombre, pais, distrito, direccion, telefono,
-          email
+          nombre, pais, distrito, direccion, telefono, email
         });
 
         window.setTopbarUser?.({ nombre, email });
@@ -1331,14 +1268,13 @@ document.addEventListener("DOMContentLoaded", () => {
         showOk("✅ Cuenta creada y datos guardados.");
         window.showSuccessOverlay?.("✅ Registro completo", "Ya te has registrado.", 1100);
 
-        // volver al inicio
         setTimeout(() => document.getElementById("navHome").click(), 1100);
       } catch (e) {
         showError(e.message);
       }
     });
 
-    // ====== REGISTER GOOGLE ======
+    // REGISTER GOOGLE
     btnGoogleRegister.addEventListener("click", async () => {
       try {
         const result = await signInWithPopup(auth, provider);
@@ -1361,7 +1297,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // ====== LOGOUT ======
+    // LOGOUT
     btnLogout.addEventListener("click", async () => {
       try {
         await signOut(auth);
@@ -1376,6 +1312,8 @@ document.addEventListener("DOMContentLoaded", () => {
   </script>
 </body>
 </html>
+
+
 
 
 
