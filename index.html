@@ -480,6 +480,62 @@
       padding: 14px 16px;
       font-weight: 900;
     }
+    .cat-acc{ padding: 8px 0; }
+
+.cat-group{
+  border-bottom: 1px solid #eef2f7;
+}
+
+.cat-top{
+  width: 100%;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 900;
+  color:#111;
+}
+.cat-top:hover{ background:#f5f7ff; }
+
+.chev{
+  transition: transform .18s ease;
+  font-weight: 900;
+  opacity: .7;
+}
+
+.cat-sub{
+  display:none;
+  padding: 0 10px 10px;
+}
+
+.cat-group.open .cat-sub{ display:block; }
+.cat-group.open .chev{ transform: rotate(180deg); }
+
+.cat-subitem{
+  width: 100%;
+  text-align:left;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #eef2f7;
+  cursor:pointer;
+  font-weight: 800;
+  margin-top: 8px;
+  color:#111;
+}
+.cat-subitem:hover{
+  background:#eef2ff;
+  border-color:#dbeafe;
+}
+
+.cat-subitem.active{
+  background:#1B0561;
+  border-color:#1B0561;
+  color:white;
+}
     .cat-list{
       list-style:none;
     }
@@ -733,13 +789,83 @@
       <!-- Sidebar categorías -->
       <aside class="cat-box">
         <div class="cat-head">Categorías</div>
-        <ul class="cat-list">
-          <li class="cat-item" data-cat="todo">Todos <small>›</small></li>
-          <li class="cat-item" data-cat="turbinas">Turbinas <small>›</small></li>
-          <li class="cat-item" data-cat="rodamientos">Rodamientos <small>›</small></li>
-          <li class="cat-item" data-cat="micromotor">Micromotor <small>›</small></li>
-          <li class="cat-item" data-cat="herramientas">Herramientas <small>›</small></li>
-        </ul>
+        <div class="cat-head">Categorías</div>
+
+<div class="cat-acc">
+
+  <!-- TODOS -->
+  <div class="cat-group open">
+    <button class="cat-top" type="button" data-cat="todo">
+      Todos
+      <span class="chev">▾</span>
+    </button>
+
+    <div class="cat-sub">
+      <button class="cat-subitem active" type="button" data-cat="todo" data-brand="all">Ver todo</button>
+    </div>
+  </div>
+
+  <!-- TURBINAS -->
+  <div class="cat-group">
+    <button class="cat-top" type="button" data-cat="turbinas">
+      Turbinas
+      <span class="chev">▾</span>
+    </button>
+
+    <div class="cat-sub">
+      <button class="cat-subitem" type="button" data-cat="turbinas" data-brand="NSK">NSK</button>
+      <button class="cat-subitem" type="button" data-cat="turbinas" data-brand="BEING">BEING</button>
+      <button class="cat-subitem" type="button" data-cat="turbinas" data-brand="YOUNITY">YOUNITY</button>
+      <button class="cat-subitem" type="button" data-cat="turbinas" data-brand="KAVO">KAVO</button>
+    </div>
+  </div>
+
+  <!-- RODAMIENTOS -->
+  <div class="cat-group">
+    <button class="cat-top" type="button" data-cat="rodamientos">
+      Rodamientos
+      <span class="chev">▾</span>
+    </button>
+
+    <div class="cat-sub">
+      <button class="cat-subitem" type="button" data-cat="rodamientos" data-brand="NSK">NSK</button>
+      <button class="cat-subitem" type="button" data-cat="rodamientos" data-brand="BEING">BEING</button>
+      <button class="cat-subitem" type="button" data-cat="rodamientos" data-brand="YOUNITY">YOUNITY</button>
+      <button class="cat-subitem" type="button" data-cat="rodamientos" data-brand="KAVO">KAVO</button>
+    </div>
+  </div>
+
+  <!-- MICROMOTOR -->
+  <div class="cat-group">
+    <button class="cat-top" type="button" data-cat="micromotor">
+      Micromotor
+      <span class="chev">▾</span>
+    </button>
+
+    <div class="cat-sub">
+      <button class="cat-subitem" type="button" data-cat="micromotor" data-brand="NSK">NSK</button>
+      <button class="cat-subitem" type="button" data-cat="micromotor" data-brand="BEING">BEING</button>
+      <button class="cat-subitem" type="button" data-cat="micromotor" data-brand="YOUNITY">YOUNITY</button>
+      <button class="cat-subitem" type="button" data-cat="micromotor" data-brand="KAVO">KAVO</button>
+    </div>
+  </div>
+
+  <!-- HERRAMIENTAS -->
+  <div class="cat-group">
+    <button class="cat-top" type="button" data-cat="herramientas">
+      Herramientas
+      <span class="chev">▾</span>
+    </button>
+
+    <div class="cat-sub">
+      <button class="cat-subitem" type="button" data-cat="herramientas" data-brand="NSK">NSK</button>
+      <button class="cat-subitem" type="button" data-cat="herramientas" data-brand="BEING">BEING</button>
+      <button class="cat-subitem" type="button" data-cat="herramientas" data-brand="YOUNITY">YOUNITY</button>
+      <button class="cat-subitem" type="button" data-cat="herramientas" data-brand="KAVO">KAVO</button>
+    </div>
+  </div>
+
+</div>
       </aside>
 
       <!-- Productos -->
@@ -1322,8 +1448,91 @@
       }
     });
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const grid = document.getElementById("productsGrid");
+  const titleEl = document.getElementById("productsTitle");
+  const metaEl  = document.getElementById("productsMeta");
+
+  if(!grid) return;
+
+  const cards = Array.from(grid.querySelectorAll(".pcard"));
+
+  let currentCat = "todo";
+  let currentBrand = "all";
+
+  function applyFilter() {
+    let shown = 0;
+
+    cards.forEach(card => {
+      const c = (card.dataset.cat || "").toLowerCase();
+      const b = (card.dataset.brand || "").toLowerCase();
+
+      const okCat = (currentCat === "todo") || (c === currentCat);
+      const okBrand = (currentBrand === "all") || (b === currentBrand);
+
+      const show = okCat && okBrand;
+      card.style.display = show ? "" : "none";
+      if(show) shown++;
+    });
+
+    // Texto arriba
+    const catLabel = currentCat === "todo" ? "Repuestos" : currentCat;
+    const brandLabel = currentBrand === "all" ? "" : ` • ${currentBrand.toUpperCase()}`;
+
+    titleEl.textContent = `${capitalize(catLabel)}${brandLabel}`;
+    metaEl.textContent = `Mostrando ${shown} producto(s)`;
+  }
+
+  function capitalize(s){
+    if(!s) return s;
+    // para que "micromotor" -> "Micromotor"
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  // ====== Acordeón (abrir/cerrar) ======
+  document.querySelectorAll(".cat-group .cat-top").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const group = btn.closest(".cat-group");
+      group.classList.toggle("open");
+
+      // Si haces click al nombre (cat-top), NO filtra aún.
+      // Si quieres que al hacer click "Turbinas" muestre todo turbinas (todas las marcas), descomenta:
+      // currentCat = (btn.dataset.cat || "todo").toLowerCase();
+      // currentBrand = "all";
+      // setActiveSub(null);
+      // applyFilter();
+    });
+  });
+
+  // ====== Click en marcas (filtra) ======
+  function setActiveSub(activeBtn){
+    document.querySelectorAll(".cat-subitem").forEach(b => b.classList.remove("active"));
+    if(activeBtn) activeBtn.classList.add("active");
+  }
+
+  document.querySelectorAll(".cat-subitem").forEach(subBtn => {
+    subBtn.addEventListener("click", () => {
+      currentCat = (subBtn.dataset.cat || "todo").toLowerCase();
+      currentBrand = (subBtn.dataset.brand || "all").toLowerCase();
+
+      setActiveSub(subBtn);
+
+      // asegurar que su grupo quede abierto
+      const group = subBtn.closest(".cat-group");
+      group.classList.add("open");
+
+      applyFilter();
+    });
+  });
+
+  // filtro inicial
+  applyFilter();
+});
+</script>
 </body>
 </html>
+
 
 
 
