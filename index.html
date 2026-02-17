@@ -677,7 +677,130 @@
         justify-content:center;
       }
     }
+    /* ====== MÁS VENDIDOS (CARRUSEL) ====== */
+.best-wrap{
+  width: min(1200px, 92%);
+  margin: 6px auto 20px;
+}
+
+.best-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.best-title{
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.best-sub{
+  font-size: 12px;
+  font-weight: 800;
+  color:#666;
+}
+
+.best-carousel{
+  position: relative;
+  border-radius: 18px;
+}
+
+.best-viewport{
+  overflow: hidden;
+  border-radius: 18px;
+  position: relative;
+}
+
+/* desvanecido de lados */
+.best-viewport::before,
+.best-viewport::after{
+  content:"";
+  position:absolute;
+  top:0; bottom:0;
+  width: 70px;
+  pointer-events:none;
+  z-index: 4;
+}
+.best-viewport::before{
+  left:0;
+  background: linear-gradient(90deg, rgba(246,247,251,1), rgba(246,247,251,0));
+}
+.best-viewport::after{
+  right:0;
+  background: linear-gradient(270deg, rgba(246,247,251,1), rgba(246,247,251,0));
+}
+
+.best-track{
+  display:flex;
+  gap: 14px;
+  padding: 6px 52px; /* espacio para fades */
+  transition: transform .35s ease;
+  will-change: transform;
+}
+
+.best-card{
+  flex: 0 0 260px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+}
+
+.best-img{
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background:#e5e7eb;
+  display:block;
+}
+
+.best-body{ padding: 12px; }
+.best-name{ font-weight: 900; margin-bottom: 6px; }
+.best-desc{ font-size: 12px; color:#666; min-height: 30px; line-height: 1.35; }
+.best-bottom{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 10px;
+}
+.best-price{ font-weight: 900; color:#1B0561; }
+.best-btn{
+  border:none;
+  background:#2563eb;
+  color:white;
+  font-weight: 900;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor:pointer;
+}
+
+.best-arrow{
+  position:absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  background: rgba(27,5,97,0.92);
+  color: white;
+  font-size: 18px;
+}
+.best-arrow.left{ left: 6px; }
+.best-arrow.right{ right: 6px; }
+.best-arrow:hover{ filter: brightness(1.08); }
+
+@media (max-width: 560px){
+  .best-card{ flex-basis: 220px; }
+  .best-track{ padding: 6px 40px; }
+}
   </style>
+  
 </head>
 
 <body>
@@ -767,7 +890,206 @@
       </div>
     </main>
   </section>
+<!-- EQUIPOS DENTALES -->
+<section id="pageEquipos" class="page hidden">
 
+  <!-- Banner largo -->
+  <div class="hero-wide">
+    <img src="banner-equipos.jpg" alt="JR DENT - Equipos Dentales">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-title">Equipos Dentales</div>
+      <div class="hero-text">
+        Equipos, insumos y soluciones para tu consultorio.
+        Envíos a todo Perú • Garantía • Soporte técnico.
+      </div>
+    </div>
+  </div>
+
+  <!-- MÁS VENDIDOS (CARRUSEL) -->
+  <div class="best-wrap">
+    <div class="best-head">
+      <h2 class="best-title">Nuestros productos más vendidos</h2>
+      <p class="best-sub">Lo más pedido esta semana</p>
+    </div>
+
+    <div class="best-carousel" id="bestCarousel">
+      <button class="best-arrow left" id="bestPrev" type="button">❮</button>
+
+      <div class="best-viewport" id="bestViewport">
+        <div class="best-track" id="bestTrack">
+
+          <!-- Card 1 -->
+          <article class="best-card">
+            <img class="best-img" src="eq1.jpg" alt="Producto 1">
+            <div class="best-body">
+              <div class="best-name">Lámpara LED</div>
+              <div class="best-desc">Alta iluminación • bajo consumo</div>
+              <div class="best-bottom">
+                <div class="best-price">S/ 249.00</div>
+                <button class="best-btn" type="button">Ver</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="best-card">
+            <img class="best-img" src="eq2.jpg" alt="Producto 2">
+            <div class="best-body">
+              <div class="best-name">Ultrasonido</div>
+              <div class="best-desc">Limpieza profesional</div>
+              <div class="best-bottom">
+                <div class="best-price">S/ 399.00</div>
+                <button class="best-btn" type="button">Ver</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="best-card">
+            <img class="best-img" src="eq3.jpg" alt="Producto 3">
+            <div class="best-body">
+              <div class="best-name">Fotocurado</div>
+              <div class="best-desc">Potente • recargable</div>
+              <div class="best-bottom">
+                <div class="best-price">S/ 189.00</div>
+                <button class="best-btn" type="button">Ver</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="best-card">
+            <img class="best-img" src="eq4.jpg" alt="Producto 4">
+            <div class="best-body">
+              <div class="best-name">Compresora</div>
+              <div class="best-desc">Silenciosa • estable</div>
+              <div class="best-bottom">
+                <div class="best-price">S/ 1290.00</div>
+                <button class="best-btn" type="button">Ver</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="best-card">
+            <img class="best-img" src="eq5.jpg" alt="Producto 5">
+            <div class="best-body">
+              <div class="best-name">Autoclave</div>
+              <div class="best-desc">Esterilización segura</div>
+              <div class="best-bottom">
+                <div class="best-price">S/ 2190.00</div>
+                <button class="best-btn" type="button">Ver</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <button class="best-arrow right" id="bestNext" type="button">❯</button>
+    </div>
+  </div>
+
+  <!-- CATÁLOGO (tipo repuestos) -->
+  <div class="catalog">
+
+    <aside class="cat-box">
+      <div class="cat-head">Categorías</div>
+      <ul class="cat-list">
+        <li class="cat-item" data-eq="todo">Todos <small>›</small></li>
+        <li class="cat-item" data-eq="esterilizacion">Esterilización <small>›</small></li>
+        <li class="cat-item" data-eq="iluminacion">Iluminación <small>›</small></li>
+        <li class="cat-item" data-eq="compresion">Compresión <small>›</small></li>
+        <li class="cat-item" data-eq="diagnostico">Diagnóstico <small>›</small></li>
+      </ul>
+    </aside>
+
+    <section class="products-area">
+      <div class="products-top">
+        <div class="products-title" id="equiposTitle">Equipos Dentales</div>
+        <div class="products-meta" id="equiposMeta">Mostrando 6 productos</div>
+      </div>
+
+      <div class="products-grid" id="equiposGrid">
+
+        <article class="pcard" data-eq="esterilizacion">
+          <img class="pimg" src="eqp1.jpg" alt="Autoclave">
+          <div class="pbody">
+            <div class="ptitle">Autoclave</div>
+            <div class="pdesc">Esterilización rápida • segura</div>
+            <div class="pbottom">
+              <div class="pprice">S/ 2190.00</div>
+              <button class="pbtn" type="button">Ver</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="pcard" data-eq="iluminacion">
+          <img class="pimg" src="eqp2.jpg" alt="Lámpara">
+          <div class="pbody">
+            <div class="ptitle">Lámpara LED</div>
+            <div class="pdesc">Alta potencia • luz blanca</div>
+            <div class="pbottom">
+              <div class="pprice">S/ 249.00</div>
+              <button class="pbtn" type="button">Ver</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="pcard" data-eq="compresion">
+          <img class="pimg" src="eqp3.jpg" alt="Compresora">
+          <div class="pbody">
+            <div class="ptitle">Compresora</div>
+            <div class="pdesc">Silenciosa • uso continuo</div>
+            <div class="pbottom">
+              <div class="pprice">S/ 1290.00</div>
+              <button class="pbtn" type="button">Ver</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="pcard" data-eq="diagnostico">
+          <img class="pimg" src="eqp4.jpg" alt="Cámara intraoral">
+          <div class="pbody">
+            <div class="ptitle">Cámara intraoral</div>
+            <div class="pdesc">Mejora diagnóstico • HD</div>
+            <div class="pbottom">
+              <div class="pprice">S/ 499.00</div>
+              <button class="pbtn" type="button">Ver</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="pcard" data-eq="esterilizacion">
+          <img class="pimg" src="eqp5.jpg" alt="Selladora">
+          <div class="pbody">
+            <div class="ptitle">Selladora</div>
+            <div class="pdesc">Sellado perfecto • fácil</div>
+            <div class="pbottom">
+              <div class="pprice">S/ 329.00</div>
+              <button class="pbtn" type="button">Ver</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="pcard" data-eq="todo">
+          <img class="pimg" src="eqp6.jpg" alt="Fotocurado">
+          <div class="pbody">
+            <div class="ptitle">Fotocurado</div>
+            <div class="pdesc">Potente • recargable</div>
+            <div class="pbottom">
+              <div class="pprice">S/ 189.00</div>
+              <button class="pbtn" type="button">Ver</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </div>
+</section>
   <!-- REPUETOS / PRODUCTOS -->
   <section id="pageRepuestos" class="page hidden">
 
@@ -1125,6 +1447,7 @@
 
     const navHome = document.getElementById("navHome");
     const navRepuestos = document.getElementById("navRepuestos");
+    const navEquipos   = document.getElementById("navEquipos");
     const allProductsBtn = document.getElementById("allProductsBtn");
 
     const tabLogin = document.getElementById("tabLogin");
@@ -1139,6 +1462,22 @@
     const successOverlay = document.getElementById("successOverlay");
     const successTitle = document.getElementById("successTitle");
     const successText = document.getElementById("successText");
+    
+    function hideAll(){
+    homeSection?.classList.add("hidden");
+    pageRepuestos?.classList.add("hidden");
+    pageEquipos?.classList.add("hidden");
+  }
+
+  function goPage(name){
+    hideAll();
+    if(name === "repuestos") pageRepuestos?.classList.remove("hidden");
+    else if(name === "equipos") pageEquipos?.classList.remove("hidden");
+    else homeSection?.classList.remove("hidden");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
 
     function showError(msg) {
       authOk.style.display = "none";
@@ -1206,9 +1545,9 @@
     btnLogin.addEventListener("click", () => showAuth("login"));
     btnRegister.addEventListener("click", () => showAuth("register"));
 
-    navHome.addEventListener("click", (e) => { e.preventDefault(); showHome(); });
-    navRepuestos.addEventListener("click", (e) => { e.preventDefault(); showRepuestos(); });
-
+     navHome?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("home"); });
+  navRepuestos?.addEventListener("click",(e)=>{ e.preventDefault(); goPage("repuestos"); });
+  navEquipos?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("equipos"); });
     allProductsBtn.addEventListener("click", () => showRepuestos());
 
     // PERFIL click (demo)
@@ -1267,6 +1606,56 @@
     }
     window.setTopbarUser = setTopbarUser;
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.getElementById("bestTrack");
+  const prev  = document.getElementById("bestPrev");
+  const next  = document.getElementById("bestNext");
+
+  if(!track || !prev || !next) return;
+
+  let index = 0;
+
+  function cardStep(){
+    const first = track.querySelector(".best-card");
+    if(!first) return 260 + 14;
+    const styles = getComputedStyle(track);
+    const gap = parseFloat(styles.gap || "14");
+    return first.getBoundingClientRect().width + gap;
+  }
+
+  function maxIndex(){
+    const viewport = document.getElementById("bestViewport");
+    if(!viewport) return 0;
+    const step = cardStep();
+    const visible = Math.floor(viewport.getBoundingClientRect().width / step);
+    const total = track.querySelectorAll(".best-card").length;
+    return Math.max(0, total - Math.max(1, visible));
+  }
+
+  function render(){
+    const step = cardStep();
+    track.style.transform = `translateX(${-index * step}px)`;
+  }
+
+  next.addEventListener("click", () => {
+    index = Math.min(maxIndex(), index + 1);
+    render();
+  });
+
+  prev.addEventListener("click", () => {
+    index = Math.max(0, index - 1);
+    render();
+  });
+
+  window.addEventListener("resize", () => {
+    index = Math.min(maxIndex(), index);
+    render();
+  });
+
+  render();
+});
+</script>
 
   <!-- ====== FIREBASE (módulo) ====== -->
   <script type="module">
@@ -1554,6 +1943,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
