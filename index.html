@@ -996,13 +996,85 @@
 
     <aside class="cat-box">
       <div class="cat-head">Categorías</div>
-      <ul class="cat-list">
-        <li class="cat-item" data-eq="todo">Todos <small>›</small></li>
-        <li class="cat-item" data-eq="esterilizacion">Esterilización <small>›</small></li>
-        <li class="cat-item" data-eq="iluminacion">Iluminación <small>›</small></li>
-        <li class="cat-item" data-eq="compresion">Compresión <small>›</small></li>
-        <li class="cat-item" data-eq="diagnostico">Diagnóstico <small>›</small></li>
-      </ul>
+<div class="cat-acc">
+
+  <!-- TODOS -->
+  <div class="cat-group open">
+    <button class="cat-top" type="button" data-cat="todo">
+      Todos
+      <span class="chev">▾</span>
+    </button>
+
+    <div class="cat-sub">
+      <button class="cat-subitem active" type="button" data-cat="todo" data-brand="all">Ver todo</button>
+    </div>
+  </div>
+
+  <!-- ultrasonidos -->
+  <div class="cat-group">
+    <button class="cat-top" type="button" data-cat="Ultra Sonidos">
+      Ultra Sonidos
+      <span class="chev">▾</span>
+    </button>
+
+    <div class="cat-sub">
+      <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-J1">UDS-J1</button>
+      <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-J2">UDS-J2</button>
+      <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-A LED">UDS-A LED</button>
+      <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-E LED">UDS-E LED</button>
+      <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-U6">UDS-U6</button>
+      <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-M">UDS-M</button>
+    </div>
+  </div>
+
+  <!-- lamparas -->
+  <div class="cat-group">
+    <button class="cat-top" type="button" data-cat="Lamparas">
+      Lamparas
+      <span class="chev">▾</span>
+    </button>
+
+    <div class="cat-sub">
+      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED B">LED B</button>
+      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED D">LED D</button>
+      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED F">YOUNITY</button>
+      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED">I LED</button>
+      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED PLUS">I LED PLUS</button>
+      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED MAX">I LED MAX</button>
+      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED II">I LED II</button>
+    </div>
+  </div>
+
+  <!-- endomotor -->
+  <div class="cat-group">
+    <button class="cat-top" type="button" data-cat="Endomotor">
+      Endomotor
+      <span class="chev">▾</span>
+    </button>
+
+    <div class="cat-sub">
+      <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ENDO-MOTOR">ENDO-MOTOR</button>
+      <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ZR-TOUCH">ZR TOUCH</button>
+      <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="BR-TOUCH">BR TOUCH</button>
+      <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ENDO-MASTER">ENDO-MASTER</button>
+      <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="LOCALIZADOR">LOCALIZADOR</button>
+    </div>
+  </div>
+
+  <!-- HERRAMIENTAS -->
+  <div class="cat-group">
+    <button class="cat-top" type="button" data-cat="Rayos X">
+      Rayos X
+      <span class="chev">▾</span>
+    </button>
+
+    <div class="cat-sub">
+      <button class="cat-subitem" type="button" data-cat="Rayos X" data-brand="Rayos X Portatil">Rayos X Portatil</button>
+      <button class="cat-subitem" type="button" data-cat="Rayos X" data-brand="RVG">RVG</button>
+    </div>
+  </div>
+
+</div>
     </aside>
 
     <section class="products-area">
@@ -1013,78 +1085,53 @@
 
       <div class="products-grid" id="equiposGrid">
 
-        <article class="pcard" data-eq="esterilizacion">
-          <img class="pimg" src="eqp1.jpg" alt="Autoclave">
+        <article class="pcard" data-cat="Ultra Sonidos" data-brand="I LED II">
+          <img class="pimg" src="eqp1.jpg" alt="UDS J1">
           <div class="pbody">
-            <div class="ptitle">Autoclave</div>
-            <div class="pdesc">Esterilización rápida • segura</div>
+            <div class="ptitle">UDS J1</div>
+            <div class="pdesc">Destartraje</div>
             <div class="pbottom">
-              <div class="pprice">S/ 2190.00</div>
+              <div class="pprice">S/480.00</div>
               <button class="pbtn" type="button">Ver</button>
             </div>
           </div>
         </article>
 
-        <article class="pcard" data-eq="iluminacion">
+        <article class="pcard" data-cat="Lamparas" data-brand="LED B">
           <img class="pimg" src="eqp2.jpg" alt="Lámpara">
           <div class="pbody">
-            <div class="ptitle">Lámpara LED</div>
-            <div class="pdesc">Alta potencia • luz blanca</div>
+            <div class="ptitle">Lampara LED B</div>
+            <div class="pdesc">POTENCIA DE 1200 . FOTOCURADO 5/20 SEGUNDOS</div>
             <div class="pbottom">
-              <div class="pprice">S/ 249.00</div>
+              <div class="pprice">S/ 200.00</div>
               <button class="pbtn" type="button">Ver</button>
             </div>
           </div>
         </article>
 
-        <article class="pcard" data-eq="compresion">
-          <img class="pimg" src="eqp3.jpg" alt="Compresora">
+        <article class="pcard" data-cat="Endomotor" data-brand="ENDO-MOTOR">
+          <img class="pimg" src="eqp3.jpg" alt="ENDO MOTOR">
           <div class="pbody">
-            <div class="ptitle">Compresora</div>
-            <div class="pdesc">Silenciosa • uso continuo</div>
+            <div class="ptitle">ENDO MOTOR</div>
+            <div class="pdesc">Endodoncia Rotarorial</div>
             <div class="pbottom">
-              <div class="pprice">S/ 1290.00</div>
+              <div class="pprice">S/ 750.00</div>
               <button class="pbtn" type="button">Ver</button>
             </div>
           </div>
         </article>
 
-        <article class="pcard" data-eq="diagnostico">
-          <img class="pimg" src="eqp4.jpg" alt="Cámara intraoral">
+        <article class="pcard" data-cat="Rayos X" data-brand="Rayos X Portatil"
+          <img class="pimg" src="eqp4.jpg" alt="RAYOS X">
           <div class="pbody">
-            <div class="ptitle">Cámara intraoral</div>
-            <div class="pdesc">Mejora diagnóstico • HD</div>
+            <div class="ptitle">RAYOS X PORTATIL</div>
+            <div class="pdesc">rayos x portatil</div>
             <div class="pbottom">
-              <div class="pprice">S/ 499.00</div>
+              <div class="pprice">S/ 3600.00</div>
               <button class="pbtn" type="button">Ver</button>
             </div>
           </div>
         </article>
-
-        <article class="pcard" data-eq="esterilizacion">
-          <img class="pimg" src="eqp5.jpg" alt="Selladora">
-          <div class="pbody">
-            <div class="ptitle">Selladora</div>
-            <div class="pdesc">Sellado perfecto • fácil</div>
-            <div class="pbottom">
-              <div class="pprice">S/ 329.00</div>
-              <button class="pbtn" type="button">Ver</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="pcard" data-eq="todo">
-          <img class="pimg" src="eqp6.jpg" alt="Fotocurado">
-          <div class="pbody">
-            <div class="ptitle">Fotocurado</div>
-            <div class="pdesc">Potente • recargable</div>
-            <div class="pbottom">
-              <div class="pprice">S/ 189.00</div>
-              <button class="pbtn" type="button">Ver</button>
-            </div>
-          </div>
-        </article>
-
       </div>
     </section>
 
@@ -1943,6 +1990,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
