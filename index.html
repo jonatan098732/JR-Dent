@@ -158,7 +158,7 @@
     }
 
     /* =========================================================
-       SUBBAR estilo RITO (blanca + separadores + “Todos nuestros productos”)
+       SUBBAR estilo RITO
        ========================================================= */
     .subbar {
       background: #ffffff;
@@ -250,7 +250,7 @@
       background: rgba(37,99,235,0.06);
     }
 
-    /* ===== SLIDER ===== */
+    /* ===== SLIDER HOME ===== */
     .slider {
       position: relative;
       width: min(1200px, 92%);
@@ -418,7 +418,7 @@
     /* ====== SECCIONES ====== */
     .page { padding: 18px 0 40px; }
 
-    /* ====== BANNER LARGO (debajo de subbar) ====== */
+    /* ====== BANNER LARGO ====== */
     .hero-wide{
       width: min(1200px, 92%);
       margin: 18px auto 18px;  
@@ -480,85 +480,64 @@
       padding: 14px 16px;
       font-weight: 900;
     }
+
+    /* Acordeón */
     .cat-acc{ padding: 8px 0; }
+    .cat-group{ border-bottom: 1px solid #eef2f7; }
 
-.cat-group{
-  border-bottom: 1px solid #eef2f7;
-}
-
-.cat-top{
-  width: 100%;
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  padding: 13px 16px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-weight: 900;
-  color:#111;
-}
-.cat-top:hover{ background:#f5f7ff; }
-
-.chev{
-  transition: transform .18s ease;
-  font-weight: 900;
-  opacity: .7;
-}
-
-.cat-sub{
-  display:none;
-  padding: 0 10px 10px;
-}
-
-.cat-group.open .cat-sub{ display:block; }
-.cat-group.open .chev{ transform: rotate(180deg); }
-
-.cat-subitem{
-  width: 100%;
-  text-align:left;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: #f8fafc;
-  border: 1px solid #eef2f7;
-  cursor:pointer;
-  font-weight: 800;
-  margin-top: 8px;
-  color:#111;
-}
-.cat-subitem:hover{
-  background:#eef2ff;
-  border-color:#dbeafe;
-}
-
-.cat-subitem.active{
-  background:#1B0561;
-  border-color:#1B0561;
-  color:white;
-}
-    .cat-list{
-      list-style:none;
-    }
-    .cat-item{
+    .cat-top{
+      width: 100%;
       display:flex;
       align-items:center;
       justify-content: space-between;
       padding: 13px 16px;
-      border-bottom: 1px solid #eef2f7;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-weight: 900;
       color:#111;
+    }
+    .cat-top:hover{ background:#f5f7ff; }
+
+    .chev{
+      transition: transform .18s ease;
+      font-weight: 900;
+      opacity: .7;
+    }
+
+    .cat-sub{
+      display:none;
+      padding: 0 10px 10px;
+    }
+
+    .cat-group.open .cat-sub{ display:block; }
+    .cat-group.open .chev{ transform: rotate(180deg); }
+
+    .cat-subitem{
+      width: 100%;
+      text-align:left;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid #eef2f7;
       cursor:pointer;
       font-weight: 800;
-      transition: .15s;
+      margin-top: 8px;
+      color:#111;
     }
-    .cat-item:hover{ background:#f5f7ff; }
-    .cat-item small{ opacity:.55; font-weight:900; }
+    .cat-subitem:hover{
+      background:#eef2ff;
+      border-color:#dbeafe;
+    }
+    .cat-subitem.active{
+      background:#1B0561;
+      border-color:#1B0561;
+      color:white;
+    }
 
     /* Área productos */
-    .products-area{
-      background: transparent;
-    }
+    .products-area{ background: transparent; }
 
-    /* Barra superior productos */
     .products-top{
       display:flex;
       align-items:center;
@@ -577,7 +556,6 @@
       font-weight: 800;
     }
 
-    /* Grid productos */
     .products-grid{
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -602,9 +580,7 @@
       background:#e5e7eb;
       display:block;
     }
-    .pbody{
-      padding: 12px 12px 14px;
-    }
+    .pbody{ padding: 12px 12px 14px; }
     .ptitle{
       font-weight: 900;
       margin-bottom: 6px;
@@ -623,10 +599,7 @@
       justify-content: space-between;
       gap:10px;
     }
-    .pprice{
-      font-weight: 900;
-      color:#1B0561;
-    }
+    .pprice{ font-weight: 900; color:#1B0561; }
     .pbtn{
       border:none;
       background:#2563eb;
@@ -638,6 +611,112 @@
     }
     .pbtn:hover{ filter: brightness(1.06); }
 
+    /* ====== MÁS VENDIDOS (CARRUSEL) ====== */
+    .best-wrap{
+      width: min(1200px, 92%);
+      margin: 6px auto 20px;
+    }
+
+    .best-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .best-title{ font-size: 22px; font-weight: 900; }
+    .best-sub{ font-size: 12px; font-weight: 800; color:#666; }
+
+    .best-carousel{ position: relative; border-radius: 18px; }
+    .best-viewport{
+      overflow: hidden;
+      border-radius: 18px;
+      position: relative;
+    }
+
+    /* desvanecido de lados */
+    .best-viewport::before,
+    .best-viewport::after{
+      content:"";
+      position:absolute;
+      top:0; bottom:0;
+      width: 70px;
+      pointer-events:none;
+      z-index: 4;
+    }
+    .best-viewport::before{
+      left:0;
+      background: linear-gradient(90deg, rgba(246,247,251,1), rgba(246,247,251,0));
+    }
+    .best-viewport::after{
+      right:0;
+      background: linear-gradient(270deg, rgba(246,247,251,1), rgba(246,247,251,0));
+    }
+
+    .best-track{
+      display:flex;
+      gap: 14px;
+      padding: 6px 52px; /* espacio para fades */
+      transition: transform .35s ease;
+      will-change: transform;
+    }
+
+    .best-card{
+      flex: 0 0 260px;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+    }
+
+    .best-img{
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      background:#e5e7eb;
+      display:block;
+    }
+
+    .best-body{ padding: 12px; }
+    .best-name{ font-weight: 900; margin-bottom: 6px; }
+    .best-desc{ font-size: 12px; color:#666; min-height: 30px; line-height: 1.35; }
+    .best-bottom{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      margin-top: 10px;
+      gap: 10px;
+    }
+    .best-price{ font-weight: 900; color:#1B0561; }
+    .best-btn{
+      border:none;
+      background:#2563eb;
+      color:white;
+      font-weight: 900;
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+    }
+
+    .best-arrow{
+      position:absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      background: rgba(27,5,97,0.92);
+      color: white;
+      font-size: 18px;
+    }
+    .best-arrow.left{ left: 6px; }
+    .best-arrow.right{ right: 6px; }
+    .best-arrow:hover{ filter: brightness(1.08); }
+
     /* Responsive general */
     @media (max-width: 980px){
       .catalog{ grid-template-columns: 1fr; }
@@ -647,6 +726,9 @@
       .hero-wide img{ height: 200px; }
       .hero-title{ font-size: 24px; }
       .products-grid{ grid-template-columns: 1fr; }
+
+      .best-card{ flex-basis: 220px; }
+      .best-track{ padding: 6px 40px; }
     }
 
     /* Responsive top/sub */
@@ -666,141 +748,14 @@
         align-items: stretch;
         gap: 10px;
       }
-      .subbar ul{
-        justify-content: center;
-      }
+      .subbar ul{ justify-content: center; }
       .subbar a{
         padding: 9px 12px;
         font-size: 14px;
       }
-      .all-products{
-        justify-content:center;
-      }
+      .all-products{ justify-content:center; }
     }
-    /* ====== MÁS VENDIDOS (CARRUSEL) ====== */
-.best-wrap{
-  width: min(1200px, 92%);
-  margin: 6px auto 20px;
-}
-
-.best-head{
-  display:flex;
-  align-items:flex-end;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.best-title{
-  font-size: 22px;
-  font-weight: 900;
-}
-
-.best-sub{
-  font-size: 12px;
-  font-weight: 800;
-  color:#666;
-}
-
-.best-carousel{
-  position: relative;
-  border-radius: 18px;
-}
-
-.best-viewport{
-  overflow: hidden;
-  border-radius: 18px;
-  position: relative;
-}
-
-/* desvanecido de lados */
-.best-viewport::before,
-.best-viewport::after{
-  content:"";
-  position:absolute;
-  top:0; bottom:0;
-  width: 70px;
-  pointer-events:none;
-  z-index: 4;
-}
-.best-viewport::before{
-  left:0;
-  background: linear-gradient(90deg, rgba(246,247,251,1), rgba(246,247,251,0));
-}
-.best-viewport::after{
-  right:0;
-  background: linear-gradient(270deg, rgba(246,247,251,1), rgba(246,247,251,0));
-}
-
-.best-track{
-  display:flex;
-  gap: 14px;
-  padding: 6px 52px; /* espacio para fades */
-  transition: transform .35s ease;
-  will-change: transform;
-}
-
-.best-card{
-  flex: 0 0 260px;
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
-}
-
-.best-img{
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  background:#e5e7eb;
-  display:block;
-}
-
-.best-body{ padding: 12px; }
-.best-name{ font-weight: 900; margin-bottom: 6px; }
-.best-desc{ font-size: 12px; color:#666; min-height: 30px; line-height: 1.35; }
-.best-bottom{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  margin-top: 10px;
-  gap: 10px;
-}
-.best-price{ font-weight: 900; color:#1B0561; }
-.best-btn{
-  border:none;
-  background:#2563eb;
-  color:white;
-  font-weight: 900;
-  padding: 10px 12px;
-  border-radius: 12px;
-  cursor:pointer;
-}
-
-.best-arrow{
-  position:absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
-  background: rgba(27,5,97,0.92);
-  color: white;
-  font-size: 18px;
-}
-.best-arrow.left{ left: 6px; }
-.best-arrow.right{ right: 6px; }
-.best-arrow:hover{ filter: brightness(1.08); }
-
-@media (max-width: 560px){
-  .best-card{ flex-basis: 220px; }
-  .best-track{ padding: 6px 40px; }
-}
   </style>
-  
 </head>
 
 <body>
@@ -890,259 +845,248 @@
       </div>
     </main>
   </section>
-<!-- EQUIPOS DENTALES -->
-<section id="pageEquipos" class="page hidden">
 
-  <!-- Banner largo -->
-  <div class="hero-wide">
-    <img src="banner-equipos.jpg" alt="JR DENT -Equipos Dentales">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-title">Equipos Dentales</div>
-      <div class="hero-text">
-        Equipos, insumos y soluciones para tu consultorio.
-        Envíos a todo Perú • Garantía • Soporte técnico.
+  <!-- EQUIPOS DENTALES -->
+  <section id="pageEquipos" class="page hidden">
+
+    <!-- Banner largo -->
+    <div class="hero-wide">
+      <img src="banner-equipos.jpg" alt="JR DENT - Equipos Dentales">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-title">Equipos Dentales</div>
+        <div class="hero-text">
+          Equipos, insumos y soluciones para tu consultorio.
+          Envíos a todo Perú • Garantía • Soporte técnico.
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- MÁS VENDIDOS (CARRUSEL) -->
-  <div class="best-wrap">
-    <div class="best-head">
-      <h2 class="best-title">Nuestros productos más vendidos</h2>
-      <p class="best-sub">Lo más pedido esta semana</p>
+    <!-- MÁS VENDIDOS (CARRUSEL INFINITO) -->
+    <div class="best-wrap">
+      <div class="best-head">
+        <h2 class="best-title">Nuestros productos más vendidos</h2>
+        <p class="best-sub">Lo más pedido esta semana</p>
+      </div>
+
+      <div class="best-carousel" id="bestCarousel">
+        <button class="best-arrow left" id="bestPrev" type="button">❮</button>
+
+        <div class="best-viewport" id="bestViewport">
+          <div class="best-track" id="bestTrack">
+
+            <article class="best-card">
+              <img class="best-img" src="eq1.jpg" alt="Producto 1">
+              <div class="best-body">
+                <div class="best-name">Lámpara LED</div>
+                <div class="best-desc">Alta iluminación • bajo consumo</div>
+                <div class="best-bottom">
+                  <div class="best-price">S/ 249.00</div>
+                  <button class="best-btn" type="button">Ver</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="best-card">
+              <img class="best-img" src="eq2.jpg" alt="Producto 2">
+              <div class="best-body">
+                <div class="best-name">Ultrasonido</div>
+                <div class="best-desc">Limpieza profesional</div>
+                <div class="best-bottom">
+                  <div class="best-price">S/ 399.00</div>
+                  <button class="best-btn" type="button">Ver</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="best-card">
+              <img class="best-img" src="eq3.jpg" alt="Producto 3">
+              <div class="best-body">
+                <div class="best-name">Fotocurado</div>
+                <div class="best-desc">Potente • recargable</div>
+                <div class="best-bottom">
+                  <div class="best-price">S/ 189.00</div>
+                  <button class="best-btn" type="button">Ver</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="best-card">
+              <img class="best-img" src="eq4.jpg" alt="Producto 4">
+              <div class="best-body">
+                <div class="best-name">Compresora</div>
+                <div class="best-desc">Silenciosa • estable</div>
+                <div class="best-bottom">
+                  <div class="best-price">S/ 1290.00</div>
+                  <button class="best-btn" type="button">Ver</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="best-card">
+              <img class="best-img" src="eq5.jpg" alt="Producto 5">
+              <div class="best-body">
+                <div class="best-name">Autoclave</div>
+                <div class="best-desc">Esterilización segura</div>
+                <div class="best-bottom">
+                  <div class="best-price">S/ 2190.00</div>
+                  <button class="best-btn" type="button">Ver</button>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <button class="best-arrow right" id="bestNext" type="button">❯</button>
+      </div>
     </div>
 
-    <div class="best-carousel" id="bestCarousel">
-      <button class="best-arrow left" id="bestPrev" type="button">❮</button>
+    <!-- CATÁLOGO -->
+    <div class="catalog">
 
-      <div class="best-viewport" id="bestViewport">
-        <div class="best-track" id="bestTrack">
+      <aside class="cat-box">
+        <div class="cat-head">Categorías</div>
 
-          <!-- Card 1 -->
-          <article class="best-card">
-            <img class="best-img" src="eq1.jpg" alt="Producto 1">
-            <div class="best-body">
-              <div class="best-name">Lámpara LED</div>
-              <div class="best-desc">Alta iluminación • bajo consumo</div>
-              <div class="best-bottom">
-                <div class="best-price">S/ 249.00</div>
-                <button class="best-btn" type="button">Ver</button>
+        <div class="cat-acc">
+          <div class="cat-group open">
+            <button class="cat-top" type="button">
+              Todos
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem active" type="button" data-cat="todo" data-brand="all">Ver todo</button>
+            </div>
+          </div>
+
+          <div class="cat-group">
+            <button class="cat-top" type="button">
+              Ultra Sonidos
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-J1">UDS-J1</button>
+              <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-J2">UDS-J2</button>
+              <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-A LED">UDS-A LED</button>
+              <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-E LED">UDS-E LED</button>
+              <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-U6">UDS-U6</button>
+              <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-M">UDS-M</button>
+            </div>
+          </div>
+
+          <div class="cat-group">
+            <button class="cat-top" type="button">
+              Lamparas
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED B">LED B</button>
+              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED D">LED D</button>
+              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED F">LED F</button>
+              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED">I LED</button>
+              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED PLUS">I LED PLUS</button>
+              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED MAX">I LED MAX</button>
+              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED II">I LED II</button>
+            </div>
+          </div>
+
+          <div class="cat-group">
+            <button class="cat-top" type="button">
+              Endomotor
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ENDO-MOTOR">ENDO-MOTOR</button>
+              <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ZR-TOUCH">ZR TOUCH</button>
+              <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="BR-TOUCH">BR TOUCH</button>
+              <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ENDO-MASTER">ENDO-MASTER</button>
+              <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="LOCALIZADOR">LOCALIZADOR</button>
+            </div>
+          </div>
+
+          <div class="cat-group">
+            <button class="cat-top" type="button">
+              Rayos X
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem" type="button" data-cat="Rayos X" data-brand="Rayos X Portatil">Rayos X Portatil</button>
+              <button class="cat-subitem" type="button" data-cat="Rayos X" data-brand="RVG">RVG</button>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+
+      <section class="products-area">
+        <div class="products-top">
+          <div class="products-title" id="equiposTitle">Equipos Dentales</div>
+          <div class="products-meta" id="equiposMeta">Mostrando 0 producto(s)</div>
+        </div>
+
+        <div class="products-grid" id="equiposGrid">
+
+          <!-- OJO: aquí tus data-cat y data-brand deben calzar con los botones -->
+          <article class="pcard" data-cat="Ultra Sonidos" data-brand="UDS-J1">
+            <img class="pimg" src="eqp1.jpg" alt="UDS J1">
+            <div class="pbody">
+              <div class="ptitle">UDS J1</div>
+              <div class="pdesc">Destartraje</div>
+              <div class="pbottom">
+                <div class="pprice">S/480.00</div>
+                <button class="pbtn" type="button">Ver</button>
               </div>
             </div>
           </article>
 
-          <!-- Card 2 -->
-          <article class="best-card">
-            <img class="best-img" src="eq2.jpg" alt="Producto 2">
-            <div class="best-body">
-              <div class="best-name">Ultrasonido</div>
-              <div class="best-desc">Limpieza profesional</div>
-              <div class="best-bottom">
-                <div class="best-price">S/ 399.00</div>
-                <button class="best-btn" type="button">Ver</button>
+          <article class="pcard" data-cat="Lamparas" data-brand="LED B">
+            <img class="pimg" src="eqp2.jpg" alt="Lámpara LED B">
+            <div class="pbody">
+              <div class="ptitle">Lampara LED B</div>
+              <div class="pdesc">Potencia 1200 • Fotocurado 5/20s</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 200.00</div>
+                <button class="pbtn" type="button">Ver</button>
               </div>
             </div>
           </article>
 
-          <!-- Card 3 -->
-          <article class="best-card">
-            <img class="best-img" src="eq3.jpg" alt="Producto 3">
-            <div class="best-body">
-              <div class="best-name">Fotocurado</div>
-              <div class="best-desc">Potente • recargable</div>
-              <div class="best-bottom">
-                <div class="best-price">S/ 189.00</div>
-                <button class="best-btn" type="button">Ver</button>
+          <article class="pcard" data-cat="Endomotor" data-brand="ENDO-MOTOR">
+            <img class="pimg" src="eqp3.jpg" alt="ENDO MOTOR">
+            <div class="pbody">
+              <div class="ptitle">ENDO MOTOR</div>
+              <div class="pdesc">Endodoncia rotatoria</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 750.00</div>
+                <button class="pbtn" type="button">Ver</button>
               </div>
             </div>
           </article>
 
-          <!-- Card 4 -->
-          <article class="best-card">
-            <img class="best-img" src="eq4.jpg" alt="Producto 4">
-            <div class="best-body">
-              <div class="best-name">Compresora</div>
-              <div class="best-desc">Silenciosa • estable</div>
-              <div class="best-bottom">
-                <div class="best-price">S/ 1290.00</div>
-                <button class="best-btn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 5 -->
-          <article class="best-card">
-            <img class="best-img" src="eq5.jpg" alt="Producto 5">
-            <div class="best-body">
-              <div class="best-name">Autoclave</div>
-              <div class="best-desc">Esterilización segura</div>
-              <div class="best-bottom">
-                <div class="best-price">S/ 2190.00</div>
-                <button class="best-btn" type="button">Ver</button>
+          <!-- ✅ FIX: aquí faltaba el ">" y rompía todo -->
+          <article class="pcard" data-cat="Rayos X" data-brand="Rayos X Portatil">
+            <img class="pimg" src="eqp4.jpg" alt="RAYOS X">
+            <div class="pbody">
+              <div class="ptitle">RAYOS X PORTATIL</div>
+              <div class="pdesc">Rayos X portátil</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 3600.00</div>
+                <button class="pbtn" type="button">Ver</button>
               </div>
             </div>
           </article>
 
         </div>
-      </div>
+      </section>
 
-      <button class="best-arrow right" id="bestNext" type="button">❯</button>
     </div>
-  </div>
+  </section>
 
-  <!-- CATÁLOGO (tipo repuestos) -->
-  <div class="catalog">
-
-    <aside class="cat-box">
-      <div class="cat-head">Categorías</div>
-<div class="cat-acc">
-
-  <!-- TODOS -->
-  <div class="cat-group open">
-    <button class="cat-top" type="button" data-cat="todo">
-      Todos
-      <span class="chev">▾</span>
-    </button>
-
-    <div class="cat-sub">
-      <button class="cat-subitem active" type="button" data-cat="todo" data-brand="all">Ver todo</button>
-    </div>
-  </div>
-
-  <!-- ultrasonidos -->
-  <div class="cat-group">
-    <button class="cat-top" type="button" data-cat="Ultra Sonidos">
-      Ultra Sonidos
-      <span class="chev">▾</span>
-    </button>
-
-    <div class="cat-sub">
-      <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-J1">UDS-J1</button>
-      <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-J2">UDS-J2</button>
-      <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-A LED">UDS-A LED</button>
-      <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-E LED">UDS-E LED</button>
-      <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-U6">UDS-U6</button>
-      <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-M">UDS-M</button>
-    </div>
-  </div>
-
-  <!-- lamparas -->
-  <div class="cat-group">
-    <button class="cat-top" type="button" data-cat="Lamparas">
-      Lamparas
-      <span class="chev">▾</span>
-    </button>
-
-    <div class="cat-sub">
-      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED B">LED B</button>
-      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED D">LED D</button>
-      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED F">YOUNITY</button>
-      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED">I LED</button>
-      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED PLUS">I LED PLUS</button>
-      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED MAX">I LED MAX</button>
-      <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED II">I LED II</button>
-    </div>
-  </div>
-
-  <!-- endomotor -->
-  <div class="cat-group">
-    <button class="cat-top" type="button" data-cat="Endomotor">
-      Endomotor
-      <span class="chev">▾</span>
-    </button>
-
-    <div class="cat-sub">
-      <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ENDO-MOTOR">ENDO-MOTOR</button>
-      <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ZR-TOUCH">ZR TOUCH</button>
-      <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="BR-TOUCH">BR TOUCH</button>
-      <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ENDO-MASTER">ENDO-MASTER</button>
-      <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="LOCALIZADOR">LOCALIZADOR</button>
-    </div>
-  </div>
-
-  <!-- HERRAMIENTAS -->
-  <div class="cat-group">
-    <button class="cat-top" type="button" data-cat="Rayos X">
-      Rayos X
-      <span class="chev">▾</span>
-    </button>
-
-    <div class="cat-sub">
-      <button class="cat-subitem" type="button" data-cat="Rayos X" data-brand="Rayos X Portatil">Rayos X Portatil</button>
-      <button class="cat-subitem" type="button" data-cat="Rayos X" data-brand="RVG">RVG</button>
-    </div>
-  </div>
-
-</div>
-    </aside>
-
-    <section class="products-area">
-      <div class="products-top">
-        <div class="products-title" id="equiposTitle">Equipos Dentales</div>
-        <div class="products-meta" id="equiposMeta">Mostrando 6 productos</div>
-      </div>
-
-      <div class="products-grid" id="equiposGrid">
-
-        <article class="pcard" data-cat="Ultra Sonidos" data-brand="I LED II">
-          <img class="pimg" src="eqp1.jpg" alt="UDS J1">
-          <div class="pbody">
-            <div class="ptitle">UDS J1</div>
-            <div class="pdesc">Destartraje</div>
-            <div class="pbottom">
-              <div class="pprice">S/480.00</div>
-              <button class="pbtn" type="button">Ver</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="pcard" data-cat="Lamparas" data-brand="LED B">
-          <img class="pimg" src="eqp2.jpg" alt="Lámpara">
-          <div class="pbody">
-            <div class="ptitle">Lampara LED B</div>
-            <div class="pdesc">POTENCIA DE 1200 . FOTOCURADO 5/20 SEGUNDOS</div>
-            <div class="pbottom">
-              <div class="pprice">S/ 200.00</div>
-              <button class="pbtn" type="button">Ver</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="pcard" data-cat="Endomotor" data-brand="ENDO-MOTOR">
-          <img class="pimg" src="eqp3.jpg" alt="ENDO MOTOR">
-          <div class="pbody">
-            <div class="ptitle">ENDO MOTOR</div>
-            <div class="pdesc">Endodoncia Rotarorial</div>
-            <div class="pbottom">
-              <div class="pprice">S/ 750.00</div>
-              <button class="pbtn" type="button">Ver</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="pcard" data-cat="Rayos X" data-brand="Rayos X Portatil"
-          <img class="pimg" src="eqp4.jpg" alt="RAYOS X">
-          <div class="pbody">
-            <div class="ptitle">RAYOS X PORTATIL</div>
-            <div class="pdesc">rayos x portatil</div>
-            <div class="pbottom">
-              <div class="pprice">S/ 3600.00</div>
-              <button class="pbtn" type="button">Ver</button>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-  </div>
-</section>
   <!-- REPUETOS / PRODUCTOS -->
   <section id="pageRepuestos" class="page hidden">
 
-    <!-- Banner largo -->
     <div class="hero-wide">
-        <img src="banner-repuestos.jpg" alt="JR DENT - Repuestos">
+      <img src="banner-repuestos.jpg" alt="JR DENT - Repuestos">
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <div class="hero-title">Repuestos y Accesorios</div>
@@ -1153,103 +1097,89 @@
       </div>
     </div>
 
-    <!-- Layout tipo Rito (sidebar + productos) -->
     <div class="catalog">
 
-      <!-- Sidebar categorías -->
       <aside class="cat-box">
         <div class="cat-head">Categorías</div>
 
-<div class="cat-acc">
+        <div class="cat-acc">
+          <div class="cat-group open">
+            <button class="cat-top" type="button">
+              Todos
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem active" type="button" data-cat="todo" data-brand="all">Ver todo</button>
+            </div>
+          </div>
 
-  <!-- TODOS -->
-  <div class="cat-group open">
-    <button class="cat-top" type="button" data-cat="todo">
-      Todos
-      <span class="chev">▾</span>
-    </button>
+          <div class="cat-group">
+            <button class="cat-top" type="button">
+              Repuestos de Turbina
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="NSK">NSK</button>
+              <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="BEING">BEING</button>
+              <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="YOUNITY">YOUNITY</button>
+              <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="KAVO">KAVO</button>
+              <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="SIGMA">SIGMA</button>
+              <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="WyH">WyH</button>
+            </div>
+          </div>
 
-    <div class="cat-sub">
-      <button class="cat-subitem active" type="button" data-cat="todo" data-brand="all">Ver todo</button>
-    </div>
-  </div>
+          <div class="cat-group">
+            <button class="cat-top" type="button">
+              Rodajes
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="NSK">NSK</button>
+              <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="BEING">BEING</button>
+              <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="YOUNITY">YOUNITY</button>
+              <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="KAVO">KAVO</button>
+              <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="WyH">WyH</button>
+            </div>
+          </div>
 
-  <!-- TURBINAS -->
-  <div class="cat-group">
-    <button class="cat-top" type="button" data-cat="turbinas">
-      Repuestos de Turbina
-      <span class="chev">▾</span>
-    </button>
+          <div class="cat-group">
+            <button class="cat-top" type="button">
+              Repuestos de Micromotor
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem" type="button" data-cat="Repuestos de Micromotor" data-brand="MARATHON">MARATHON</button>
+              <button class="cat-subitem" type="button" data-cat="Repuestos de Micromotor" data-brand="STRONG">STRONG</button>
+              <button class="cat-subitem" type="button" data-cat="Repuestos de Micromotor" data-brand="RENHE">RENHE</button>
+            </div>
+          </div>
 
-    <div class="cat-sub">
-      <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="NSK">NSK</button>
-      <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="BEING">BEING</button>
-      <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="YOUNITY">YOUNITY</button>
-      <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="KAVO">KAVO</button>
-            <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="SIGMA">SIGMA</button>
-      <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="WyH">WyH</button>
-    </div>
-  </div>
+          <div class="cat-group">
+            <button class="cat-top" type="button">
+              Repuestos Extras
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem" type="button" data-cat="Repuestos Extras" data-brand="Woodpecker">Woodpecker</button>
+            </div>
+          </div>
 
-  <!-- RODAMIENTOS -->
-  <div class="cat-group">
-    <button class="cat-top" type="button" data-cat="Rodajes">
-      Rodajes
-      <span class="chev">▾</span>
-    </button>
-
-    <div class="cat-sub">
-      <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="NSK">NSK</button>
-      <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="BEING">BEING</button>
-      <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="YOUNITY">YOUNITY</button>
-      <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="KAVO">KAVO</button>
-       <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="WyH">WyH</button>
-      
-    </div>
-  </div>
-
-  <!-- MICROMOTOR -->
-  <div class="cat-group">
-    <button class="cat-top" type="button" data-cat="Repuestos de Micromotor">
-      Repuestos de Micromotor
-      <span class="chev">▾</span>
-    </button>
-
-    <div class="cat-sub">
-      <button class="cat-subitem" type="button" data-cat="Repuestos de Micromotor" data-brand="MARATHON">MARATHON</button>
-      <button class="cat-subitem" type="button" data-cat="Repuestos de Micromotor" data-brand="STRONG">STRONG</button>
-      <button class="cat-subitem" type="button" data-cat="Repuestos de Micromotor" data-brand="RENHE">RENHE</button>
-    </div>
-  </div>
-
-  <!-- HERRAMIENTAS -->
-  <div class="cat-group">
-    <button class="cat-top" type="button" data-cat="Repuestos Extras">
-      Repuestos Extras
-      <span class="chev">▾</span>
-    </button>
-
-    <div class="cat-sub">
-      <button class="cat-subitem" type="button" data-cat="Repuestos Extras" data-brand="Woodpecker">Woodpecker</button>
-    </div>
-  </div>
-
-</div>
+        </div>
       </aside>
 
-      <!-- Productos -->
       <section class="products-area">
         <div class="products-top">
           <div class="products-title" id="productsTitle">Repuestos</div>
-          <div class="products-meta" id="productsMeta">Mostrando 6 productos</div>
+          <div class="products-meta" id="productsMeta">Mostrando 0 producto(s)</div>
         </div>
 
         <div class="products-grid" id="productsGrid">
+
           <article class="pcard" data-cat="Rodajes" data-brand="NSK">
             <img class="pimg" src="p1.jpg" alt="Rodaje Ceramico">
             <div class="pbody">
-              <div class="ptitle">Rodaje Cerámico NSK(Generico)</div>
-              <div class="pdesc">RODAJE CERAMICO MODELO NSK(GENERICO) PARA PIEZAS DE MANO DE ALTA VELOCIDAD</div>
+              <div class="ptitle">Rodaje Cerámico NSK (Genérico)</div>
+              <div class="pdesc">Rodaje cerámico modelo NSK (genérico) para alta velocidad.</div>
               <div class="pbottom">
                 <div class="pprice">S/40.00</div>
                 <button class="pbtn" type="button">Ver</button>
@@ -1257,25 +1187,13 @@
             </div>
           </article>
 
-          <article class="pcard" data-cat="Rodajes">
+          <article class="pcard" data-cat="Rodajes" data-brand="KAVO">
             <img class="pimg" src="p2.jpg" alt="Rodaje Cerámico Kavo">
             <div class="pbody">
               <div class="ptitle">Rodaje Cerámico Kavo</div>
-              <div class="pdesc">RODAJE CERAMICO MODELO KAVO PARA PIEZAS DE MANO DE ALTA VELOCIDAD</div>
+              <div class="pdesc">Rodaje cerámico modelo Kavo para alta velocidad.</div>
               <div class="pbottom">
                 <div class="pprice">S/40.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="pcard" data-cat="Micromotor">
-            <img class="pimg" src="p3.jpg" alt="Eje Push Button">
-            <div class="pbody">
-              <div class="ptitle">Eje Push Button</div>
-              <div class="pdesc">EJE PARA ROTOR DE PIEZA DE MANO DE ALTA</div>
-              <div class="pbottom">
-                <div class="pprice">S/80.00</div>
                 <button class="pbtn" type="button">Ver</button>
               </div>
             </div>
@@ -1284,34 +1202,10 @@
           <article class="pcard" data-cat="Repuestos de Turbina" data-brand="NSK">
             <img class="pimg" src="p4.jpg" alt="Rotor Contra Angulo">
             <div class="pbody">
-              <div class="ptitle">Rotor Contra Angulo </div>
-              <div class="pdesc">ROTOR DE PIEZA DE MANO DE BAJA CONTRA ANGULO</div>
+              <div class="ptitle">Rotor Contra Ángulo</div>
+              <div class="pdesc">Rotor de pieza de mano de baja, contra ángulo.</div>
               <div class="pbottom">
                 <div class="pprice">S/80.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="pcard" data-cat="Rodajes">
-            <img class="pimg" src="p5.jpg" alt="Rodaje Ceramico Premium">
-            <div class="pbody">
-              <div class="ptitle">Rodaje Ceramico Premium</div>
-              <div class="pdesc">RODAJE CERAMICO DE ALEMANIA </div>
-              <div class="pbottom">
-                <div class="pprice">S/90.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="pcard" data-cat="Repuestos de Micromotor" data-brand="MARATHON"data-brand="RENHE"data-brand="STRONG">
-            <img class="pimg" src="p6.jpg" alt="Paletas de Micromotor">
-            <div class="pbody">
-              <div class="ptitle">Paletas de Micromotor</div>
-              <div class="pdesc">PALETAS DE MICROMOTOR (GENERICO)</div>
-              <div class="pbottom">
-                <div class="pprice">S/ 99.00</div>
                 <button class="pbtn" type="button">Ver</button>
               </div>
             </div>
@@ -1321,29 +1215,31 @@
             <img class="pimg" src="p7.jpg" alt="Rodaje WyH">
             <div class="pbody">
               <div class="ptitle">Rodaje WyH</div>
-              <div class="pdesc">RODAJE CERAMICO WYH</div>
+              <div class="pdesc">Rodaje cerámico WyH.</div>
               <div class="pbottom">
                 <div class="pprice">S/60.00</div>
                 <button class="pbtn" type="button">Ver</button>
               </div>
             </div>
           </article>
-<article class="pcard" data-cat="Repuestos de Turbina" data-brand="NSK">
+
+          <article class="pcard" data-cat="Repuestos de Turbina" data-brand="NSK">
             <img class="pimg" src="p8.jpg" alt="Seguro de Contra Angulo">
             <div class="pbody">
-              <div class="ptitle">Seguro de Contra Angulo </div>
-              <div class="pdesc">Seguro de Contra Angulo NSK</div>
+              <div class="ptitle">Seguro de Contra Ángulo</div>
+              <div class="pdesc">Seguro de contra ángulo NSK.</div>
               <div class="pbottom">
                 <div class="pprice">S/15.00</div>
                 <button class="pbtn" type="button">Ver</button>
               </div>
             </div>
           </article>
+
           <article class="pcard" data-cat="Repuestos de Turbina" data-brand="NSK">
             <img class="pimg" src="p9.jpg" alt="Tapa NSK">
             <div class="pbody">
               <div class="ptitle">Tapa NSK</div>
-              <div class="pdesc">TAPA NSK PANA AIR</div>
+              <div class="pdesc">Tapa NSK Pana Air.</div>
               <div class="pbottom">
                 <div class="pprice">S/20.00</div>
                 <button class="pbtn" type="button">Ver</button>
@@ -1478,12 +1374,13 @@
     </div>
   </section>
 
-  <!-- ====== JS UI + SLIDER + NAV (corregido) ====== -->
+  <!-- ====== JS UI + SLIDER + NAV ====== -->
   <script>
     const homeSection = document.getElementById("homeSection");
     const pageRepuestos = document.getElementById("pageRepuestos");
+    const pageEquipos = document.getElementById("pageEquipos");
     const authSection = document.getElementById("authSection");
-    const pageEquipos = document.getElementById("pageEquipos");  
+
     const btnLogin = document.getElementById("btnLogin");
     const btnRegister = document.getElementById("btnRegister");
     const btnOrders = document.getElementById("btnOrders");
@@ -1494,7 +1391,7 @@
 
     const navHome = document.getElementById("navHome");
     const navRepuestos = document.getElementById("navRepuestos");
-    const navEquipos   = document.getElementById("navEquipos");
+    const navEquipos = document.getElementById("navEquipos");
     const allProductsBtn = document.getElementById("allProductsBtn");
 
     const tabLogin = document.getElementById("tabLogin");
@@ -1509,33 +1406,7 @@
     const successOverlay = document.getElementById("successOverlay");
     const successTitle = document.getElementById("successTitle");
     const successText = document.getElementById("successText");
-    
-    function hideAll(){
-    homeSection?.classList.add("hidden");
-    pageRepuestos?.classList.add("hidden");
-    pageEquipos?.classList.add("hidden");
-  }
 
-  function goPage(name){
-    hideAll();
-    if(name === "repuestos") pageRepuestos?.classList.remove("hidden");
-    else if(name === "equipos") pageEquipos?.classList.remove("hidden");
-    else homeSection?.classList.remove("hidden");
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-
-    function showError(msg) {
-      authOk.style.display = "none";
-      authError.style.display = "block";
-      authError.textContent = msg;
-    }
-    function showOk(msg) {
-      authError.style.display = "none";
-      authOk.style.display = "block";
-      authOk.textContent = msg;
-    }
     function clearMsgs() {
       authError.style.display = "none";
       authOk.style.display = "none";
@@ -1551,26 +1422,27 @@
     }
     window.showSuccessOverlay = showSuccessOverlay;
 
-    function showHome() {
-      clearMsgs();
-      authSection.classList.add("hidden");
+    function hideAllPages(){
+      homeSection?.classList.add("hidden");
       pageRepuestos?.classList.add("hidden");
-      homeSection.classList.remove("hidden");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      pageEquipos?.classList.add("hidden");
     }
 
-    function showRepuestos() {
+    function goPage(name){
       clearMsgs();
-      authSection.classList.add("hidden");
-      homeSection.classList.add("hidden");
-      pageRepuestos.classList.remove("hidden");
+      authSection?.classList.add("hidden");
+      hideAllPages();
+
+      if(name === "repuestos") pageRepuestos?.classList.remove("hidden");
+      else if(name === "equipos") pageEquipos?.classList.remove("hidden");
+      else homeSection?.classList.remove("hidden");
+
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function showAuth(mode) {
       clearMsgs();
-      homeSection.classList.add("hidden");
-      pageRepuestos?.classList.add("hidden");
+      hideAllPages();
       authSection.classList.remove("hidden");
       setAuthMode(mode);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1589,20 +1461,17 @@
         : "Regístrate para comprar más rápido y ver tu historial.";
     }
 
-    btnLogin.addEventListener("click", () => showAuth("login"));
-    btnRegister.addEventListener("click", () => showAuth("register"));
+    btnLogin?.addEventListener("click", () => showAuth("login"));
+    btnRegister?.addEventListener("click", () => showAuth("register"));
 
-     navHome?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("home"); });
-  navRepuestos?.addEventListener("click",(e)=>{ e.preventDefault(); goPage("repuestos"); });
-  navEquipos?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("equipos"); });
-    allProductsBtn.addEventListener("click", () => showRepuestos());
+    navHome?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("home"); });
+    navRepuestos?.addEventListener("click",(e)=>{ e.preventDefault(); goPage("repuestos"); });
+    navEquipos?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("equipos"); });
 
-    // PERFIL click (demo)
-    userPill.addEventListener("click", () => {
-      alert("Aquí luego irá: Mi cuenta / Perfil");
-    });
+    // “Todos nuestros productos” te manda a repuestos (puedes cambiar a un catálogo general después)
+    allProductsBtn?.addEventListener("click", () => goPage("repuestos"));
 
-    // Slider
+    // Slider HOME
     document.addEventListener("DOMContentLoaded", () => {
       const slider = document.getElementById("homeSlider");
       const slides = slider ? slider.querySelectorAll(".slide") : [];
@@ -1624,7 +1493,7 @@
       setInterval(next, 5000);
     });
 
-    // ===== Topbar: mostrar/ocultar según sesión =====
+    // Topbar user pill
     function setTopbarUser(userData) {
       if (!userData) {
         btnLogin.classList.remove("hidden");
@@ -1642,7 +1511,6 @@
       btnLogout.classList.remove("hidden");
 
       const name = (userData.nombre || userData.displayName || userData.email || "Usuario").trim();
-
       const parts = name.split(/\s+/).filter(Boolean);
       let initials = parts[0]?.[0] || "U";
       if (parts.length >= 2) initials += parts[1][0];
@@ -1653,56 +1521,155 @@
     }
     window.setTopbarUser = setTopbarUser;
   </script>
+
+  <!-- ====== Carrusel “Más vendidos” INFINITO ====== -->
   <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const track = document.getElementById("bestTrack");
-  const prev  = document.getElementById("bestPrev");
-  const next  = document.getElementById("bestNext");
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById("bestTrack");
+    const prev  = document.getElementById("bestPrev");
+    const next  = document.getElementById("bestNext");
 
-  if(!track || !prev || !next) return;
+    if(!track || !prev || !next) return;
 
-  let index = 0;
+    const originalCards = Array.from(track.children);
+    originalCards.forEach(card => track.appendChild(card.cloneNode(true)));
 
-  function cardStep(){
-    const first = track.querySelector(".best-card");
-    if(!first) return 260 + 14;
-    const styles = getComputedStyle(track);
-    const gap = parseFloat(styles.gap || "14");
-    return first.getBoundingClientRect().width + gap;
-  }
+    let index = 0;
 
-  function maxIndex(){
-    const viewport = document.getElementById("bestViewport");
-    if(!viewport) return 0;
-    const step = cardStep();
-    const visible = Math.floor(viewport.getBoundingClientRect().width / step);
-    const total = track.querySelectorAll(".best-card").length;
-    return Math.max(0, total - Math.max(1, visible));
-  }
+    function cardStep(){
+      const first = track.querySelector(".best-card");
+      if(!first) return 260 + 14;
+      const styles = getComputedStyle(track);
+      const gap = parseFloat(styles.gap || "14");
+      return first.getBoundingClientRect().width + gap;
+    }
 
-  function render(){
-    const step = cardStep();
-    track.style.transform = `translateX(${-index * step}px)`;
-  }
+    function totalOriginal(){
+      return originalCards.length;
+    }
 
-  next.addEventListener("click", () => {
-    index = Math.min(maxIndex(), index + 1);
-    render();
+    function render(animate=true){
+      track.style.transition = animate ? "transform .35s ease" : "none";
+      track.style.transform = `translateX(${-index * cardStep()}px)`;
+    }
+
+    function nextMove(){
+      index++;
+      render(true);
+      if(index >= totalOriginal()){
+        setTimeout(() => {
+          index = 0;
+          render(false);
+        }, 360);
+      }
+    }
+
+    function prevMove(){
+      if(index === 0){
+        index = totalOriginal();
+        render(false);
+        requestAnimationFrame(() => {
+          index--;
+          render(true);
+        });
+        return;
+      }
+      index--;
+      render(true);
+    }
+
+    next.addEventListener("click", nextMove);
+    prev.addEventListener("click", prevMove);
+
+    window.addEventListener("resize", () => render(false));
+    render(false);
   });
+  </script>
 
-  prev.addEventListener("click", () => {
-    index = Math.max(0, index - 1);
-    render();
+  <!-- ====== Acordeón + filtro (funciona en Repuestos y Equipos) ====== -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+
+    function setupCatalog(gridId, titleId, metaId) {
+      const grid = document.getElementById(gridId);
+      const titleEl = document.getElementById(titleId);
+      const metaEl  = document.getElementById(metaId);
+      if (!grid) return;
+
+      const cards = Array.from(grid.querySelectorAll(".pcard"));
+
+      let currentCat = "todo";
+      let currentBrand = "all";
+
+      function normalize(v){ return (v || "").trim().toLowerCase(); }
+
+      function cap(s){
+        if(!s) return s;
+        return s.charAt(0).toUpperCase() + s.slice(1);
+      }
+
+      function applyFilter(){
+        let shown = 0;
+
+        cards.forEach(card => {
+          const cat = normalize(card.dataset.cat);
+          const brand = normalize(card.dataset.brand);
+
+          const okCat   = (currentCat === "todo") || (cat === currentCat);
+          const okBrand = (currentBrand === "all") || (brand === currentBrand);
+
+          const show = okCat && okBrand;
+          card.style.display = show ? "" : "none";
+          if (show) shown++;
+        });
+
+        if (titleEl) {
+          const catLabel = currentCat === "todo" ? "Todos" : currentCat;
+          const brandLabel = currentBrand === "all" ? "" : ` • ${currentBrand.toUpperCase()}`;
+          titleEl.textContent = cap(catLabel) + brandLabel;
+        }
+        if (metaEl) metaEl.textContent = `Mostrando ${shown} producto(s)`;
+      }
+
+      // buscar sidebar del mismo catálogo
+      const catalog = grid.closest(".catalog");
+      if(!catalog) return;
+      const sidebar = catalog.querySelector(".cat-box");
+      if(!sidebar) return;
+
+      // acordeón
+      sidebar.querySelectorAll(".cat-top").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const group = btn.closest(".cat-group");
+          group.classList.toggle("open");
+        });
+      });
+
+      function setActive(activeBtn){
+        sidebar.querySelectorAll(".cat-subitem").forEach(b => b.classList.remove("active"));
+        if(activeBtn) activeBtn.classList.add("active");
+      }
+
+      // filtros por subitem
+      sidebar.querySelectorAll(".cat-subitem").forEach(subBtn => {
+        subBtn.addEventListener("click", () => {
+          currentCat = normalize(subBtn.dataset.cat || "todo");
+          currentBrand = normalize(subBtn.dataset.brand || "all");
+
+          setActive(subBtn);
+          subBtn.closest(".cat-group")?.classList.add("open");
+
+          applyFilter();
+        });
+      });
+
+      applyFilter();
+    }
+
+    setupCatalog("productsGrid", "productsTitle", "productsMeta");
+    setupCatalog("equiposGrid", "equiposTitle", "equiposMeta");
   });
-
-  window.addEventListener("resize", () => {
-    index = Math.min(maxIndex(), index);
-    render();
-  });
-
-  render();
-});
-</script>
+  </script>
 
   <!-- ====== FIREBASE (módulo) ====== -->
   <script type="module">
@@ -1712,9 +1679,7 @@ document.addEventListener("DOMContentLoaded", () => {
       createUserWithEmailAndPassword, signInWithEmailAndPassword,
       onAuthStateChanged, signOut, updateProfile
     } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-    import {
-      getFirestore, doc, setDoc, getDoc
-    } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDFSDPcgPmtDiNWVHZg46RKxE8ygPV99FM",
@@ -1792,7 +1757,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // LOGIN EMAIL
-    btnDoLogin.addEventListener("click", async () => {
+    btnDoLogin?.addEventListener("click", async () => {
       try {
         const email = (loginEmail.value || "").trim();
         const pass = loginPassword.value || "";
@@ -1809,7 +1774,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // LOGIN GOOGLE
-    btnGoogleLogin.addEventListener("click", async () => {
+    btnGoogleLogin?.addEventListener("click", async () => {
       try {
         const result = await signInWithPopup(auth, provider);
 
@@ -1832,7 +1797,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // REGISTER EMAIL
-    btnDoRegister.addEventListener("click", async () => {
+    btnDoRegister?.addEventListener("click", async () => {
       try {
         const nombre = (regName.value || "").trim();
         const telefono = (regPhone.value || "").trim();
@@ -1852,12 +1817,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (pass !== pass2) return showError("Las contraseñas no coinciden.");
 
         const cred = await createUserWithEmailAndPassword(auth, email, pass);
-
         try { await updateProfile(cred.user, { displayName: nombre }); } catch(e){}
 
-        await saveUserProfile(cred.user.uid, {
-          nombre, pais, distrito, direccion, telefono, email
-        });
+        await saveUserProfile(cred.user.uid, { nombre, pais, distrito, direccion, telefono, email });
 
         window.setTopbarUser?.({ nombre, email });
 
@@ -1871,7 +1833,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // REGISTER GOOGLE
-    btnGoogleRegister.addEventListener("click", async () => {
+    btnGoogleRegister?.addEventListener("click", async () => {
       try {
         const result = await signInWithPopup(auth, provider);
 
@@ -1894,7 +1856,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // LOGOUT
-    btnLogout.addEventListener("click", async () => {
+    btnLogout?.addEventListener("click", async () => {
       try {
         await signOut(auth);
         window.setTopbarUser?.(null);
@@ -1906,90 +1868,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   </script>
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const grid = document.getElementById("productsGrid");
-  const titleEl = document.getElementById("productsTitle");
-  const metaEl  = document.getElementById("productsMeta");
-
-  if(!grid) return;
-
-  const cards = Array.from(grid.querySelectorAll(".pcard"));
-
-  let currentCat = "todo";
-  let currentBrand = "all";
-
-  function applyFilter() {
-    let shown = 0;
-
-    cards.forEach(card => {
-      const c = (card.dataset.cat || "").toLowerCase();
-      const b = (card.dataset.brand || "").toLowerCase();
-
-      const okCat = (currentCat === "todo") || (c === currentCat);
-      const okBrand = (currentBrand === "all") || (b === currentBrand);
-
-      const show = okCat && okBrand;
-      card.style.display = show ? "" : "none";
-      if(show) shown++;
-    });
-
-    // Texto arriba
-    const catLabel = currentCat === "todo" ? "Repuestos" : currentCat;
-    const brandLabel = currentBrand === "all" ? "" : ` • ${currentBrand.toUpperCase()}`;
-
-    titleEl.textContent = `${capitalize(catLabel)}${brandLabel}`;
-    metaEl.textContent = `Mostrando ${shown} producto(s)`;
-  }
-
-  function capitalize(s){
-    if(!s) return s;
-    // para que "micromotor" -> "Micromotor"
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  }
-
-  // ====== Acordeón (abrir/cerrar) ======
-  document.querySelectorAll(".cat-group .cat-top").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const group = btn.closest(".cat-group");
-      group.classList.toggle("open");
-
-      // Si haces click al nombre (cat-top), NO filtra aún.
-      // Si quieres que al hacer click "Turbinas" muestre todo turbinas (todas las marcas), descomenta:
-      // currentCat = (btn.dataset.cat || "todo").toLowerCase();
-      // currentBrand = "all";
-      // setActiveSub(null);
-      // applyFilter();
-    });
-  });
-
-  // ====== Click en marcas (filtra) ======
-  function setActiveSub(activeBtn){
-    document.querySelectorAll(".cat-subitem").forEach(b => b.classList.remove("active"));
-    if(activeBtn) activeBtn.classList.add("active");
-  }
-
-  document.querySelectorAll(".cat-subitem").forEach(subBtn => {
-    subBtn.addEventListener("click", () => {
-      currentCat = (subBtn.dataset.cat || "todo").toLowerCase();
-      currentBrand = (subBtn.dataset.brand || "all").toLowerCase();
-
-      setActiveSub(subBtn);
-
-      // asegurar que su grupo quede abierto
-      const group = subBtn.closest(".cat-group");
-      group.classList.add("open");
-
-      applyFilter();
-    });
-  });
-
-  // filtro inicial
-  applyFilter();
-});
-</script>
 </body>
 </html>
+
+
 
 
 
