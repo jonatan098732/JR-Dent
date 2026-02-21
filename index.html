@@ -1613,10 +1613,13 @@
 
         cards.forEach(card => {
           const cat = normalize(card.dataset.cat);
-          const brand = normalize(card.dataset.brand);
-
+          const brands = brandsRaw
+                                   .split(",")
+                                   .map(x => normalize(x))
+                                   .filter(Boolean);
+          const brandsRaw = card.dataset.brands || card.dataset.brand || "";
           const okCat   = (currentCat === "todo") || (cat === currentCat);
-          const okBrand = (currentBrand === "all") || (brand === currentBrand);
+          const okBrand = (currentBrand === "all") || brands.includes(currentBrand);
 
           const show = okCat && okBrand;
           card.style.display = show ? "" : "none";
@@ -1870,6 +1873,7 @@
   </script>
 </body>
 </html>
+
 
 
 
