@@ -1,1890 +1,3656 @@
 <!doctype html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JR DENT</title>
 
-  <style>
+<html lang="es"><head>  <meta charset="UTF-8" />  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <title>JR DENT</title>  <style>
+  
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+  
 
+  
     * { box-sizing: border-box; margin: 0; padding: 0; }
+  
 
+  
     body {
+  
       font-family: 'Montserrat', sans-serif;
+  
       font-weight: 400;
+  
       background: #f6f7fb;
+  
       color: #111;
+  
     }
+  
 
+  
     /* ====== TOP BAR ====== */
+  
     .topbar {
+  
       background: #F5F7FA;
+  
       color: white;
+  
       padding: 10px 0;
+  
     }
+  
 
+  
     .container {
+  
       width: min(1100px, 92%);
+  
       margin: 0 auto;
+  
     }
+  
 
+  
     .topbar-row {
+  
       display: flex;
+  
       align-items: center;
+  
       justify-content: space-between;
+  
       gap: 12px;
+  
     }
+  
 
+  
     .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px; }
+  
     .logo-img { height: 80px; width: auto; display:block; }
+  
 
+  
     .search {
+  
       flex: 1;
+  
       display: flex;
+  
       gap: 8px;
+  
       max-width: 520px;
+  
       margin: 0 12px;
+  
     }
+  
 
+  
     .search input {
+  
       width: 100%;
+  
       padding: 10px 12px;
+  
       border-radius: 10px;
+  
       border: none;
+  
       outline: none;
+  
       background: #eaf1ff;
+  
       color:#111;
+  
     }
+  
 
+  
     .search button {
+  
       padding: 10px 12px;
+  
       border-radius: 10px;
+  
       border: none;
+  
       cursor: pointer;
+  
       font-weight: 700;
+  
       background: #1B0561;
+  
       color: white;
+  
     }
+  
 
+  
     .actions {
+  
       display: flex;
+  
       align-items: center;
+  
       gap: 10px;
+  
       flex-wrap: wrap;
+  
       justify-content: flex-end;
+  
     }
+  
 
+  
     .linkbtn {
+  
       background: transparent;
+  
       border: 2px solid #1B0561;
+  
       color: #1B0561;
+  
       padding: 8px 14px;
+  
       border-radius: 10px;
+  
       cursor: pointer;
+  
       font-weight: 700;
+  
       transition: 0.3s;
+  
     }
+  
     .linkbtn:hover { background: white; color: #111; }
+  
 
+  
     /* carrito */
+  
     .cart-btn {
+  
       position: relative;
+  
       display: flex;
+  
       align-items: center;
+  
       justify-content: center;
+  
       background: transparent;
+  
       border: 2px solid #1B0561;
+  
       color: #1B0561;
+  
       width: 44px;
+  
       height: 44px;
+  
       border-radius: 12px;
+  
       cursor: pointer;
+  
       transition: 0.3s;
+  
     }
+  
     .cart-btn:hover{ background:white; color:#111; }
+  
 
+  
     .cart-count {
+  
       position: absolute;
+  
       top: -6px;
+  
       right: -5px;
+  
       background: red;
+  
       color: white;
+  
       font-size: 12px;
+  
       font-weight: 700;
+  
       min-width: 18px;
+  
       height: 18px;
+  
       display: flex;
+  
       align-items: center;
+  
       justify-content: center;
+  
       border-radius: 999px;
+  
     }
+  
 
+  
     /* PERFIL */
+  
     .userpill{
+  
       display:flex;
+  
       align-items:center;
+  
       gap:10px;
+  
       padding:8px 12px;
+  
       border-radius: 999px;
+  
       border: 2px solid #1B0561;
+  
       background: rgba(255,255,255,0.12);
+  
       color: #1B0561;
+  
       cursor:pointer;
+  
       font-weight:900;
+  
       transition: .25s;
+  
     }
+  
     .userpill:hover{
+  
       background: white;
+  
       color:#111;
+  
     }
+  
     .avatar{
+  
       width:34px;
+  
       height:34px;
+  
       border-radius: 999px;
+  
       display:grid;
+  
       place-items:center;
+  
       background: rgba(27,5,97,0.12);
+  
       font-weight: 900;
+  
     }
+  
     .userpill:hover .avatar{
+  
       background: rgba(0,0,0,0.08);
+  
     }
+  
     .username{
+  
       max-width: 140px;
+  
       overflow:hidden;
+  
       text-overflow: ellipsis;
+  
       white-space: nowrap;
+  
     }
+  
 
+  
     /* =========================================================
+  
        SUBBAR estilo RITO
+  
        ========================================================= */
+  
     .subbar {
+  
       background: #ffffff;
+  
       border-bottom: 1px solid #e5e7eb;
+  
       box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+  
       padding: 4px 0;
+  
     }
+  
 
+  
     .subbar-inner{
+  
       width: min(1100px, 92%);
+  
       margin: 0 auto;
+  
       display:flex;
+  
       align-items:center;
+  
       gap: 10px;
+  
       padding: 2px 0;
+  
       flex-wrap: nowrap;
+  
     }
+  
 
+  
     .all-products{
+  
       display:flex;
+  
       align-items:center;
+  
       gap:10px;
+  
       padding: 10px 14px;
+  
       border-radius: 14px;
+  
       background: #1B0561;
+  
       color: #fff;
+  
       font-weight: 900;
+  
       cursor: pointer;
+  
       user-select:none;
+  
       transition: .2s;
+  
       white-space: nowrap;
+  
       flex: 0 0 auto;
+  
       width: auto;
+  
     }
+  
     .all-products:hover{ filter: brightness(1.08); }
+  
 
+  
     .hamburger{
+  
       width: 18px;
+  
       height: 12px;
+  
       position: relative;
+  
       display:inline-block;
+  
     }
+  
     .hamburger span{
+  
       position:absolute;
+  
       left:0; right:0;
+  
       height: 2px;
+  
       background:#fff;
+  
       border-radius: 2px;
+  
     }
+  
     .hamburger span:nth-child(1){ top:0; }
+  
     .hamburger span:nth-child(2){ top:5px; opacity:.9; }
+  
     .hamburger span:nth-child(3){ top:10px; opacity:.85; }
+  
 
+  
     .subbar ul{
+  
       list-style:none;
+  
       display:flex;
+  
       align-items:center;
+  
       flex-wrap: nowrap;
+  
       gap: 0;
+  
       margin-left: 6px;
+  
       flex: 1;
+  
       justify-content: center;
+  
     }
+  
 
+  
     .subbar li{
+  
       display:flex;
+  
       align-items:center;
+  
     }
+  
 
+  
     .subbar a{
+  
       color:#1B0561;
+  
       text-decoration:none;
+  
       font-weight: 800;
+  
       font-size: 15px;
+  
       padding: 12px 14px;
+  
       line-height: 1;
+  
       display:inline-flex;
+  
       align-items:center;
+  
       justify-content:center;
+  
       transition: .18s;
+  
     }
+  
 
+  
     .subbar li + li{
+  
       border-left: 1px solid #e5e7eb;
+  
     }
+  
 
+  
     .subbar a:hover{
+  
       color:#2563eb;
+  
       background: rgba(37,99,235,0.06);
+  
     }
+  
 
+  
     /* ===== SLIDER HOME ===== */
+  
     .slider {
+  
       position: relative;
-      width: min(1200px, 92%);
+  
+      width: min(1450px, 100%);
+  
       height: auto;
+  
       margin: 10px auto;
+  
       overflow: hidden;
+  
       border-radius: 16px;
+  
       background: #e5e7eb;
+  
     }
-    .slides { position: relative; height: 590px; }
+  
+    .slides { position: relative; height: 620px; }
+  
     .slide {
+  
       position: absolute;
+  
       inset: 0;
+  
       width: 100%;
+  
       height: 100%;
+  
       object-fit: cover;
+  
       object-position: center;
+  
       background: #e5e7eb;
+  
       opacity: 0;
+  
       transition: opacity 0.6s ease;
+  
     }
+  
     .slide.active { opacity: 1; }
+  
 
+  
     .arrow {
+  
       position: absolute;
+  
       top: 50%;
+  
       transform: translateY(-50%);
+  
       background: rgba(0,0,0,0.5);
+  
       border: none;
+  
       color: white;
+  
       font-size: 24px;
+  
       padding: 10px 12px;
+  
       cursor: pointer;
+  
       border-radius: 50%;
+  
       z-index: 10;
+  
     }
+  
     .arrow.left { left: 15px; }
+  
     .arrow.right { right: 15px; }
+  
     .arrow:hover { background: rgba(0,0,0,0.8); }
+  
 
+  
     /* ====== MAIN ====== */
+  
     main { padding: 28px 0; }
+  
     .card {
+  
       background: white;
+  
       border-radius: 16px;
+  
       padding: 18px;
+  
       box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  
     }
+  
 
+  
     /* ====== AUTH SECTION ====== */
+  
     .auth-wrap {
+  
       width: min(520px, 92%);
+  
       margin: 22px auto 10px;
+  
     }
+  
     .auth-card {
+  
       background: white;
+  
       border-radius: 16px;
+  
       padding: 18px;
+  
       box-shadow: 0 10px 24px rgba(0,0,0,0.10);
+  
       position: relative;
+  
       overflow: hidden;
+  
     }
+  
     .auth-title { font-size: 28px; margin-bottom: 6px; }
+  
     .auth-sub { color:#666; margin-bottom: 14px; }
+  
 
+  
     .auth-tabs {
+  
       display:flex;
+  
       gap:10px;
+  
       margin-bottom: 14px;
+  
     }
+  
     .auth-tab {
+  
       flex:1;
+  
       padding:10px 12px;
+  
       border-radius: 12px;
+  
       border: 1px solid #e5e7eb;
+  
       background:#f9fafb;
+  
       cursor:pointer;
+  
       font-weight: 800;
+  
     }
+  
     .auth-tab.active { background:#2563eb; color:white; border-color:#2563eb; }
+  
 
+  
     .grid2 { display:grid; gap:10px; grid-template-columns: 1fr 1fr; }
+  
     .grid1 { display:grid; gap:10px; grid-template-columns: 1fr; }
+  
 
+  
     label { font-size: 13px; font-weight: 800; color:#111; }
+  
     input {
+  
       width:100%;
+  
       padding: 10px 12px;
+  
       border-radius: 12px;
+  
       border: 1px solid #e5e7eb;
+  
       outline: none;
+  
     }
+  
     input:focus {
+  
       border-color: #2563eb;
+  
       box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+  
     }
+  
 
+  
     .btn-row { display:grid; gap:10px; margin-top: 12px; }
+  
 
+  
     .btn-primary {
+  
       padding: 10px 12px;
+  
       border-radius: 12px;
+  
       border: none;
+  
       cursor: pointer;
+  
       font-weight: 900;
+  
       background: #22c55e;
+  
       color: #0b1020;
+  
     }
+  
 
+  
     .btn-google {
+  
       padding: 10px 12px;
+  
       border-radius: 12px;
+  
       border: 1px solid #e5e7eb;
+  
       cursor: pointer;
+  
       font-weight: 900;
+  
       background: white;
+  
       display:flex;
+  
       align-items:center;
+  
       justify-content:center;
+  
       gap:10px;
+  
     }
+  
     .gicon { width:18px; height:18px; display:block; }
+  
 
+  
     .auth-hint { font-size: 12px; color:#666; margin-top: 10px; }
+  
     .auth-error { color:#b91c1c; font-weight:800; margin-top:10px; display:none; }
+  
     .auth-ok { color:#166534; font-weight:800; margin-top:10px; display:none; }
+  
 
+  
     .hidden { display:none !important; }
+  
 
+  
     /* OVERLAY success dentro del cuadro */
+  
     .success-overlay{
+  
       position:absolute;
+  
       inset:0;
+  
       background: rgba(255,255,255,0.7);
+  
       backdrop-filter: blur(6px);
+  
       display:none;
+  
       align-items:center;
+  
       justify-content:center;
+  
       padding:20px;
+  
       z-index: 50;
+  
     }
+  
     .success-overlay.show{ display:flex; }
+  
     .success-box{
+  
       background:white;
+  
       border-radius: 16px;
+  
       padding: 18px;
+  
       box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  
       text-align:center;
+  
       width: min(360px, 92%);
+  
     }
+  
     .success-check{
+  
       width:52px; height:52px;
+  
       border-radius: 999px;
+  
       display:grid;
+  
       place-items:center;
+  
       background:#22c55e;
+  
       color:white;
+  
       font-size: 30px;
+  
       margin: 0 auto 10px;
+  
       font-weight: 900;
+  
     }
+  
     .success-title{ font-size: 18px; font-weight: 900; margin-bottom: 6px; }
+  
     .success-text{ color:#444; font-size: 14px; }
+  
 
+  
     /* ====== SECCIONES ====== */
+  
     .page { padding: 18px 0 40px; }
+  
 
+  
     /* ====== BANNER LARGO ====== */
+  
     .hero-wide{
+  
       width: min(1200px, 92%);
-      margin: 18px auto 18px;
+  
+      margin: 18px auto 18px;  
+  
       border-radius: 18px;
+  
       overflow: hidden;
+  
       position: relative;
+  
       background: #e5e7eb;
+  
       box-shadow: 0 10px 26px rgba(0,0,0,0.10);
+  
     }
+  
     .hero-wide img{
+  
       width: 100%;
+  
       height: 260px;
+  
       object-fit: cover;
+  
       display:block;
+  
     }
+  
     .hero-overlay{
+  
       position:absolute;
+  
       inset:0;
+  
       background: linear-gradient(90deg, rgba(0,0,0,0.55), rgba(0,0,0,0.10) 60%, rgba(0,0,0,0.00));
+  
     }
+  
     .hero-content{
+  
       position:absolute;
+  
       left: 26px;
+  
       top: 50%;
+  
       transform: translateY(-50%);
+  
       color: white;
+  
       max-width: 520px;
+  
     }
+  
     .hero-title{
+  
       font-size: 34px;
+  
       font-weight: 900;
+  
       margin-bottom: 8px;
+  
     }
+  
     .hero-text{
+  
       font-size: 14px;
+  
       opacity: .95;
+  
       line-height: 1.45;
+  
     }
+  
 
+  
     /* ====== LAYOUT CATÁLOGO ====== */
+  
     .catalog{
+  
       width: min(1200px, 92%);
+  
       margin: 0 auto;
+  
       display: grid;
+  
       grid-template-columns: 260px 1fr;
+  
       gap: 18px;
+  
     }
+  
 
+  
     /* Sidebar categorías */
+  
     .cat-box{
+  
       background: white;
+  
       border-radius: 16px;
+  
       box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+  
       overflow: hidden;
+  
     }
+  
     .cat-head{
+  
       background: #1B0561;
+  
       color: white;
+  
       padding: 14px 16px;
+  
       font-weight: 900;
+  
     }
+  
 
+  
     /* Acordeón */
+  
     .cat-acc{ padding: 8px 0; }
+  
     .cat-group{ border-bottom: 1px solid #eef2f7; }
+  
 
+  
     .cat-top{
+  
       width: 100%;
+  
       display:flex;
+  
       align-items:center;
+  
       justify-content: space-between;
+  
       padding: 13px 16px;
+  
       background: transparent;
+  
       border: none;
+  
       cursor: pointer;
+  
       font-weight: 900;
+  
       color:#111;
+  
     }
+  
     .cat-top:hover{ background:#f5f7ff; }
+  
 
+  
     .chev{
+  
       transition: transform .18s ease;
+  
       font-weight: 900;
+  
       opacity: .7;
+  
     }
+  
 
+  
     .cat-sub{
+  
       display:none;
+  
       padding: 0 10px 10px;
+  
     }
+  
 
+  
     .cat-group.open .cat-sub{ display:block; }
+  
     .cat-group.open .chev{ transform: rotate(180deg); }
+  
 
+  
     .cat-subitem{
+  
       width: 100%;
+  
       text-align:left;
+  
       padding: 10px 12px;
+  
       border-radius: 12px;
+  
       background: #f8fafc;
+  
       border: 1px solid #eef2f7;
+  
       cursor:pointer;
+  
       font-weight: 800;
+  
       margin-top: 8px;
+  
       color:#111;
+  
     }
+  
     .cat-subitem:hover{
+  
       background:#eef2ff;
+  
       border-color:#dbeafe;
+  
     }
+  
     .cat-subitem.active{
+  
       background:#1B0561;
+  
       border-color:#1B0561;
+  
       color:white;
+  
     }
+  
 
+  
     /* Área productos */
+  
     .products-area{ background: transparent; }
+  
 
+  
     .products-top{
+  
       display:flex;
+  
       align-items:center;
+  
       justify-content: space-between;
+  
       gap: 12px;
+  
       margin-bottom: 12px;
+  
     }
+  
     .products-title{
+  
       font-size: 22px;
+  
       font-weight: 900;
+  
       color:#111;
+  
     }
+  
     .products-meta{
+  
       font-size: 12px;
+  
       color:#666;
+  
       font-weight: 800;
+  
     }
+  
 
+  
     .products-grid{
+  
       display:grid;
+  
       grid-template-columns: repeat(3, minmax(0, 1fr));
+  
       gap: 14px;
+  
     }
+  
 
+  
     .pcard{
+  
       background: white;
+  
       border-radius: 16px;
+  
       overflow:hidden;
+  
       box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+  
       transition: transform .12s ease, box-shadow .12s ease;
+  
     }
+  
     .pcard:hover{
+  
       transform: translateY(-2px);
+  
       box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+  
     }
+  
     .pimg{
+  
       width: 100%;
+  
       height: 170px;
+  
       object-fit: cover;
+  
       background:#e5e7eb;
+  
       display:block;
+  
     }
+  
     .pbody{ padding: 12px 12px 14px; }
+  
     .ptitle{
+  
       font-weight: 900;
+  
       margin-bottom: 6px;
+  
       color:#111;
+  
     }
+  
     .pdesc{
+  
       font-size: 12px;
+  
       color:#666;
+  
       line-height: 1.35;
+  
       margin-bottom: 10px;
+  
       min-height: 32px;
+  
     }
+  
     .pbottom{
+  
       display:flex;
+  
       align-items:center;
+  
       justify-content: space-between;
+  
       gap:10px;
+  
     }
+  
     .pprice{ font-weight: 900; color:#1B0561; }
+  
     .pbtn{
+  
       border:none;
+  
       background:#2563eb;
+  
       color:white;
+  
       font-weight: 900;
+  
       padding: 10px 12px;
+  
       border-radius: 12px;
+  
       cursor:pointer;
+  
     }
+  
     .pbtn:hover{ filter: brightness(1.06); }
+  
 
+  
     /* ====== MÁS VENDIDOS (CARRUSEL) ====== */
+  
     .best-wrap{
+  
       width: min(1200px, 92%);
+  
       margin: 6px auto 20px;
+  
     }
+  
 
+  
     .best-head{
+  
       display:flex;
+  
       align-items:flex-end;
+  
       justify-content: space-between;
+  
       gap: 12px;
+  
       margin-bottom: 10px;
+  
     }
+  
 
+  
     .best-title{ font-size: 22px; font-weight: 900; }
+  
     .best-sub{ font-size: 12px; font-weight: 800; color:#666; }
+  
 
+  
     .best-carousel{ position: relative; border-radius: 18px; }
+  
     .best-viewport{
+  
       overflow: hidden;
+  
       border-radius: 18px;
+  
       position: relative;
+  
     }
+  
 
+  
     /* desvanecido de lados */
+  
     .best-viewport::before,
+  
     .best-viewport::after{
+  
       content:"";
+  
       position:absolute;
+  
       top:0; bottom:0;
+  
       width: 70px;
+  
       pointer-events:none;
+  
       z-index: 4;
+  
     }
+  
     .best-viewport::before{
+  
       left:0;
+  
       background: linear-gradient(90deg, rgba(246,247,251,1), rgba(246,247,251,0));
+  
     }
+  
     .best-viewport::after{
+  
       right:0;
+  
       background: linear-gradient(270deg, rgba(246,247,251,1), rgba(246,247,251,0));
+  
     }
+  
 
+  
     .best-track{
+  
       display:flex;
+  
       gap: 14px;
+  
       padding: 6px 52px; /* espacio para fades */
+  
       transition: transform .35s ease;
+  
       will-change: transform;
+  
     }
+  
 
+  
     .best-card{
+  
       flex: 0 0 260px;
+  
       background: white;
+  
       border-radius: 16px;
+  
       overflow: hidden;
+  
       box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+  
     }
+  
 
+  
     .best-img{
+  
       width: 100%;
+  
       height: 150px;
+  
       object-fit: cover;
+  
       background:#e5e7eb;
+  
       display:block;
+  
     }
+  
 
+  
     .best-body{ padding: 12px; }
+  
     .best-name{ font-weight: 900; margin-bottom: 6px; }
+  
     .best-desc{ font-size: 12px; color:#666; min-height: 30px; line-height: 1.35; }
+  
     .best-bottom{
+  
       display:flex;
+  
       align-items:center;
+  
       justify-content: space-between;
+  
       margin-top: 10px;
+  
       gap: 10px;
+  
     }
+  
     .best-price{ font-weight: 900; color:#1B0561; }
+  
     .best-btn{
+  
       border:none;
+  
       background:#2563eb;
+  
       color:white;
+  
       font-weight: 900;
+  
       padding: 10px 12px;
+  
       border-radius: 12px;
+  
       cursor:pointer;
+  
     }
+  
 
+  
     .best-arrow{
+  
       position:absolute;
+  
       top: 50%;
+  
       transform: translateY(-50%);
+  
       width: 40px;
+  
       height: 40px;
+  
       border-radius: 999px;
+  
       border: none;
+  
       cursor: pointer;
+  
       z-index: 10;
+  
       background: rgba(27,5,97,0.92);
+  
       color: white;
+  
       font-size: 18px;
+  
     }
+  
     .best-arrow.left{ left: 6px; }
+  
     .best-arrow.right{ right: 6px; }
+  
     .best-arrow:hover{ filter: brightness(1.08); }
+  
 
+  
     /* Responsive general */
+  
     @media (max-width: 980px){
+  
       .catalog{ grid-template-columns: 1fr; }
+  
       .products-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  
     }
+  
     @media (max-width: 560px){
+  
       .hero-wide img{ height: 200px; }
+  
       .hero-title{ font-size: 24px; }
+  
       .products-grid{ grid-template-columns: 1fr; }
+  
 
+  
       .best-card{ flex-basis: 220px; }
+  
       .best-track{ padding: 6px 40px; }
+  
     }
+  
 
+  
     /* Responsive top/sub */
+  
     @media (max-width: 860px){
+  
       .subbar-inner{ flex-wrap: wrap; }
+  
       .subbar ul{ justify-content: flex-start; flex-wrap: wrap; }
+  
     }
+  
 
+  
     @media (max-width: 760px) {
+  
       .search { display: none; }
+  
       .slides { height: 260px; }
+  
       .logo-img { height: 60px; }
+  
       .grid2 { grid-template-columns: 1fr; }
+  
 
+  
       .subbar-inner{
+  
         flex-direction: column;
+  
         align-items: stretch;
+  
         gap: 10px;
+  
       }
+  
       .subbar ul{ justify-content: center; }
+  
       .subbar a{
+  
         padding: 9px 12px;
+  
         font-size: 14px;
+  
       }
+  
       .all-products{ justify-content:center; }
+  
     }
-  </style>
-</head>
+  
+  </style></head><body>  <!-- TOP BAR -->  <header class="topbar"><div class="container topbar-row">
 
-<body>
-  <!-- TOP BAR -->
-  <header class="topbar">
-    <div class="container topbar-row">
-      <div class="brand">
-        <img src="logojr.png" alt="JR DENT" class="logo-img">
+  <div class="brand">
+
+    <img src="logojr.png" alt="JR DENT" class="logo-img">
+
+  </div>
+
+
+
+  <div class="search">
+
+    <input type="text" placeholder="Buscar productos, repuestos, servicios..." />
+
+    <button type="button">Buscar</button>
+
+  </div>
+
+
+
+  <div class="actions">
+
+    <button class="linkbtn" id="btnLogin" type="button">Iniciar sesión</button>
+
+    <button class="linkbtn" id="btnRegister" type="button">Crear cuenta</button>
+
+
+
+    <!-- PERFIL (solo logueado) -->
+
+    <button class="userpill hidden" id="userPill" type="button" title="Mi cuenta">
+
+      <span class="avatar" id="avatarInitials">JR</span>
+
+      <span class="username" id="userName">Usuario</span>
+
+    </button>
+
+
+
+    <button class="linkbtn" id="btnOrders" type="button">Mis compras</button>
+
+    <button class="linkbtn hidden" id="btnLogout" type="button">Salir</button>
+
+
+
+    <button class="cart-btn" type="button" id="btnCart" aria-label="Carrito">
+
+      <svg xmlns="http://www.w3.org/2000/svg"
+
+           width="22" height="22"
+
+           viewBox="0 0 24 24"
+
+           fill="none"
+
+           stroke="currentColor"
+
+           stroke-width="2"
+
+           stroke-linecap="round"
+
+           stroke-linejoin="round">
+
+        <circle cx="9" cy="21" r="1"/>
+
+        <circle cx="20" cy="21" r="1"/>
+
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+
+      </svg>
+
+      <span class="cart-count" id="cartCount">0</span>
+
+    </button>
+
+  </div>
+
+</div>
+
+  </header>  <!-- SUB BAR -->  <nav class="subbar"><div class="subbar-inner">
+
+  <div class="all-products" id="allProductsBtn" title="Ver todos los productos">
+
+    <span class="hamburger" aria-hidden="true">
+
+      <span></span><span></span><span></span>
+
+    </span>
+
+    Todos nuestros productos
+
+  </div>
+
+
+
+  <ul>
+
+    <li><a href="#" id="navHome">Inicio</a></li>
+
+    <li><a href="#" id="navEquipos">Equipos Dentales</a></li>
+
+    <li><a href="#" id="navPiezas">Piezas de mano</a></li>
+
+    <li><a href="#" id="navRepuestos">Repuestos</a></li>
+
+    <li><a href="#" id="navServicio">Servicio técnico</a></li>
+
+    <li><a href="#" id="navContacto">Contacto</a></li>
+
+  </ul>
+
+</div>
+
+  </nav>  <!-- HOME -->  <section id="homeSection"><section class="slider" id="homeSlider">
+
+  <div class="slides">
+
+    <img src="imagen1.jpg" class="slide active" alt="Banner 1">
+
+    <img src="imagen2.jpg" class="slide" alt="Banner 2">
+
+    <img src="imagen3.jpg" class="slide" alt="Banner 3">
+
+  </div>
+
+  <button class="arrow left" id="prevBtn" type="button">❮</button>
+
+  <button class="arrow right" id="nextBtn" type="button">❯</button>
+
+</section>
+
+
+
+<main>
+
+  <div class="container">
+
+    <div class="card">
+
+      <h1>Bienvenido a JR DENT</h1>
+
+      <p>Tu página ya tiene la banda superior. Ahora iremos armando el resto (banner, productos, etc.).</p>
+
+    </div>
+
+  </div>
+
+</main>
+
+  </section>  <!-- EQUIPOS DENTALES -->  <section id="pageEquipos" class="page hidden"><!-- Banner largo -->
+
+<div class="hero-wide">
+
+  <img src="banner-equipos.jpg" alt="JR DENT - Equipos Dentales">
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+
+    <div class="hero-title">Equipos Dentales</div>
+
+    <div class="hero-text">
+
+      Equipos, insumos y soluciones para tu consultorio.
+
+      Envíos a todo Perú • Garantía • Soporte técnico.
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- MÁS VENDIDOS (CARRUSEL INFINITO) -->
+
+<div class="best-wrap">
+
+  <div class="best-head">
+
+    <h2 class="best-title">Nuestras Mejores Ofertas</h2>
+
+    <p class="best-sub">Lo más pedido esta semana</p>
+
+  </div>
+
+
+
+  <div class="best-carousel" id="bestCarousel">
+
+    <button class="best-arrow left" id="bestPrev" type="button">❮</button>
+
+
+
+    <div class="best-viewport" id="bestViewport">
+
+      <div class="best-track" id="bestTrack">
+
+
+
+        <article class="best-card">
+
+          <img class="best-img" src="eq1.jpg" alt="Producto 1">
+
+          <div class="best-body">
+
+        <div class="best-name">Lámpara Led B</div>
+
+            <div class="best-desc">Lampara para Fotocurados</div>
+
+            <div class="best-bottom">
+
+              <div class="best-price">S/ 199.99</div>
+
+              <button class="best-btn" type="button">Ver</button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="best-card">
+
+          <img class="best-img" src="eq2.jpg" alt="Producto 2">
+
+          <div class="best-body">
+
+            <div class="best-name">UDS M</div>
+
+            <div class="best-desc">Destartaje,Endodoncia</div>
+
+            <div class="best-bottom">
+
+              <div class="best-price">S/ 419.99</div>
+
+              <button class="best-btn" type="button">Ver</button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="best-card">
+
+          <img class="best-img" src="eq3.jpg" alt="Producto 3">
+
+          <div class="best-body">
+
+            <div class="best-name">Rayos X Portatil</div>
+
+            <div class="best-desc">Rayos X con RVG</div>
+
+            <div class="best-bottom">
+
+              <div class="best-price">S/ 6799.99</div>
+
+              <button class="best-btn" type="button">Ver</button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="best-card">
+
+          <img class="best-img" src="eq4.jpg" alt="Producto 4">
+
+          <div class="best-body">
+
+            <div class="best-name">I LED II</div>
+
+            <div class="best-desc">Lampara Fotocurado de Alta Potencia</div>
+
+            <div class="best-bottom">
+
+              <div class="best-price">S/689.99</div>
+
+              <button class="best-btn" type="button">Ver</button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="best-card">
+
+          <img class="best-img" src="eq5.jpg" alt="Producto 5">
+
+          <div class="best-body">
+
+            <div class="best-name">UDS U6</div>
+
+            <div class="best-desc">ultra Sonido Tactil</div>
+
+            <div class="best-bottom">
+
+              <div class="best-price">S/ 799.99</div>
+
+              <button class="best-btn" type="button">Ver</button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
       </div>
 
-      <div class="search">
-        <input type="text" placeholder="Buscar productos, repuestos, servicios..." />
-        <button type="button">Buscar</button>
-      </div>
+    </div>
 
-      <div class="actions">
-        <button class="linkbtn" id="btnLogin" type="button">Iniciar sesión</button>
-        <button class="linkbtn" id="btnRegister" type="button">Crear cuenta</button>
 
-        <!-- PERFIL (solo logueado) -->
-        <button class="userpill hidden" id="userPill" type="button" title="Mi cuenta">
-          <span class="avatar" id="avatarInitials">JR</span>
-          <span class="username" id="userName">Usuario</span>
+
+    <button class="best-arrow right" id="bestNext" type="button">❯</button>
+
+  </div>
+
+</div>
+
+
+
+<!-- CATÁLOGO -->
+
+<div class="catalog">
+
+
+
+  <aside class="cat-box">
+
+    <div class="cat-head">Categorías</div>
+
+
+
+    <div class="cat-acc">
+
+      <div class="cat-group open">
+
+        <button class="cat-top" type="button">
+
+          Todos
+
+          <span class="chev">▾</span>
+
         </button>
 
-        <button class="linkbtn" id="btnOrders" type="button">Mis compras</button>
-        <button class="linkbtn hidden" id="btnLogout" type="button">Salir</button>
+        <div class="cat-sub">
 
-        <button class="cart-btn" type="button" id="btnCart" aria-label="Carrito">
-          <svg xmlns="http://www.w3.org/2000/svg"
-               width="22" height="22"
-               viewBox="0 0 24 24"
-               fill="none"
-               stroke="currentColor"
-               stroke-width="2"
-               stroke-linecap="round"
-               stroke-linejoin="round">
-            <circle cx="9" cy="21" r="1"/>
-            <circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          <button class="cat-subitem active" type="button" data-cat="todo" data-brand="all">Ver todo</button>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="cat-group">
+
+        <button class="cat-top" type="button">
+
+          Ultra Sonidos
+
+          <span class="chev">▾</span>
+
+        </button>
+
+        <div class="cat-sub">
+
+          <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-J1">UDS-J1</button>
+
+          <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-J2">UDS-J2</button>
+
+          <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-A LED">UDS-A LED</button>
+
+          <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-E LED">UDS-E LED</button>
+
+          <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-U6">UDS-U6</button>
+
+          <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-M">UDS-M</button>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="cat-group">
+
+        <button class="cat-top" type="button">
+
+          Lamparas
+
+          <span class="chev">▾</span>
+
+        </button>
+
+        <div class="cat-sub">
+
+          <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED B">LED B</button>
+
+          <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED D">LED D</button>
+
+          <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED F">LED F</button>
+
+          <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED">I LED</button>
+
+          <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED PLUS">I LED PLUS</button>
+
+          <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED MAX">I LED MAX</button>
+
+          <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED II">I LED II</button>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="cat-group">
+
+        <button class="cat-top" type="button">
+
+          Endomotor
+
+          <span class="chev">▾</span>
+
+        </button>
+
+        <div class="cat-sub">
+
+          <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ENDO-MOTOR">ENDO-MOTOR</button>
+
+          <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ZR-TOUCH">ZR TOUCH</button>
+
+          <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="BR-TOUCH">BR TOUCH</button>
+
+          <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ENDO-MASTER">ENDO-MASTER</button>
+
+          <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="LOCALIZADOR">LOCALIZADOR</button>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="cat-group">
+
+        <button class="cat-top" type="button">
+
+          Rayos X
+
+          <span class="chev">▾</span>
+
+        </button>
+
+        <div class="cat-sub">
+
+          <button class="cat-subitem" type="button" data-cat="Rayos X" data-brand="Rayos X Portatil">Rayos X Portatil</button>
+
+          <button class="cat-subitem" type="button" data-cat="Rayos X" data-brand="RVG">RVG</button>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </aside>
+
+
+
+  <section class="products-area">
+
+    <div class="products-top">
+
+      <div class="products-title" id="equiposTitle">Equipos Dentales</div>
+
+      <div class="products-meta" id="equiposMeta">Mostrando 0 producto(s)</div>
+
+    </div>
+
+
+
+    <div class="products-grid" id="equiposGrid">
+
+
+
+      <!-- OJO: aquí tus data-cat y data-brand deben calzar con los botones -->
+
+      <article class="pcard" data-cat="Ultra Sonidos" data-brand="UDS-J1">
+
+        <img class="pimg" src="eqp1.jpg" alt="UDS J1">
+
+        <div class="pbody">
+
+          <div class="ptitle">UDS J1</div>
+
+          <div class="pdesc">Destartraje</div>
+
+          <div class="pbottom">
+
+            <div class="pprice">S/480.00</div>
+
+            <button class="pbtn" type="button">Ver</button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="pcard" data-cat="Lamparas" data-brand="LED B">
+
+        <img class="pimg" src="eqp2.jpg" alt="Lámpara LED B">
+
+        <div class="pbody">
+
+          <div class="ptitle">Lampara LED B</div>
+
+          <div class="pdesc">Potencia 1200 • Fotocurado 5/20s</div>
+
+          <div class="pbottom">
+
+            <div class="pprice">S/ 200.00</div>
+
+            <button class="pbtn" type="button">Ver</button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="pcard" data-cat="Endomotor" data-brand="ENDO-MOTOR">
+
+        <img class="pimg" src="eqp3.jpg" alt="ENDO MOTOR">
+
+        <div class="pbody">
+
+          <div class="ptitle">ENDO MOTOR</div>
+
+          <div class="pdesc">Endodoncia rotatoria</div>
+
+          <div class="pbottom">
+
+            <div class="pprice">S/ 750.00</div>
+
+            <button class="pbtn" type="button">Ver</button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- ✅ FIX: aquí faltaba el ">" y rompía todo -->
+
+      <article class="pcard" data-cat="Rayos X" data-brand="Rayos X Portatil">
+
+        <img class="pimg" src="eqp4.jpg" alt="RAYOS X">
+
+        <div class="pbody">
+
+          <div class="ptitle">RAYOS X PORTATIL</div>
+
+          <div class="pdesc">Rayos X portátil</div>
+
+          <div class="pbottom">
+
+            <div class="pprice">S/ 3600.00</div>
+
+            <button class="pbtn" type="button">Ver</button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+    </div>
+
+  </section>
+
+
+
+</div>
+
+  </section>  <!-- REPUETOS / PRODUCTOS -->  <section id="pageRepuestos" class="page hidden"><div class="hero-wide">
+
+  <img src="banner-repuestos.jpg" alt="JR DENT - Repuestos">
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+
+    <div class="hero-title">Repuestos y Accesorios</div>
+
+    <div class="hero-text">
+
+      Repuestos para piezas de mano, turbinas, micromotores y más.
+
+      Envíos a todo Perú • Atención rápida • Garantía.
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div class="catalog">
+
+
+
+  <aside class="cat-box">
+
+    <div class="cat-head">Categorías</div>
+
+
+
+    <div class="cat-acc">
+
+      <div class="cat-group open">
+
+        <button class="cat-top" type="button">
+
+          Todos
+
+          <span class="chev">▾</span>
+
+        </button>
+
+        <div class="cat-sub">
+
+          <button class="cat-subitem active" type="button" data-cat="todo" data-brand="all">Ver todo</button>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="cat-group">
+
+        <button class="cat-top" type="button">
+
+          Repuestos de Turbina
+
+          <span class="chev">▾</span>
+
+        </button>
+
+        <div class="cat-sub">
+
+          <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brands="NSK">NSK</button>
+
+          <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brands="BEING">BEING</button>
+
+          <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brands="YOUNITY">YOUNITY</button>
+
+          <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brands="KAVO">KAVO</button>
+
+          <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brands="SIGMA">SIGMA</button>
+
+          <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brands="WyH">WyH</button>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="cat-group">
+
+        <button class="cat-top" type="button">
+
+          Rodajes
+
+          <span class="chev">▾</span>
+
+        </button>
+
+        <div class="cat-sub">
+
+          <button class="cat-subitem" type="button" data-cat="Rodajes" data-brands="NSK">NSK</button>
+
+          <button class="cat-subitem" type="button" data-cat="Rodajes" data-brands="BEING">BEING</button>
+
+          <button class="cat-subitem" type="button" data-cat="Rodajes" data-brands="YOUNITY">YOUNITY</button>
+
+          <button class="cat-subitem" type="button" data-cat="Rodajes" data-brands="KAVO">KAVO</button>
+
+          <button class="cat-subitem" type="button" data-cat="Rodajes" data-brands="WyH">WyH</button>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="cat-group">
+
+        <button class="cat-top" type="button">
+
+          Repuestos de Micromotor
+
+          <span class="chev">▾</span>
+
+        </button>
+
+        <div class="cat-sub">
+
+          <button class="cat-subitem" type="button" data-cat="Repuestos de Micromotor" data-brands="MARATHON">MARATHON</button>
+
+          <button class="cat-subitem" type="button" data-cat="Repuestos de Micromotor" data-brands="STRONG">STRONG</button>
+
+          <button class="cat-subitem" type="button" data-cat="Repuestos de Micromotor" data-brands="RENHE">RENHE</button>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="cat-group">
+
+        <button class="cat-top" type="button">
+
+          Repuestos Extras
+
+          <span class="chev">▾</span>
+
+        </button>
+
+        <div class="cat-sub">
+
+          <button class="cat-subitem" type="button" data-cat="Repuestos Extras" data-brands="Woodpecker">Woodpecker</button>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </aside>
+
+
+
+  <section class="products-area">
+
+    <div class="products-top">
+
+      <div class="products-title" id="productsTitle">Repuestos</div>
+
+      <div class="products-meta" id="productsMeta">Mostrando 0 producto(s)</div>
+
+    </div>
+
+
+
+    <div class="products-grid" id="productsGrid">
+
+
+
+      <article class="pcard" data-cat="Rodajes" data-brands="NSK,BEING">
+
+        <img class="pimg" src="p1.jpg" alt="Rodaje Ceramico">
+
+        <div class="pbody">
+
+          <div class="ptitle">Rodaje Cerámico NSK (Genérico)</div>
+
+          <div class="pdesc">Rodaje cerámico modelo NSK (genérico) para alta velocidad.</div>
+
+          <div class="pbottom">
+
+            <div class="pprice">S/40.00</div>
+
+            <button class="pbtn" type="button">Ver</button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="pcard" data-cat="Rodajes" data-brand="KAVO">
+
+        <img class="pimg" src="p2.jpg" alt="Rodaje Cerámico Kavo">
+
+        <div class="pbody">
+
+          <div class="ptitle">Rodaje Cerámico Kavo</div>
+
+          <div class="pdesc">Rodaje cerámico modelo Kavo para alta velocidad.</div>
+
+          <div class="pbottom">
+
+            <div class="pprice">S/40.00</div>
+
+            <button class="pbtn" type="button">Ver</button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="pcard" data-cat="Repuestos de Turbina" data-brand="NSK">
+
+        <img class="pimg" src="p4.jpg" alt="Rotor Contra Angulo">
+
+        <div class="pbody">
+
+          <div class="ptitle">Rotor Contra Ángulo</div>
+
+          <div class="pdesc">Rotor de pieza de mano de baja, contra ángulo.</div>
+
+          <div class="pbottom">
+
+            <div class="pprice">S/80.00</div>
+
+            <button class="pbtn" type="button">Ver</button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="pcard" data-cat="Rodajes" data-brand="WyH">
+
+        <img class="pimg" src="p7.jpg" alt="Rodaje WyH">
+
+        <div class="pbody">
+
+          <div class="ptitle">Rodaje WyH</div>
+
+          <div class="pdesc">Rodaje cerámico WyH.</div>
+
+          <div class="pbottom">
+
+            <div class="pprice">S/60.00</div>
+
+            <button class="pbtn" type="button">Ver</button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="pcard" data-cat="Repuestos de Turbina" data-brand="NSK">
+
+        <img class="pimg" src="p8.jpg" alt="Seguro de Contra Angulo">
+
+        <div class="pbody">
+
+          <div class="ptitle">Seguro de Contra Ángulo</div>
+
+          <div class="pdesc">Seguro de contra ángulo NSK.</div>
+
+          <div class="pbottom">
+
+            <div class="pprice">S/15.00</div>
+
+            <button class="pbtn" type="button">Ver</button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <article class="pcard" data-cat="Repuestos de Turbina" data-brand="NSK">
+
+        <img class="pimg" src="p9.jpg" alt="Tapa NSK">
+
+        <div class="pbody">
+
+          <div class="ptitle">Tapa NSK</div>
+
+          <div class="pdesc">Tapa NSK Pana Air.</div>
+
+          <div class="pbottom">
+
+            <div class="pprice">S/20.00</div>
+
+            <button class="pbtn" type="button">Ver</button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+    </div>
+
+  </section>
+
+</div>
+
+  </section>  <!-- AUTH -->  <section id="authSection" class="hidden"><div class="auth-wrap">
+
+  <div class="auth-card" id="authCard">
+
+    <div class="success-overlay" id="successOverlay">
+
+      <div class="success-box">
+
+        <div class="success-check">✓</div>
+
+        <div class="success-title" id="successTitle">¡Listo!</div>
+
+        <div class="success-text" id="successText">Ya te has registrado.</div>
+
+      </div>
+
+    </div>
+
+
+
+    <h2 class="auth-title" id="authTitle">Iniciar sesión</h2>
+
+    <p class="auth-sub" id="authSub">Accede para ver tus compras y guardar favoritos.</p>
+
+
+
+    <div class="auth-tabs">
+
+      <button class="auth-tab active" id="tabLogin" type="button">Login</button>
+
+      <button class="auth-tab" id="tabRegister" type="button">Registro</button>
+
+    </div>
+
+
+
+    <!-- LOGIN FORM -->
+
+    <div id="loginForm">
+
+      <div class="grid1">
+
+        <div>
+
+          <label for="loginEmail">Correo</label>
+
+          <input id="loginEmail" type="email" placeholder="correo@email.com" />
+
+        </div>
+
+        <div>
+
+          <label for="loginPassword">Contraseña</label>
+
+          <input id="loginPassword" type="password" placeholder="••••••••" />
+
+        </div>
+
+      </div>
+
+
+
+      <div class="btn-row">
+
+        <button class="btn-primary" id="btnDoLogin" type="button">Entrar</button>
+
+
+
+        <button class="btn-google" id="btnGoogleLogin" type="button">
+
+          <svg class="gicon" viewBox="0 0 48 48" aria-hidden="true">
+
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.02 1.53 7.41 2.81l5.41-5.41C33.6 4.02 29.2 2 24 2 14.62 2 6.51 7.38 2.69 15.19l6.78 5.26C11.27 14.57 17.12 9.5 24 9.5z"/>
+
+            <path fill="#4285F4" d="M46.5 24.5c0-1.64-.15-2.83-.47-4.07H24v7.72h12.84c-.26 2.07-1.68 5.19-4.84 7.28l7.43 5.76c4.32-4 7.07-9.88 7.07-16.69z"/>
+
+            <path fill="#FBBC05" d="M9.47 28.45c-.42-1.26-.66-2.6-.66-3.95s.24-2.69.65-3.95l-6.78-5.26C1.06 18.62 0 21.48 0 24.5c0 3.02 1.06 5.88 2.68 8.21l6.79-4.26z"/>
+
+            <path fill="#34A853" d="M24 47c6.2 0 11.4-2.05 15.2-5.58l-7.43-5.76c-2 1.39-4.7 2.37-7.77 2.37-6.88 0-12.73-5.07-14.53-11.95l-6.79 4.26C6.51 40.62 14.62 47 24 47z"/>
+
           </svg>
-          <span class="cart-count" id="cartCount">0</span>
+
+          Continuar con Google
+
         </button>
-      </div>
-    </div>
-  </header>
 
-  <!-- SUB BAR -->
-  <nav class="subbar">
-    <div class="subbar-inner">
-      <div class="all-products" id="allProductsBtn" title="Ver todos los productos">
-        <span class="hamburger" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </span>
-        Todos nuestros productos
       </div>
 
-      <ul>
-        <li><a href="#" id="navHome">Inicio</a></li>
-        <li><a href="#" id="navEquipos">Equipos Dentales</a></li>
-        <li><a href="#" id="navPiezas">Piezas de mano</a></li>
-        <li><a href="#" id="navRepuestos">Repuestos</a></li>
-        <li><a href="#" id="navServicio">Servicio técnico</a></li>
-        <li><a href="#" id="navContacto">Contacto</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- HOME -->
-  <section id="homeSection">
-    <section class="slider" id="homeSlider">
-      <div class="slides">
-        <img src="imagen1.jpg" class="slide active" alt="Banner 1">
-        <img src="imagen2.jpg" class="slide" alt="Banner 2">
-        <img src="imagen3.jpg" class="slide" alt="Banner 3">
-      </div>
-      <button class="arrow left" id="prevBtn" type="button">❮</button>
-      <button class="arrow right" id="nextBtn" type="button">❯</button>
-    </section>
-
-    <main>
-      <div class="container">
-        <div class="card">
-          <h1>Bienvenido a JR DENT</h1>
-          <p>Tu página ya tiene la banda superior. Ahora iremos armando el resto (banner, productos, etc.).</p>
-        </div>
-      </div>
-    </main>
-  </section>
-
-  <!-- EQUIPOS DENTALES -->
-  <section id="pageEquipos" class="page hidden">
-
-    <!-- Banner largo -->
-    <div class="hero-wide">
-      <img src="banner-equipos.jpg" alt="JR DENT - Equipos Dentales">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <div class="hero-title">Equipos Dentales</div>
-        <div class="hero-text">
-          Equipos, insumos y soluciones para tu consultorio.
-          Envíos a todo Perú • Garantía • Soporte técnico.
-        </div>
-      </div>
     </div>
 
-    <!-- MÁS VENDIDOS (CARRUSEL INFINITO) -->
-    <div class="best-wrap">
-      <div class="best-head">
-        <h2 class="best-title">Nuestros productos más vendidos</h2>
-        <p class="best-sub">Lo más pedido esta semana</p>
+
+
+    <!-- REGISTER FORM -->
+
+    <div id="registerForm" class="hidden">
+
+      <div class="grid2">
+
+        <div>
+
+          <label for="regName">Nombre</label>
+
+          <input id="regName" type="text" placeholder="Tu nombre completo" />
+
+        </div>
+
+        <div>
+
+          <label for="regPhone">Teléfono</label>
+
+          <input id="regPhone" type="tel" placeholder="Ej: 999 999 999" />
+
+        </div>
+
       </div>
 
-      <div class="best-carousel" id="bestCarousel">
-        <button class="best-arrow left" id="bestPrev" type="button">❮</button>
 
-        <div class="best-viewport" id="bestViewport">
-          <div class="best-track" id="bestTrack">
 
-            <article class="best-card">
-              <img class="best-img" src="eq1.jpg" alt="Producto 1">
-              <div class="best-body">
-                <div class="best-name">Lámpara LED</div>
-                <div class="best-desc">Alta iluminación • bajo consumo</div>
-                <div class="best-bottom">
-                  <div class="best-price">S/ 249.00</div>
-                  <button class="best-btn" type="button">Ver</button>
-                </div>
-              </div>
-            </article>
+      <div class="grid2" style="margin-top:10px;">
 
-            <article class="best-card">
-              <img class="best-img" src="eq2.jpg" alt="Producto 2">
-              <div class="best-body">
-                <div class="best-name">Ultrasonido</div>
-                <div class="best-desc">Limpieza profesional</div>
-                <div class="best-bottom">
-                  <div class="best-price">S/ 399.00</div>
-                  <button class="best-btn" type="button">Ver</button>
-                </div>
-              </div>
-            </article>
+        <div>
 
-            <article class="best-card">
-              <img class="best-img" src="eq3.jpg" alt="Producto 3">
-              <div class="best-body">
-                <div class="best-name">Fotocurado</div>
-                <div class="best-desc">Potente • recargable</div>
-                <div class="best-bottom">
-                  <div class="best-price">S/ 189.00</div>
-                  <button class="best-btn" type="button">Ver</button>
-                </div>
-              </div>
-            </article>
+          <label for="regCountry">País</label>
 
-            <article class="best-card">
-              <img class="best-img" src="eq4.jpg" alt="Producto 4">
-              <div class="best-body">
-                <div class="best-name">Compresora</div>
-                <div class="best-desc">Silenciosa • estable</div>
-                <div class="best-bottom">
-                  <div class="best-price">S/ 1290.00</div>
-                  <button class="best-btn" type="button">Ver</button>
-                </div>
-              </div>
-            </article>
+          <input id="regCountry" type="text" placeholder="Ej: Perú" />
 
-            <article class="best-card">
-              <img class="best-img" src="eq5.jpg" alt="Producto 5">
-              <div class="best-body">
-                <div class="best-name">Autoclave</div>
-                <div class="best-desc">Esterilización segura</div>
-                <div class="best-bottom">
-                  <div class="best-price">S/ 2190.00</div>
-                  <button class="best-btn" type="button">Ver</button>
-                </div>
-              </div>
-            </article>
-
-          </div>
         </div>
 
-        <button class="best-arrow right" id="bestNext" type="button">❯</button>
+        <div>
+
+          <label for="regDistrict">Distrito</label>
+
+          <input id="regDistrict" type="text" placeholder="Ej: Los Olivos" />
+
+        </div>
+
       </div>
-    </div>
 
-    <!-- CATÁLOGO -->
-    <div class="catalog">
 
-      <aside class="cat-box">
-        <div class="cat-head">Categorías</div>
 
-        <div class="cat-acc">
-          <div class="cat-group open">
-            <button class="cat-top" type="button">
-              Todos
-              <span class="chev">▾</span>
-            </button>
-            <div class="cat-sub">
-              <button class="cat-subitem active" type="button" data-cat="todo" data-brand="all">Ver todo</button>
-            </div>
-          </div>
+      <div class="grid1" style="margin-top:10px;">
 
-          <div class="cat-group">
-            <button class="cat-top" type="button">
-              Ultra Sonidos
-              <span class="chev">▾</span>
-            </button>
-            <div class="cat-sub">
-              <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-J1">UDS-J1</button>
-              <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-J2">UDS-J2</button>
-              <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-A LED">UDS-A LED</button>
-              <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-E LED">UDS-E LED</button>
-              <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-U6">UDS-U6</button>
-              <button class="cat-subitem" type="button" data-cat="Ultra Sonidos" data-brand="UDS-M">UDS-M</button>
-            </div>
-          </div>
+        <div>
 
-          <div class="cat-group">
-            <button class="cat-top" type="button">
-              Lamparas
-              <span class="chev">▾</span>
-            </button>
-            <div class="cat-sub">
-              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED B">LED B</button>
-              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED D">LED D</button>
-              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="LED F">LED F</button>
-              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED">I LED</button>
-              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED PLUS">I LED PLUS</button>
-              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED MAX">I LED MAX</button>
-              <button class="cat-subitem" type="button" data-cat="Lamparas" data-brand="I LED II">I LED II</button>
-            </div>
-          </div>
+          <label for="regAddress">Dirección</label>
 
-          <div class="cat-group">
-            <button class="cat-top" type="button">
-              Endomotor
-              <span class="chev">▾</span>
-            </button>
-            <div class="cat-sub">
-              <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ENDO-MOTOR">ENDO-MOTOR</button>
-              <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ZR-TOUCH">ZR TOUCH</button>
-              <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="BR-TOUCH">BR TOUCH</button>
-              <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="ENDO-MASTER">ENDO-MASTER</button>
-              <button class="cat-subitem" type="button" data-cat="Endomotor" data-brand="LOCALIZADOR">LOCALIZADOR</button>
-            </div>
-          </div>
-
-          <div class="cat-group">
-            <button class="cat-top" type="button">
-              Rayos X
-              <span class="chev">▾</span>
-            </button>
-            <div class="cat-sub">
-              <button class="cat-subitem" type="button" data-cat="Rayos X" data-brand="Rayos X Portatil">Rayos X Portatil</button>
-              <button class="cat-subitem" type="button" data-cat="Rayos X" data-brand="RVG">RVG</button>
-            </div>
-          </div>
+          <input id="regAddress" type="text" placeholder="Ej: Av. ... #..." />
 
         </div>
-      </aside>
 
-      <section class="products-area">
-        <div class="products-top">
-          <div class="products-title" id="equiposTitle">Equipos Dentales</div>
-          <div class="products-meta" id="equiposMeta">Mostrando 0 producto(s)</div>
-        </div>
-
-        <div class="products-grid" id="equiposGrid">
-
-          <article class="pcard" data-cat="Ultra Sonidos" data-brand="UDS-J1">
-            <img class="pimg" src="eqp1.jpg" alt="UDS J1">
-            <div class="pbody">
-              <div class="ptitle">UDS J1</div>
-              <div class="pdesc">Destartraje</div>
-              <div class="pbottom">
-                <div class="pprice">S/480.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="pcard" data-cat="Lamparas" data-brand="LED B">
-            <img class="pimg" src="eqp2.jpg" alt="Lámpara LED B">
-            <div class="pbody">
-              <div class="ptitle">Lampara LED B</div>
-              <div class="pdesc">Potencia 1200 • Fotocurado 5/20s</div>
-              <div class="pbottom">
-                <div class="pprice">S/ 200.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="pcard" data-cat="Endomotor" data-brand="ENDO-MOTOR">
-            <img class="pimg" src="eqp3.jpg" alt="ENDO MOTOR">
-            <div class="pbody">
-              <div class="ptitle">ENDO MOTOR</div>
-              <div class="pdesc">Endodoncia rotatoria</div>
-              <div class="pbottom">
-                <div class="pprice">S/ 750.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="pcard" data-cat="Rayos X" data-brand="Rayos X Portatil">
-            <img class="pimg" src="eqp4.jpg" alt="RAYOS X">
-            <div class="pbody">
-              <div class="ptitle">RAYOS X PORTATIL</div>
-              <div class="pdesc">Rayos X portátil</div>
-              <div class="pbottom">
-                <div class="pprice">S/ 3600.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </section>
-
-    </div>
-  </section>
-
-  <!-- REPUESTOS / PRODUCTOS -->
-  <section id="pageRepuestos" class="page hidden">
-
-    <div class="hero-wide">
-      <img src="banner-repuestos.jpg" alt="JR DENT - Repuestos">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <div class="hero-title">Repuestos y Accesorios</div>
-        <div class="hero-text">
-          Repuestos para piezas de mano, turbinas, micromotores y más.
-          Envíos a todo Perú • Atención rápida • Garantía.
-        </div>
       </div>
-    </div>
 
-    <div class="catalog">
 
-      <aside class="cat-box">
-        <div class="cat-head">Categorías</div>
 
-        <div class="cat-acc">
-          <div class="cat-group open">
-            <button class="cat-top" type="button">
-              Todos
-              <span class="chev">▾</span>
-            </button>
-            <div class="cat-sub">
-              <button class="cat-subitem active" type="button" data-cat="todo" data-brand="all">Ver todo</button>
-            </div>
-          </div>
+      <div class="grid1" style="margin-top:10px;">
 
-          <div class="cat-group">
-            <button class="cat-top" type="button">
-              Repuestos de Turbina
-              <span class="chev">▾</span>
-            </button>
-            <div class="cat-sub">
-              <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="NSK">NSK</button>
-              <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="BEING">BEING</button>
-              <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="YOUNITY">YOUNITY</button>
-              <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="KAVO">KAVO</button>
-              <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="SIGMA">SIGMA</button>
-              <button class="cat-subitem" type="button" data-cat="Repuestos de Turbina" data-brand="WyH">WyH</button>
-            </div>
-          </div>
+        <div>
 
-          <div class="cat-group">
-            <button class="cat-top" type="button">
-              Rodajes
-              <span class="chev">▾</span>
-            </button>
-            <div class="cat-sub">
-              <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="NSK">NSK</button>
-              <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="BEING">BEING</button>
-              <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="YOUNITY">YOUNITY</button>
-              <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="KAVO">KAVO</button>
-              <button class="cat-subitem" type="button" data-cat="Rodajes" data-brand="WyH">WyH</button>
-            </div>
-          </div>
+          <label for="regEmail">Correo</label>
 
-          <div class="cat-group">
-            <button class="cat-top" type="button">
-              Repuestos de Micromotor
-              <span class="chev">▾</span>
-            </button>
-            <div class="cat-sub">
-              <button class="cat-subitem" type="button" data-cat="Repuestos de Micromotor" data-brand="MARATHON">MARATHON</button>
-              <button class="cat-subitem" type="button" data-cat="Repuestos de Micromotor" data-brand="STRONG">STRONG</button>
-              <button class="cat-subitem" type="button" data-cat="Repuestos de Micromotor" data-brand="RENHE">RENHE</button>
-            </div>
-          </div>
-
-          <div class="cat-group">
-            <button class="cat-top" type="button">
-              Repuestos Extras
-              <span class="chev">▾</span>
-            </button>
-            <div class="cat-sub">
-              <button class="cat-subitem" type="button" data-cat="Repuestos Extras" data-brand="Woodpecker">Woodpecker</button>
-            </div>
-          </div>
+          <input id="regEmail" type="email" placeholder="correo@email.com" />
 
         </div>
-      </aside>
 
-      <section class="products-area">
-        <div class="products-top">
-          <div class="products-title" id="productsTitle">Repuestos</div>
-          <div class="products-meta" id="productsMeta">Mostrando 0 producto(s)</div>
-        </div>
-
-        <div class="products-grid" id="productsGrid">
-
-          <!-- ✅ CAMBIO AQUÍ: este producto aparece en NSK / BEING / YOUNITY -->
-          <article class="pcard" data-cat="Rodajes" data-brands="NSK,BEING,YOUNITY">
-            <img class="pimg" src="p1.jpg" alt="Rodaje Ceramico">
-            <div class="pbody">
-              <div class="ptitle">Rodaje Cerámico (Genérico)</div>
-              <div class="pdesc">Rodaje cerámico compatible para alta velocidad (NSK/BEING/YOUNITY).</div>
-              <div class="pbottom">
-                <div class="pprice">S/40.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="pcard" data-cat="Rodajes" data-brand="KAVO">
-            <img class="pimg" src="p2.jpg" alt="Rodaje Cerámico Kavo">
-            <div class="pbody">
-              <div class="ptitle">Rodaje Cerámico Kavo</div>
-              <div class="pdesc">Rodaje cerámico modelo Kavo para alta velocidad.</div>
-              <div class="pbottom">
-                <div class="pprice">S/40.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="pcard" data-cat="Repuestos de Turbina" data-brand="NSK">
-            <img class="pimg" src="p4.jpg" alt="Rotor Contra Angulo">
-            <div class="pbody">
-              <div class="ptitle">Rotor Contra Ángulo</div>
-              <div class="pdesc">Rotor de pieza de mano de baja, contra ángulo.</div>
-              <div class="pbottom">
-                <div class="pprice">S/80.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="pcard" data-cat="Rodajes" data-brand="WyH">
-            <img class="pimg" src="p7.jpg" alt="Rodaje WyH">
-            <div class="pbody">
-              <div class="ptitle">Rodaje WyH</div>
-              <div class="pdesc">Rodaje cerámico WyH.</div>
-              <div class="pbottom">
-                <div class="pprice">S/60.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="pcard" data-cat="Repuestos de Turbina" data-brand="NSK">
-            <img class="pimg" src="p8.jpg" alt="Seguro de Contra Angulo">
-            <div class="pbody">
-              <div class="ptitle">Seguro de Contra Ángulo</div>
-              <div class="pdesc">Seguro de contra ángulo NSK.</div>
-              <div class="pbottom">
-                <div class="pprice">S/15.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="pcard" data-cat="Repuestos de Turbina" data-brand="NSK">
-            <img class="pimg" src="p9.jpg" alt="Tapa NSK">
-            <div class="pbody">
-              <div class="ptitle">Tapa NSK</div>
-              <div class="pdesc">Tapa NSK Pana Air.</div>
-              <div class="pbottom">
-                <div class="pprice">S/20.00</div>
-                <button class="pbtn" type="button">Ver</button>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </section>
-    </div>
-  </section>
-
-  <!-- AUTH -->
-  <section id="authSection" class="hidden">
-    <div class="auth-wrap">
-      <div class="auth-card" id="authCard">
-        <div class="success-overlay" id="successOverlay">
-          <div class="success-box">
-            <div class="success-check">✓</div>
-            <div class="success-title" id="successTitle">¡Listo!</div>
-            <div class="success-text" id="successText">Ya te has registrado.</div>
-          </div>
-        </div>
-
-        <h2 class="auth-title" id="authTitle">Iniciar sesión</h2>
-        <p class="auth-sub" id="authSub">Accede para ver tus compras y guardar favoritos.</p>
-
-        <div class="auth-tabs">
-          <button class="auth-tab active" id="tabLogin" type="button">Login</button>
-          <button class="auth-tab" id="tabRegister" type="button">Registro</button>
-        </div>
-
-        <!-- LOGIN FORM -->
-        <div id="loginForm">
-          <div class="grid1">
-            <div>
-              <label for="loginEmail">Correo</label>
-              <input id="loginEmail" type="email" placeholder="correo@email.com" />
-            </div>
-            <div>
-              <label for="loginPassword">Contraseña</label>
-              <input id="loginPassword" type="password" placeholder="••••••••" />
-            </div>
-          </div>
-
-          <div class="btn-row">
-            <button class="btn-primary" id="btnDoLogin" type="button">Entrar</button>
-
-            <button class="btn-google" id="btnGoogleLogin" type="button">
-              <svg class="gicon" viewBox="0 0 48 48" aria-hidden="true">
-                <path fill="#EA4335" d="M24 9.5c3.54 0 6.02 1.53 7.41 2.81l5.41-5.41C33.6 4.02 29.2 2 24 2 14.62 2 6.51 7.38 2.69 15.19l6.78 5.26C11.27 14.57 17.12 9.5 24 9.5z"/>
-                <path fill="#4285F4" d="M46.5 24.5c0-1.64-.15-2.83-.47-4.07H24v7.72h12.84c-.26 2.07-1.68 5.19-4.84 7.28l7.43 5.76c4.32-4 7.07-9.88 7.07-16.69z"/>
-                <path fill="#FBBC05" d="M9.47 28.45c-.42-1.26-.66-2.6-.66-3.95s.24-2.69.65-3.95l-6.78-5.26C1.06 18.62 0 21.48 0 24.5c0 3.02 1.06 5.88 2.68 8.21l6.79-4.26z"/>
-                <path fill="#34A853" d="M24 47c6.2 0 11.4-2.05 15.2-5.58l-7.43-5.76c-2 1.39-4.7 2.37-7.77 2.37-6.88 0-12.73-5.07-14.53-11.95l-6.79 4.26C6.51 40.62 14.62 47 24 47z"/>
-              </svg>
-              Continuar con Google
-            </button>
-          </div>
-        </div>
-
-        <!-- REGISTER FORM -->
-        <div id="registerForm" class="hidden">
-          <div class="grid2">
-            <div>
-              <label for="regName">Nombre</label>
-              <input id="regName" type="text" placeholder="Tu nombre completo" />
-            </div>
-            <div>
-              <label for="regPhone">Teléfono</label>
-              <input id="regPhone" type="tel" placeholder="Ej: 999 999 999" />
-            </div>
-          </div>
-
-          <div class="grid2" style="margin-top:10px;">
-            <div>
-              <label for="regCountry">País</label>
-              <input id="regCountry" type="text" placeholder="Ej: Perú" />
-            </div>
-            <div>
-              <label for="regDistrict">Distrito</label>
-              <input id="regDistrict" type="text" placeholder="Ej: Los Olivos" />
-            </div>
-          </div>
-
-          <div class="grid1" style="margin-top:10px;">
-            <div>
-              <label for="regAddress">Dirección</label>
-              <input id="regAddress" type="text" placeholder="Ej: Av. ... #..." />
-            </div>
-          </div>
-
-          <div class="grid1" style="margin-top:10px;">
-            <div>
-              <label for="regEmail">Correo</label>
-              <input id="regEmail" type="email" placeholder="correo@email.com" />
-            </div>
-          </div>
-
-          <div class="grid2" style="margin-top:10px;">
-            <div>
-              <label for="regPassword">Contraseña</label>
-              <input id="regPassword" type="password" placeholder="••••••••" />
-            </div>
-            <div>
-              <label for="regPassword2">Confirmar contraseña</label>
-              <input id="regPassword2" type="password" placeholder="••••••••" />
-            </div>
-          </div>
-
-          <div class="btn-row">
-            <button class="btn-primary" id="btnDoRegister" type="button">Crear cuenta</button>
-
-            <button class="btn-google" id="btnGoogleRegister" type="button">
-              <svg class="gicon" viewBox="0 0 48 48" aria-hidden="true">
-                <path fill="#EA4335" d="M24 9.5c3.54 0 6.02 1.53 7.41 2.81l5.41-5.41C33.6 4.02 29.2 2 24 2 14.62 2 6.51 7.38 2.69 15.19l6.78 5.26C11.27 14.57 17.12 9.5 24 9.5z"/>
-                <path fill="#4285F4" d="M46.5 24.5c0-1.64-.15-2.83-.47-4.07H24v7.72h12.84c-.26 2.07-1.68 5.19-4.84 7.28l7.43 5.76c4.32-4 7.07-9.88 7.07-16.69z"/>
-                <path fill="#FBBC05" d="M9.47 28.45c-.42-1.26-.66-2.6-.66-3.95s.24-2.69.65-3.95l-6.78-5.26C1.06 18.62 0 21.48 0 24.5c0 3.02 1.06 5.88 2.68 8.21l6.79-4.26z"/>
-                <path fill="#34A853" d="M24 47c6.2 0 11.4-2.05 15.2-5.58l-7.43-5.76c-2 1.39-4.7 2.37-7.77 2.37-6.88 0-12.73-5.07-14.53-11.95l-6.79 4.26C6.51 40.62 14.62 47 24 47z"/>
-              </svg>
-              Registrarme con Google
-            </button>
-          </div>
-        </div>
-
-        <div class="auth-error" id="authError"></div>
-        <div class="auth-ok" id="authOk"></div>
-
-        <div class="auth-hint">
-          * El registro guarda tus datos en Firebase (Auth + Firestore).
-        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ====== JS UI + SLIDER + NAV ====== -->
-  <script>
+
+
+      <div class="grid2" style="margin-top:10px;">
+
+        <div>
+
+          <label for="regPassword">Contraseña</label>
+
+          <input id="regPassword" type="password" placeholder="••••••••" />
+
+        </div>
+
+        <div>
+
+          <label for="regPassword2">Confirmar contraseña</label>
+
+          <input id="regPassword2" type="password" placeholder="••••••••" />
+
+        </div>
+
+      </div>
+
+
+
+      <div class="btn-row">
+
+        <button class="btn-primary" id="btnDoRegister" type="button">Crear cuenta</button>
+
+
+
+        <button class="btn-google" id="btnGoogleRegister" type="button">
+
+          <svg class="gicon" viewBox="0 0 48 48" aria-hidden="true">
+
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.02 1.53 7.41 2.81l5.41-5.41C33.6 4.02 29.2 2 24 2 14.62 2 6.51 7.38 2.69 15.19l6.78 5.26C11.27 14.57 17.12 9.5 24 9.5z"/>
+
+            <path fill="#4285F4" d="M46.5 24.5c0-1.64-.15-2.83-.47-4.07H24v7.72h12.84c-.26 2.07-1.68 5.19-4.84 7.28l7.43 5.76c4.32-4 7.07-9.88 7.07-16.69z"/>
+
+            <path fill="#FBBC05" d="M9.47 28.45c-.42-1.26-.66-2.6-.66-3.95s.24-2.69.65-3.95l-6.78-5.26C1.06 18.62 0 21.48 0 24.5c0 3.02 1.06 5.88 2.68 8.21l6.79-4.26z"/>
+
+            <path fill="#34A853" d="M24 47c6.2 0 11.4-2.05 15.2-5.58l-7.43-5.76c-2 1.39-4.7 2.37-7.77 2.37-6.88 0-12.73-5.07-14.53-11.95l-6.79 4.26C6.51 40.62 14.62 47 24 47z"/>
+
+          </svg>
+
+          Registrarme con Google
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="auth-error" id="authError"></div>
+
+    <div class="auth-ok" id="authOk"></div>
+
+
+
+    <div class="auth-hint">
+
+      * El registro guarda tus datos en Firebase (Auth + Firestore).
+
+    </div>
+
+  </div>
+
+</div>
+
+  </section>  <!-- ====== JS UI + SLIDER + NAV ====== -->  <script>
+  
     const homeSection = document.getElementById("homeSection");
+  
     const pageRepuestos = document.getElementById("pageRepuestos");
+  
     const pageEquipos = document.getElementById("pageEquipos");
+  
     const authSection = document.getElementById("authSection");
+  
 
+  
     const btnLogin = document.getElementById("btnLogin");
+  
     const btnRegister = document.getElementById("btnRegister");
+  
     const btnOrders = document.getElementById("btnOrders");
+  
     const btnLogout = document.getElementById("btnLogout");
+  
     const userPill = document.getElementById("userPill");
+  
     const avatarInitials = document.getElementById("avatarInitials");
+  
     const userName = document.getElementById("userName");
+  
 
+  
     const navHome = document.getElementById("navHome");
+  
     const navRepuestos = document.getElementById("navRepuestos");
+  
     const navEquipos = document.getElementById("navEquipos");
+  
     const allProductsBtn = document.getElementById("allProductsBtn");
+  
 
+  
     const tabLogin = document.getElementById("tabLogin");
+  
     const tabRegister = document.getElementById("tabRegister");
+  
     const loginForm = document.getElementById("loginForm");
+  
     const registerForm = document.getElementById("registerForm");
+  
     const authTitle = document.getElementById("authTitle");
+  
     const authSub = document.getElementById("authSub");
+  
     const authError = document.getElementById("authError");
+  
     const authOk = document.getElementById("authOk");
+  
 
+  
     const successOverlay = document.getElementById("successOverlay");
+  
     const successTitle = document.getElementById("successTitle");
+  
     const successText = document.getElementById("successText");
+  
 
+  
     function clearMsgs() {
+  
       authError.style.display = "none";
+  
       authOk.style.display = "none";
+  
       authError.textContent = "";
+  
       authOk.textContent = "";
+  
     }
+  
 
+  
     function showSuccessOverlay(title, text, autoHideMs = 1200) {
+  
       successTitle.textContent = title || "¡Listo!";
+  
       successText.textContent = text || "Operación exitosa.";
+  
       successOverlay.classList.add("show");
+  
       if (autoHideMs) setTimeout(() => successOverlay.classList.remove("show"), autoHideMs);
+  
     }
+  
     window.showSuccessOverlay = showSuccessOverlay;
+  
 
+  
     function hideAllPages(){
+  
       homeSection?.classList.add("hidden");
+  
       pageRepuestos?.classList.add("hidden");
+  
       pageEquipos?.classList.add("hidden");
+  
     }
+  
 
+  
     function goPage(name){
+  
       clearMsgs();
+  
       authSection?.classList.add("hidden");
+  
       hideAllPages();
+  
 
+  
       if(name === "repuestos") pageRepuestos?.classList.remove("hidden");
+  
       else if(name === "equipos") pageEquipos?.classList.remove("hidden");
+  
       else homeSection?.classList.remove("hidden");
+  
 
+  
       window.scrollTo({ top: 0, behavior: "smooth" });
+  
     }
+  
 
+  
     function showAuth(mode) {
+  
       clearMsgs();
+  
       hideAllPages();
+  
       authSection.classList.remove("hidden");
+  
       setAuthMode(mode);
+  
       window.scrollTo({ top: 0, behavior: "smooth" });
+  
     }
+  
 
+  
     function setAuthMode(mode) {
+  
       const isLogin = mode === "login";
+  
       tabLogin.classList.toggle("active", isLogin);
+  
       tabRegister.classList.toggle("active", !isLogin);
+  
       loginForm.classList.toggle("hidden", !isLogin);
+  
       registerForm.classList.toggle("hidden", isLogin);
+  
 
+  
       authTitle.textContent = isLogin ? "Iniciar sesión" : "Crear cuenta";
+  
       authSub.textContent = isLogin
+  
         ? "Accede para ver tus compras y guardar favoritos."
+  
         : "Regístrate para comprar más rápido y ver tu historial.";
+  
     }
+  
 
+  
     btnLogin?.addEventListener("click", () => showAuth("login"));
+  
     btnRegister?.addEventListener("click", () => showAuth("register"));
+  
 
+  
     navHome?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("home"); });
+  
     navRepuestos?.addEventListener("click",(e)=>{ e.preventDefault(); goPage("repuestos"); });
+  
     navEquipos?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("equipos"); });
+  
 
+  
+    // “Todos nuestros productos” te manda a repuestos (puedes cambiar a un catálogo general después)
+  
     allProductsBtn?.addEventListener("click", () => goPage("repuestos"));
+  
 
+  
     // Slider HOME
+  
     document.addEventListener("DOMContentLoaded", () => {
+  
       const slider = document.getElementById("homeSlider");
+  
       const slides = slider ? slider.querySelectorAll(".slide") : [];
+  
       const nextBtn = document.getElementById("nextBtn");
+  
       const prevBtn = document.getElementById("prevBtn");
+  
 
+  
       if (!slider || slides.length === 0 || !nextBtn || !prevBtn) return;
+  
 
+  
       let current = 0;
+  
       function show(i) {
+  
         slides.forEach(s => s.classList.remove("active"));
+  
         slides[i].classList.add("active");
+  
       }
+  
       function next() { current = (current + 1) % slides.length; show(current); }
+  
       function prev() { current = (current - 1 + slides.length) % slides.length; show(current); }
+  
 
+  
       nextBtn.addEventListener("click", next);
+  
       prevBtn.addEventListener("click", prev);
+  
       setInterval(next, 5000);
+  
     });
+  
 
+  
     // Topbar user pill
+  
     function setTopbarUser(userData) {
+  
       if (!userData) {
+  
         btnLogin.classList.remove("hidden");
+  
         btnRegister.classList.remove("hidden");
+  
         userPill.classList.add("hidden");
+  
         btnLogout.classList.add("hidden");
+  
         avatarInitials.textContent = "JR";
+  
         userName.textContent = "Usuario";
+  
         return;
+  
       }
+  
 
+  
       btnLogin.classList.add("hidden");
+  
       btnRegister.classList.add("hidden");
+  
       userPill.classList.remove("hidden");
+  
       btnLogout.classList.remove("hidden");
+  
 
+  
       const name = (userData.nombre || userData.displayName || userData.email || "Usuario").trim();
+  
       const parts = name.split(/\s+/).filter(Boolean);
+  
       let initials = parts[0]?.[0] || "U";
+  
       if (parts.length >= 2) initials += parts[1][0];
+  
       initials = initials.toUpperCase();
+  
 
+  
       avatarInitials.textContent = initials;
+  
       userName.textContent = name;
+  
     }
+  
     window.setTopbarUser = setTopbarUser;
-  </script>
-
-  <!-- ====== Carrusel “Más vendidos” INFINITO ====== -->
-  <script>
+  
+  </script>  <!-- ====== Carrusel “Más vendidos” INFINITO ====== -->  <script>
+  
   document.addEventListener("DOMContentLoaded", () => {
+  
     const track = document.getElementById("bestTrack");
+  
     const prev  = document.getElementById("bestPrev");
+  
     const next  = document.getElementById("bestNext");
+  
 
+  
     if(!track || !prev || !next) return;
+  
 
+  
     const originalCards = Array.from(track.children);
+  
     originalCards.forEach(card => track.appendChild(card.cloneNode(true)));
+  
 
+  
     let index = 0;
+  
 
+  
     function cardStep(){
+  
       const first = track.querySelector(".best-card");
+  
       if(!first) return 260 + 14;
+  
       const styles = getComputedStyle(track);
+  
       const gap = parseFloat(styles.gap || "14");
+  
       return first.getBoundingClientRect().width + gap;
+  
     }
+  
 
+  
     function totalOriginal(){
+  
       return originalCards.length;
+  
     }
+  
 
+  
     function render(animate=true){
+  
       track.style.transition = animate ? "transform .35s ease" : "none";
+  
       track.style.transform = translateX(${-index * cardStep()}px);
+  
     }
+  
 
+  
     function nextMove(){
+  
       index++;
+  
       render(true);
+  
       if(index >= totalOriginal()){
+  
         setTimeout(() => {
+  
           index = 0;
+  
           render(false);
+  
         }, 360);
+  
       }
+  
     }
+  
 
+  
     function prevMove(){
+  
       if(index === 0){
+  
         index = totalOriginal();
+  
         render(false);
+  
         requestAnimationFrame(() => {
+  
           index--;
+  
           render(true);
+  
         });
+  
         return;
+  
       }
+  
       index--;
+  
       render(true);
+  
     }
+  
 
+  
     next.addEventListener("click", nextMove);
+  
     prev.addEventListener("click", prevMove);
+  
 
+  
     window.addEventListener("resize", () => render(false));
+  
     render(false);
+  
   });
-  </script>
-
-  <!-- ====== Acordeón + filtro (Repuestos y Equipos) ====== -->
-  <script>
+  
+  </script>  <!-- ====== Acordeón + filtro (funciona en Repuestos y Equipos) ====== -->  <script>
+  
   document.addEventListener("DOMContentLoaded", () => {
+  
 
+  
     function setupCatalog(gridId, titleId, metaId) {
+  
       const grid = document.getElementById(gridId);
+  
       const titleEl = document.getElementById(titleId);
+  
       const metaEl  = document.getElementById(metaId);
+  
       if (!grid) return;
+  
 
+  
       const cards = Array.from(grid.querySelectorAll(".pcard"));
+  
 
+  
       let currentCat = "todo";
+  
       let currentBrand = "all";
+  
 
+  
       function normalize(v){ return (v || "").trim().toLowerCase(); }
+  
 
+  
       function cap(s){
+  
         if(!s) return s;
+  
         return s.charAt(0).toUpperCase() + s.slice(1);
+  
       }
+  
 
+  
       function applyFilter(){
+  
         let shown = 0;
+  
 
-        const parseList = (raw) => (raw || "")
-          .split(",")
-          .map(x => normalize(x))
-          .filter(Boolean);
-
+  
         cards.forEach(card => {
-          // categoría: data-cat (simple) o data-cats (lista)
-          const catList = card.dataset.cats
-            ? parseList(card.dataset.cats)
-            : [normalize(card.dataset.cat)];
+  
+          const cat = normalize(card.dataset.cat);
+  
+          const brands = brandsRaw
+  
+                                   .split(",")
+  
+                                   .map(x => normalize(x))
+  
+                                   .filter(Boolean);
+  
+          const brandsRaw = card.dataset.brands || card.dataset.brand || "";
+  
+          const okCat   = (currentCat === "todo") || (cat === currentCat);
+  
+          const okBrand = (currentBrand === "all") || brands.includes(currentBrand);
+  
 
-          // marca: data-brand (simple) o data-brands (lista)
-          const brandList = card.dataset.brands
-            ? parseList(card.dataset.brands)
-            : [normalize(card.dataset.brand)];
-
-          const okCat =
-            (currentCat === "todo") ||
-            catList.includes(currentCat);
-
-          const okBrand =
-            (currentBrand === "all") ||
-            brandList.includes(currentBrand);
-
+  
           const show = okCat && okBrand;
+  
           card.style.display = show ? "" : "none";
+  
           if (show) shown++;
+  
         });
+  
 
+  
         if (titleEl) {
+  
           const catLabel = currentCat === "todo" ? "Todos" : currentCat;
+  
           const brandLabel = currentBrand === "all" ? "" : ` • ${currentBrand.toUpperCase()}`;
+  
           titleEl.textContent = cap(catLabel) + brandLabel;
+  
         }
+  
         if (metaEl) metaEl.textContent = Mostrando ${shown} producto(s);
+  
       }
+  
 
+  
       // buscar sidebar del mismo catálogo
+  
       const catalog = grid.closest(".catalog");
+  
       if(!catalog) return;
+  
       const sidebar = catalog.querySelector(".cat-box");
+  
       if(!sidebar) return;
+  
 
+  
       // acordeón
+  
       sidebar.querySelectorAll(".cat-top").forEach(btn => {
+  
         btn.addEventListener("click", () => {
+  
           const group = btn.closest(".cat-group");
+  
           group.classList.toggle("open");
+  
         });
+  
       });
+  
 
+  
       function setActive(activeBtn){
+  
         sidebar.querySelectorAll(".cat-subitem").forEach(b => b.classList.remove("active"));
+  
         if(activeBtn) activeBtn.classList.add("active");
+  
       }
+  
 
+  
       // filtros por subitem
+  
       sidebar.querySelectorAll(".cat-subitem").forEach(subBtn => {
+  
         subBtn.addEventListener("click", () => {
+  
           currentCat = normalize(subBtn.dataset.cat || "todo");
+  
           currentBrand = normalize(subBtn.dataset.brand || "all");
+  
 
+  
           setActive(subBtn);
+  
           subBtn.closest(".cat-group")?.classList.add("open");
+  
 
+  
           applyFilter();
+  
         });
+  
       });
+  
 
+  
       applyFilter();
+  
     }
+  
 
+  
     setupCatalog("productsGrid", "productsTitle", "productsMeta");
+  
     setupCatalog("equiposGrid", "equiposTitle", "equiposMeta");
+  
   });
-  </script>
-
-  <!-- ====== FIREBASE (módulo) ====== -->
-  <script type="module">
+  
+  </script>  <!-- ====== FIREBASE (módulo) ====== -->  <script type="module">
+  
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  
     import {
+  
       getAuth, GoogleAuthProvider, signInWithPopup,
+  
       createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  
       onAuthStateChanged, signOut, updateProfile
+  
     } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+  
     import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+  
 
+  
     const firebaseConfig = {
+  
       apiKey: "AIzaSyDFSDPcgPmtDiNWVHZg46RKxE8ygPV99FM",
+  
       authDomain: "jr-dent.firebaseapp.com",
+  
       projectId: "jr-dent",
+  
       storageBucket: "jr-dent.firebasestorage.app",
+  
       messagingSenderId: "981855232370",
+  
       appId: "1:981855232370:web:9c915085a08563503f7deb",
+  
       measurementId: "G-6E1LVQLC2T"
+  
     };
+  
 
+  
     const app = initializeApp(firebaseConfig);
+  
     const auth = getAuth(app);
+  
     const db = getFirestore(app);
+  
     const provider = new GoogleAuthProvider();
+  
 
+  
     const authError = document.getElementById("authError");
+  
     const authOk = document.getElementById("authOk");
+  
 
+  
     const loginEmail = document.getElementById("loginEmail");
+  
     const loginPassword = document.getElementById("loginPassword");
+  
     const btnDoLogin = document.getElementById("btnDoLogin");
+  
     const btnGoogleLogin = document.getElementById("btnGoogleLogin");
+  
 
+  
     const regName = document.getElementById("regName");
+  
     const regPhone = document.getElementById("regPhone");
+  
     const regCountry = document.getElementById("regCountry");
+  
     const regDistrict = document.getElementById("regDistrict");
+  
     const regAddress = document.getElementById("regAddress");
+  
     const regEmail = document.getElementById("regEmail");
+  
     const regPassword = document.getElementById("regPassword");
+  
     const regPassword2 = document.getElementById("regPassword2");
+  
     const btnDoRegister = document.getElementById("btnDoRegister");
+  
     const btnGoogleRegister = document.getElementById("btnGoogleRegister");
+  
 
+  
     const btnLogout = document.getElementById("btnLogout");
+  
 
+  
     function showError(msg) {
+  
       authOk.style.display = "none";
+  
       authError.style.display = "block";
+  
       authError.textContent = msg;
+  
     }
+  
     function showOk(msg) {
+  
       authError.style.display = "none";
+  
       authOk.style.display = "block";
+  
       authOk.textContent = msg;
+  
     }
+  
 
+  
     async function saveUserProfile(uid, data) {
+  
       await setDoc(doc(db, "users", uid), {
+  
         ...data,
+  
         updatedAt: new Date().toISOString()
+  
       }, { merge: true });
+  
     }
+  
 
+  
     async function loadProfile(uid) {
+  
       const snap = await getDoc(doc(db, "users", uid));
+  
       return snap.exists() ? snap.data() : null;
+  
     }
+  
 
+  
     onAuthStateChanged(auth, async (user) => {
+  
       if (!user) {
+  
         window.setTopbarUser?.(null);
+  
         return;
+  
       }
+  
 
+  
       let profile = null;
+  
       try { profile = await loadProfile(user.uid); } catch(e) {}
+  
 
+  
       window.setTopbarUser?.({
+  
         nombre: profile?.nombre || user.displayName || "",
+  
         email: user.email || "",
+  
         displayName: user.displayName || ""
+  
       });
+  
     });
+  
 
+  
     // LOGIN EMAIL
+  
     btnDoLogin?.addEventListener("click", async () => {
+  
       try {
+  
         const email = (loginEmail.value || "").trim();
+  
         const pass = loginPassword.value || "";
+  
         if (!email || !pass) return showError("Completa correo y contraseña.");
+  
 
+  
         await signInWithEmailAndPassword(auth, email, pass);
+  
         showOk("✅ Sesión iniciada.");
+  
         window.showSuccessOverlay?.("¡Bienvenido!", "Sesión iniciada correctamente.", 900);
+  
 
+  
         setTimeout(() => document.getElementById("navHome").click(), 900);
+  
       } catch (e) {
+  
         showError(e.message);
+  
       }
+  
     });
+  
 
+  
     // LOGIN GOOGLE
+  
     btnGoogleLogin?.addEventListener("click", async () => {
+  
       try {
+  
         const result = await signInWithPopup(auth, provider);
+  
 
+  
         await saveUserProfile(result.user.uid, {
+  
           email: result.user.email || "",
+  
           nombre: result.user.displayName || ""
+  
         });
+  
 
+  
         window.setTopbarUser?.({
+  
           nombre: result.user.displayName || "",
+  
           email: result.user.email || ""
+  
         });
+  
 
+  
         showOk("✅ Entraste con Google.");
+  
         window.showSuccessOverlay?.("¡Bienvenido!", "Entraste con Google.", 900);
+  
         setTimeout(() => document.getElementById("navHome").click(), 900);
+  
       } catch (e) {
+  
         showError(e.message);
+  
       }
+  
     });
+  
 
+  
     // REGISTER EMAIL
+  
     btnDoRegister?.addEventListener("click", async () => {
+  
       try {
+  
         const nombre = (regName.value || "").trim();
+  
         const telefono = (regPhone.value || "").trim();
+  
         const pais = (regCountry.value || "").trim();
+  
         const distrito = (regDistrict.value || "").trim();
+  
         const direccion = (regAddress.value || "").trim();
+  
 
+  
         const email = (regEmail.value || "").trim();
+  
         const pass = regPassword.value || "";
+  
         const pass2 = regPassword2.value || "";
+  
 
+  
         if (!nombre || !pais || !distrito || !direccion || !telefono) {
+  
           return showError("Completa: Nombre, País, Distrito, Dirección y Teléfono.");
+  
         }
+  
         if (!email || !pass || !pass2) return showError("Completa correo y contraseñas.");
+  
         if (pass.length < 6) return showError("La contraseña debe tener mínimo 6 caracteres.");
+  
         if (pass !== pass2) return showError("Las contraseñas no coinciden.");
+  
 
+  
         const cred = await createUserWithEmailAndPassword(auth, email, pass);
+  
         try { await updateProfile(cred.user, { displayName: nombre }); } catch(e){}
+  
 
+  
         await saveUserProfile(cred.user.uid, { nombre, pais, distrito, direccion, telefono, email });
+  
 
+  
         window.setTopbarUser?.({ nombre, email });
+  
 
+  
         showOk("✅ Cuenta creada y datos guardados.");
+  
         window.showSuccessOverlay?.("✅ Registro completo", "Ya te has registrado.", 1100);
+  
 
+  
         setTimeout(() => document.getElementById("navHome").click(), 1100);
+  
       } catch (e) {
+  
         showError(e.message);
+  
       }
+  
     });
+  
 
+  
     // REGISTER GOOGLE
+  
     btnGoogleRegister?.addEventListener("click", async () => {
+  
       try {
+  
         const result = await signInWithPopup(auth, provider);
+  
 
+  
         await saveUserProfile(result.user.uid, {
+  
           email: result.user.email || "",
+  
           nombre: result.user.displayName || ""
+  
         });
+  
 
+  
         window.setTopbarUser?.({
+  
           nombre: result.user.displayName || "",
+  
           email: result.user.email || ""
+  
         });
+  
 
+  
         showOk("✅ Registrado con Google.");
+  
         window.showSuccessOverlay?.("✅ Registro con Google", "Ya estás dentro.", 1000);
+  
         setTimeout(() => document.getElementById("navHome").click(), 1000);
+  
       } catch (e) {
+  
         showError(e.message);
+  
       }
+  
     });
+  
 
+  
     // LOGOUT
+  
     btnLogout?.addEventListener("click", async () => {
+  
       try {
+  
         await signOut(auth);
+  
         window.setTopbarUser?.(null);
+  
         showOk("Sesión cerrada.");
+  
         window.showSuccessOverlay?.("Hasta luego", "Sesión cerrada.", 900);
+  
         setTimeout(() => document.getElementById("navHome").click(), 900);
+  
       } catch (e) {
+  
         showError(e.message);
+  
       }
+  
     });
-  </script>
-</body>
-</html>
+  
+  </script></body></html>
 
 
 
