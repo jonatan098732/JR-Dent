@@ -3022,7 +3022,7 @@
   
       track.style.transition = animate ? "transform .35s ease" : "none";
   
-      track.style.transform = translateX(${-index * cardStep()}px);
+      track.style.transform = `translateX(${-index * cardStep()}px)`;
   
     }
   
@@ -3178,7 +3178,7 @@
   
         }
   
-        if (metaEl) metaEl.textContent = Mostrando ${shown} producto(s);
+        if (metaEl) metaEl.textContent = `Mostrando ${shown} producto(s)`;
   
       }
   
@@ -3651,6 +3651,7 @@
     });
   
   </script></body></html>
+
 
 
 
