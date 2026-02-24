@@ -1206,6 +1206,10 @@
   
       cursor:pointer;
   
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+  
     }
   
     .pbtn:hover{ filter: brightness(1.06); }
@@ -1384,6 +1388,10 @@
   
       cursor:pointer;
   
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+  
     }
   
 
@@ -1498,6 +1506,201 @@
   
       .all-products{ justify-content:center; }
   
+    }
+
+    /* =========================================================
+       ✅ NUEVO: PÁGINA DETALLE PRODUCTO (OCULTA)
+       ========================================================= */
+    .detail-wrap{
+      width: min(1200px, 92%);
+      margin: 18px auto 40px;
+    }
+    .detail-card{
+      background:#fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      overflow:hidden;
+      padding: 16px;
+    }
+    .detail-topbar{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .back-btn{
+      border: 2px solid #1B0561;
+      color:#1B0561;
+      background: transparent;
+      padding: 8px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-weight: 900;
+    }
+    .detail-grid{
+      display:grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+      align-items:start;
+    }
+
+    /* Galería */
+    .gallery{
+      background:#f6f7fb;
+      border-radius: 16px;
+      padding: 12px;
+      border: 1px solid #eef2f7;
+    }
+    .gallery-viewport{
+      position:relative;
+      border-radius: 14px;
+      overflow:hidden;
+      background:#e5e7eb;
+      height: 360px;
+    }
+    .gallery-img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .g-arrow{
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border:none;
+      cursor:pointer;
+      background: rgba(0,0,0,0.55);
+      color:#fff;
+      font-size: 20px;
+      display:grid;
+      place-items:center;
+    }
+    .g-arrow:hover{ background: rgba(0,0,0,0.8); }
+    .g-arrow.left{ left: 10px; }
+    .g-arrow.right{ right: 10px; }
+
+    .g-dots{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      margin-top: 10px;
+    }
+    .g-dot{
+      width: 9px; height: 9px;
+      border-radius: 999px;
+      background: rgba(27,5,97,0.22);
+      cursor:pointer;
+    }
+    .g-dot.active{ background:#1B0561; }
+
+    /* Info derecha */
+    .detail-title{
+      font-size: 26px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+    .detail-meta{
+      font-size: 13px;
+      color:#555;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .detail-price{
+      font-size: 22px;
+      font-weight: 900;
+      color:#1B0561;
+      margin-bottom: 12px;
+    }
+
+    .qty-row{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .qty-box{
+      display:flex;
+      align-items:center;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow:hidden;
+      background:#fff;
+    }
+    .qty-btn{
+      width: 42px;
+      height: 40px;
+      border:none;
+      background:#f3f4f6;
+      cursor:pointer;
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .qty-btn:hover{ background:#e5e7eb; }
+    .qty-val{
+      width: 56px;
+      text-align:center;
+      font-weight: 900;
+    }
+
+    .add-btn{
+      border:none;
+      background:#22c55e;
+      color:#0b1020;
+      font-weight: 900;
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .add-btn:hover{ filter: brightness(1.04); }
+
+    .tabs{
+      margin-top: 14px;
+      border-top: 1px solid #eef2f7;
+      padding-top: 14px;
+    }
+    .tab-head{
+      display:flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .tab-btn{
+      border: 1px solid #e5e7eb;
+      background:#f9fafb;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 900;
+      cursor:pointer;
+    }
+    .tab-btn.active{
+      background:#1B0561;
+      border-color:#1B0561;
+      color:#fff;
+    }
+    .tab-body{
+      background:#f9fafb;
+      border: 1px solid #eef2f7;
+      border-radius: 14px;
+      padding: 12px;
+      color:#333;
+      line-height: 1.5;
+      font-size: 13px;
+      font-weight: 700;
+      min-height: 90px;
+    }
+
+    @media (max-width: 980px){
+      .detail-grid{ grid-template-columns: 1fr; }
+      .gallery-viewport{ height: 300px; }
     }
   
   </style></head><body>  <!-- TOP BAR -->  <header class="topbar"><div class="container topbar-row">
@@ -2505,7 +2708,75 @@
 
 </div>
 
-  </section>  <!-- AUTH -->  <section id="authSection" class="hidden"><div class="auth-wrap">
+  </section>
+
+  <!-- =========================================================
+       ✅ NUEVO: SECCIÓN DETALLE PRODUCTO (OCULTA)
+       ========================================================= -->
+  <section id="productDetailSection" class="page hidden">
+    <div class="detail-wrap">
+      <div class="detail-card">
+        <div class="detail-topbar">
+          <button class="back-btn" id="detailBackBtn" type="button">← Volver</button>
+          <div style="font-weight:900; color:#1B0561;">Detalle del producto</div>
+        </div>
+
+        <div class="detail-grid">
+          <!-- Galería -->
+          <div class="gallery">
+            <div class="gallery-viewport">
+              <img id="detailImg" class="gallery-img" src="" alt="Producto">
+              <button class="g-arrow left" id="gPrev" type="button">❮</button>
+              <button class="g-arrow right" id="gNext" type="button">❯</button>
+            </div>
+            <div class="g-dots" id="gDots"></div>
+          </div>
+
+          <!-- Info -->
+          <div>
+            <div class="detail-title" id="detailTitle">Nombre del producto</div>
+            <div class="detail-meta" id="detailModel">Modelo: —</div>
+            <div class="detail-price" id="detailPrice">S/ 0.00</div>
+            <div class="detail-meta" id="detailDesc">Descripción del producto…</div>
+
+            <div class="qty-row">
+              <div class="qty-box">
+                <button class="qty-btn" id="qtyMinus" type="button">−</button>
+                <div class="qty-val" id="qtyVal">1</div>
+                <button class="qty-btn" id="qtyPlus" type="button">+</button>
+              </div>
+
+              <button class="add-btn" id="addToCartBtn" type="button">
+                Añadir al carrito
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="18" height="18"
+                     viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"/>
+                  <circle cx="20" cy="21" r="1"/>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="tabs">
+              <div class="tab-head">
+                <button class="tab-btn active" id="tabInfo" type="button">Información</button>
+                <button class="tab-btn" id="tabReviews" type="button">Reseñas</button>
+              </div>
+              <div class="tab-body" id="tabBody">
+                Aquí luego podrás escribir toda la información del producto (materiales, compatibilidad, uso, garantía, etc.).
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTH -->  <section id="authSection" class="hidden"><div class="auth-wrap">
 
   <div class="auth-card" id="authCard">
 
@@ -2750,6 +3021,7 @@
     const pageEquipos = document.getElementById("pageEquipos");
   
     const authSection = document.getElementById("authSection");
+    const productDetailSection = document.getElementById("productDetailSection");
   
 
   
@@ -2842,11 +3114,12 @@
       pageRepuestos?.classList.add("hidden");
   
       pageEquipos?.classList.add("hidden");
+      productDetailSection?.classList.add("hidden");
   
     }
   
+    let lastPageName = "home";
 
-  
     function goPage(name){
   
       clearMsgs();
@@ -2854,6 +3127,8 @@
       authSection?.classList.add("hidden");
   
       hideAllPages();
+
+      lastPageName = name || "home";
   
 
   
@@ -3204,14 +3479,8 @@
         cards.forEach(card => {
   
           const cat = normalize(card.dataset.cat);
-      const brandsRaw = card.dataset.brands || card.dataset.brand || "";
-          const brands = brandsRaw
-  
-                                   .split(",")
-  
-                                   .map(x => normalize(x))
-  
-                                   .filter(Boolean);
+          const brandsRaw = (card.dataset.brands || card.dataset.brand || "");
+          const brands = brandsRaw.split(",").map(x => normalize(x)).filter(Boolean);
   
           const okCat   = (currentCat === "todo") || (cat === currentCat);
   
@@ -3321,7 +3590,205 @@
   
   });
   
-  </script>  <!-- ====== FIREBASE (módulo) ====== -->  <script type="module">
+  </script>
+
+  <!-- =========================================================
+       ✅ NUEVO JS: “Ver” -> “Comprar ahora” + abrir detalle
+       ========================================================= -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartCountEl = document.getElementById("cartCount");
+
+      const cartIcon = `
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="18" height="18"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+      `;
+
+      // 1) Cambiar textos de botones (sin tocar tu HTML)
+      document.querySelectorAll(".pbtn, .best-btn").forEach(btn => {
+        btn.innerHTML = `Comprar ahora ${cartIcon}`;
+        btn.setAttribute("data-action", "buy");
+      });
+
+      // ======= Lógica de detalle =======
+      const detail = {
+        titleEl: document.getElementById("detailTitle"),
+        modelEl: document.getElementById("detailModel"),
+        priceEl: document.getElementById("detailPrice"),
+        descEl: document.getElementById("detailDesc"),
+        imgEl: document.getElementById("detailImg"),
+        dotsEl: document.getElementById("gDots"),
+        backBtn: document.getElementById("detailBackBtn"),
+        prevBtn: document.getElementById("gPrev"),
+        nextBtn: document.getElementById("gNext"),
+        qtyMinus: document.getElementById("qtyMinus"),
+        qtyPlus: document.getElementById("qtyPlus"),
+        qtyVal: document.getElementById("qtyVal"),
+        addBtn: document.getElementById("addToCartBtn"),
+        tabInfo: document.getElementById("tabInfo"),
+        tabReviews: document.getElementById("tabReviews"),
+        tabBody: document.getElementById("tabBody"),
+      };
+
+      let galleryImages = [];
+      let galleryIndex = 0;
+      let qty = 1;
+
+      function setQty(v){
+        qty = Math.max(1, Math.min(10, v));
+        detail.qtyVal.textContent = String(qty);
+      }
+
+      function renderDots(){
+        detail.dotsEl.innerHTML = "";
+        galleryImages.forEach((_, i) => {
+          const d = document.createElement("div");
+          d.className = "g-dot" + (i === galleryIndex ? " active" : "");
+          d.addEventListener("click", () => {
+            galleryIndex = i;
+            renderGallery();
+          });
+          detail.dotsEl.appendChild(d);
+        });
+      }
+
+      function renderGallery(){
+        if(!galleryImages.length) return;
+        detail.imgEl.src = galleryImages[galleryIndex];
+        renderDots();
+      }
+
+      function showDetail(product){
+        // Oculta todas las páginas (pero deja topbar/subbar)
+        authSection?.classList.add("hidden");
+        hideAllPages();
+        productDetailSection.classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+        // Carga info
+        detail.titleEl.textContent = product.title || "Producto";
+        detail.priceEl.textContent = product.price || "S/ 0.00";
+        detail.descEl.textContent = product.desc || "—";
+        detail.modelEl.textContent = product.model ? `Modelo: ${product.model}` : "Modelo: —";
+
+        // Galería: si el producto trae data-images="a.jpg,b.jpg,c.jpg" lo usa.
+        // Si no, usa 4 veces la imagen principal.
+        galleryImages = (product.images && product.images.length)
+          ? product.images
+          : [product.img, product.img, product.img, product.img].filter(Boolean);
+
+        galleryIndex = 0;
+        renderGallery();
+
+        // Qty reset
+        setQty(1);
+
+        // Tabs
+        detail.tabInfo.classList.add("active");
+        detail.tabReviews.classList.remove("active");
+        detail.tabBody.textContent = "Aquí luego podrás escribir toda la información del producto (materiales, compatibilidad, uso, garantía, etc.).";
+      }
+
+      // Extrae data de una card de catálogo o del carrusel
+      function getProductFromCard(btn){
+        // 1) Si viene de catálogo (pcard)
+        const pcard = btn.closest(".pcard");
+        if(pcard){
+          const title = pcard.querySelector(".ptitle")?.textContent?.trim();
+          const price = pcard.querySelector(".pprice")?.textContent?.trim();
+          const desc  = pcard.querySelector(".pdesc")?.textContent?.trim();
+          const img   = pcard.querySelector("img")?.getAttribute("src") || "";
+          const model = pcard.dataset.brand || pcard.dataset.brands || "";
+          const imagesRaw = pcard.dataset.images || "";
+          const images = imagesRaw.split(",").map(s => s.trim()).filter(Boolean);
+          return { title, price, desc, img, model, images };
+        }
+
+        // 2) Si viene de carrusel (best-card)
+        const bcard = btn.closest(".best-card");
+        if(bcard){
+          const title = bcard.querySelector(".best-name")?.textContent?.trim();
+          const price = bcard.querySelector(".best-price")?.textContent?.trim();
+          const desc  = bcard.querySelector(".best-desc")?.textContent?.trim();
+          const img   = bcard.querySelector("img")?.getAttribute("src") || "";
+          const imagesRaw = bcard.dataset.images || "";
+          const images = imagesRaw.split(",").map(s => s.trim()).filter(Boolean);
+          return { title, price, desc, img, model: "", images };
+        }
+
+        return null;
+      }
+
+      // Click global: Comprar ahora
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest('[data-action="buy"]');
+        if(!btn) return;
+
+        const product = getProductFromCard(btn);
+        if(!product) return;
+
+        // Guardar página anterior (para volver)
+        if(!homeSection.classList.contains("hidden")) lastPageName = "home";
+        else if(!pageEquipos.classList.contains("hidden")) lastPageName = "equipos";
+        else if(!pageRepuestos.classList.contains("hidden")) lastPageName = "repuestos";
+
+        showDetail(product);
+      });
+
+      // Volver
+      detail.backBtn.addEventListener("click", () => {
+        productDetailSection.classList.add("hidden");
+        goPage(lastPageName || "home");
+      });
+
+      // Galería flechas
+      detail.prevBtn.addEventListener("click", () => {
+        if(!galleryImages.length) return;
+        galleryIndex = (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
+        renderGallery();
+      });
+      detail.nextBtn.addEventListener("click", () => {
+        if(!galleryImages.length) return;
+        galleryIndex = (galleryIndex + 1) % galleryImages.length;
+        renderGallery();
+      });
+
+      // Qty
+      detail.qtyMinus.addEventListener("click", () => setQty(qty - 1));
+      detail.qtyPlus.addEventListener("click", () => setQty(qty + 1));
+
+      // Añadir al carrito (por ahora incrementa contador topbar)
+      detail.addBtn.addEventListener("click", () => {
+        const current = parseInt(cartCountEl.textContent || "0", 10) || 0;
+        cartCountEl.textContent = String(current + qty);
+        window.showSuccessOverlay?.("✅ Añadido al carrito", `Agregaste ${qty} unidad(es).`, 900);
+      });
+
+      // Tabs
+      detail.tabInfo.addEventListener("click", () => {
+        detail.tabInfo.classList.add("active");
+        detail.tabReviews.classList.remove("active");
+        detail.tabBody.textContent = "Aquí luego podrás escribir toda la información del producto (materiales, compatibilidad, uso, garantía, etc.).";
+      });
+      detail.tabReviews.addEventListener("click", () => {
+        detail.tabReviews.classList.add("active");
+        detail.tabInfo.classList.remove("active");
+        detail.tabBody.textContent = "Reseñas: (lo hacemos luego).";
+      });
+    });
+  </script>
+
+  <!-- ====== FIREBASE (módulo) ====== -->  <script type="module">
   
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
   
@@ -3712,199 +4179,3 @@
     });
   
   </script></body></html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
