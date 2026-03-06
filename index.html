@@ -421,7 +421,7 @@
     /* ====== BANNER LARGO ====== */
     .hero-wide{
       width: min(1200px, 92%);
-      margin: 18px auto 18px;  
+      margin: 18px auto 18px;
       border-radius: 18px;
       overflow: hidden;
       position: relative;
@@ -638,7 +638,6 @@
       position: relative;
     }
 
-    /* desvanecido de lados */
     .best-viewport::before,
     .best-viewport::after{
       content:"";
@@ -660,7 +659,7 @@
     .best-track{
       display:flex;
       gap: 14px;
-      padding: 6px 52px; /* espacio para fades */
+      padding: 6px 52px;
       transition: transform .35s ease;
       will-change: transform;
     }
@@ -696,8 +695,8 @@
       border:none;
       background:#1B0561;
       color:white;
-      font-weight: 100;
-      padding: 6px 5px;
+      font-weight: 700;
+      padding: 8px 10px;
       border-radius: 12px;
       cursor:pointer;
       display:inline-flex;
@@ -732,7 +731,6 @@
       .hero-wide img{ height: 200px; }
       .hero-title{ font-size: 24px; }
       .products-grid{ grid-template-columns: 1fr; }
-
       .best-card{ flex-basis: 220px; }
       .best-track{ padding: 6px 40px; }
     }
@@ -762,9 +760,7 @@
       .all-products{ justify-content:center; }
     }
 
-    /* =========================================================
-       ✅ PÁGINA DETALLE PRODUCTO (OCULTA)
-       ========================================================= */
+    /* ====== DETALLE PRODUCTO ====== */
     .detail-wrap{
       width: min(1200px, 92%);
       margin: 18px auto 40px;
@@ -799,7 +795,6 @@
       align-items:start;
     }
 
-    /* Galería (FIX CSS: antes tenías valores inválidos y faltaba ; ) */
     .gallery{
       background: transparent;
       border-radius: 0;
@@ -853,7 +848,6 @@
     }
     .g-dot.active{ background:#1B0561; }
 
-    /* Info derecha */
     .detail-title{
       font-size: 26px;
       font-weight: 900;
@@ -976,7 +970,6 @@
         <button class="linkbtn" id="btnLogin" type="button">Iniciar sesión</button>
         <button class="linkbtn" id="btnRegister" type="button">Crear cuenta</button>
 
-        <!-- PERFIL (solo logueado) -->
         <button class="userpill hidden" id="userPill" type="button" title="Mi cuenta">
           <span class="avatar" id="avatarInitials">JR</span>
           <span class="username" id="userName">Usuario</span>
@@ -1049,7 +1042,6 @@
 
   <!-- EQUIPOS DENTALES -->
   <section id="pageEquipos" class="page hidden">
-    <!-- Banner largo -->
     <div class="hero-wide">
       <img src="banner-equipos.jpg" alt="JR DENT - Equipos Dentales">
       <div class="hero-overlay"></div>
@@ -1062,7 +1054,6 @@
       </div>
     </div>
 
-    <!-- MÁS VENDIDOS (CARRUSEL INFINITO) -->
     <div class="best-wrap">
       <div class="best-head">
         <h2 class="best-title">Nuestras Mejores Ofertas</h2>
@@ -1075,7 +1066,6 @@
         <div class="best-viewport" id="bestViewport">
           <div class="best-track" id="bestTrack">
 
-            <!-- ✅ FIX: cada best-card ahora tiene data-images y data-info -->
             <article class="best-card"
               data-images="eq1.jpg"
               data-info="Lámpara LED B. Fotocurado. Garantía y soporte JR DENT.">
@@ -1153,9 +1143,7 @@
       </div>
     </div>
 
-    <!-- CATÁLOGO -->
     <div class="catalog">
-
       <aside class="cat-box">
         <div class="cat-head">Categorías</div>
 
@@ -1225,7 +1213,6 @@
               <button class="cat-subitem" type="button" data-cat="Rayos X" data-brand="RVG">RVG</button>
             </div>
           </div>
-
         </div>
       </aside>
 
@@ -1236,8 +1223,6 @@
         </div>
 
         <div class="products-grid" id="equiposGrid">
-
-          <!-- ✅ FIX: cada pcard ahora tiene data-images y data-info -->
           <article class="pcard"
             data-cat="Lamparas"
             data-brand="LED B"
@@ -1317,13 +1302,196 @@
               </div>
             </div>
           </article>
-
         </div>
       </section>
     </div>
   </section>
 
-  <!-- REPUETOS / PRODUCTOS -->
+  <!-- PIEZAS DE MANO -->
+  <section id="pagePiezas" class="page hidden">
+    <div class="hero-wide">
+      <img src="banner-piezas.jpg" alt="JR DENT - Piezas de mano">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-title">Piezas de Mano</div>
+        <div class="hero-text">
+          Turbinas, contra ángulos, piezas rectas y micromotores para tu consultorio.
+          Envíos a todo Perú • Garantía • Atención rápida.
+        </div>
+      </div>
+    </div>
+
+    <div class="catalog">
+      <aside class="cat-box">
+        <div class="cat-head">Categorías</div>
+
+        <div class="cat-acc">
+          <div class="cat-group open">
+            <button class="cat-top" type="button">
+              Todos
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem active" type="button" data-cat="todo" data-brand="all">Ver todo</button>
+            </div>
+          </div>
+
+          <div class="cat-group">
+            <button class="cat-top" type="button">
+              Turbinas
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem" type="button" data-cat="Turbinas" data-brand="NSK">NSK</button>
+              <button class="cat-subitem" type="button" data-cat="Turbinas" data-brand="BEING">BEING</button>
+              <button class="cat-subitem" type="button" data-cat="Turbinas" data-brand="KAVO">KAVO</button>
+            </div>
+          </div>
+
+          <div class="cat-group">
+            <button class="cat-top" type="button">
+              Contra Ángulos
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem" type="button" data-cat="Contra Angulos" data-brand="NSK">NSK</button>
+              <button class="cat-subitem" type="button" data-cat="Contra Angulos" data-brand="COXO">COXO</button>
+              <button class="cat-subitem" type="button" data-cat="Contra Angulos" data-brand="YOUNITY">YOUNITY</button>
+            </div>
+          </div>
+
+          <div class="cat-group">
+            <button class="cat-top" type="button">
+              Piezas Rectas
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem" type="button" data-cat="Piezas Rectas" data-brand="NSK">NSK</button>
+              <button class="cat-subitem" type="button" data-cat="Piezas Rectas" data-brand="COXO">COXO</button>
+            </div>
+          </div>
+
+          <div class="cat-group">
+            <button class="cat-top" type="button">
+              Micromotores
+              <span class="chev">▾</span>
+            </button>
+            <div class="cat-sub">
+              <button class="cat-subitem" type="button" data-cat="Micromotores" data-brand="MARATHON">MARATHON</button>
+              <button class="cat-subitem" type="button" data-cat="Micromotores" data-brand="STRONG">STRONG</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="products-area">
+        <div class="products-top">
+          <div class="products-title" id="piezasTitle">Piezas de Mano</div>
+          <div class="products-meta" id="piezasMeta">Mostrando 0 producto(s)</div>
+        </div>
+
+        <div class="products-grid" id="piezasGrid">
+          <article class="pcard"
+            data-cat="Turbinas"
+            data-brand="NSK"
+            data-images="mano1.jpg"
+            data-info="Turbina NSK de alta velocidad. Revisar conexión, presión recomendada y compatibilidad con tu unidad dental.">
+            <img class="pimg" src="mano1.jpg" alt="Turbina NSK">
+            <div class="pbody">
+              <div class="ptitle">Turbina NSK</div>
+              <div class="pdesc">Alta velocidad • Push button</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 320.00</div>
+                <button class="pbtn" type="button">Ver</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard"
+            data-cat="Turbinas"
+            data-brand="BEING"
+            data-images="mano2.jpg"
+            data-info="Turbina Being para procedimientos clínicos de alta velocidad. Consultar modelo y garantía.">
+            <img class="pimg" src="mano2.jpg" alt="Turbina Being">
+            <div class="pbody">
+              <div class="ptitle">Turbina BEING</div>
+              <div class="pdesc">Alto rendimiento clínico</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 280.00</div>
+                <button class="pbtn" type="button">Ver</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard"
+            data-cat="Contra Angulos"
+            data-brand="NSK"
+            data-images="mano3.jpg"
+            data-info="Contra ángulo NSK de baja velocidad. Ideal para profilaxis y procedimientos restaurativos.">
+            <img class="pimg" src="mano3.jpg" alt="Contra ángulo NSK">
+            <div class="pbody">
+              <div class="ptitle">Contra Ángulo NSK</div>
+              <div class="pdesc">Baja velocidad • Precisión</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 190.00</div>
+                <button class="pbtn" type="button">Ver</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard"
+            data-cat="Contra Angulos"
+            data-brand="COXO"
+            data-images="mano4.jpg"
+            data-info="Contra ángulo COXO con diseño ergonómico y buena estabilidad. Confirmar conexión antes de comprar.">
+            <img class="pimg" src="mano4.jpg" alt="Contra ángulo COXO">
+            <div class="pbody">
+              <div class="ptitle">Contra Ángulo COXO</div>
+              <div class="pdesc">Ergonómico • Uso diario</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 210.00</div>
+                <button class="pbtn" type="button">Ver</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard"
+            data-cat="Piezas Rectas"
+            data-brand="NSK"
+            data-images="mano5.jpg"
+            data-info="Pieza recta NSK de baja velocidad. Compatible con varios sistemas según modelo.">
+            <img class="pimg" src="mano5.jpg" alt="Pieza recta NSK">
+            <div class="pbody">
+              <div class="ptitle">Pieza Recta NSK</div>
+              <div class="pdesc">Baja velocidad • Clínica dental</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 170.00</div>
+                <button class="pbtn" type="button">Ver</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard"
+            data-cat="Micromotores"
+            data-brand="MARATHON"
+            data-images="mano6.jpg"
+            data-info="Micromotor Marathon confiable para laboratorio y clínica. Confirmar especificaciones del modelo.">
+            <img class="pimg" src="mano6.jpg" alt="Micromotor Marathon">
+            <div class="pbody">
+              <div class="ptitle">Micromotor MARATHON</div>
+              <div class="pdesc">Potencia estable • Duradero</div>
+              <div class="pbottom">
+                <div class="pprice">S/ 450.00</div>
+                <button class="pbtn" type="button">Ver</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- REPUESTOS -->
   <section id="pageRepuestos" class="page hidden">
     <div class="hero-wide">
       <img src="banner-repuestos.jpg" alt="JR DENT - Repuestos">
@@ -1338,7 +1506,6 @@
     </div>
 
     <div class="catalog">
-
       <aside class="cat-box">
         <div class="cat-head">Categorías</div>
 
@@ -1403,7 +1570,6 @@
               <button class="cat-subitem" type="button" data-cat="Repuestos Extras" data-brand="Woodpecker">Woodpecker</button>
             </div>
           </div>
-
         </div>
       </aside>
 
@@ -1414,7 +1580,6 @@
         </div>
 
         <div class="products-grid" id="productsGrid">
-
           <article class="pcard"
             data-cat="Rodajes"
             data-brands="NSK,BEING"
@@ -1454,7 +1619,7 @@
             data-info="Eje Push Button para rotor. Revisar modelo exacto de turbina antes de comprar.">
             <img class="pimg" src="p3.jpg" alt="Eje Push Button">
             <div class="pbody">
-              <div class="ptitle">Eje Push Button </div>
+              <div class="ptitle">Eje Push Button</div>
               <div class="pdesc">Eje push button para Rotor</div>
               <div class="pbottom">
                 <div class="pprice">S/80.00</div>
@@ -1558,15 +1723,12 @@
               </div>
             </div>
           </article>
-
         </div>
       </section>
     </div>
   </section>
 
-  <!-- =========================================================
-       ✅ SECCIÓN DETALLE PRODUCTO (OCULTA)
-       ========================================================= -->
+  <!-- DETALLE PRODUCTO -->
   <section id="productDetailSection" class="page hidden">
     <div class="detail-wrap">
       <div class="detail-card">
@@ -1576,7 +1738,6 @@
         </div>
 
         <div class="detail-grid">
-          <!-- Galería -->
           <div class="gallery">
             <div class="gallery-viewport">
               <img id="detailImg" class="gallery-img" src="" alt="Producto">
@@ -1586,7 +1747,6 @@
             <div class="g-dots" id="gDots"></div>
           </div>
 
-          <!-- Info -->
           <div>
             <div class="detail-title" id="detailTitle">Nombre del producto</div>
             <div class="detail-meta" id="detailModel">Modelo: —</div>
@@ -1625,7 +1785,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -1650,7 +1809,6 @@
           <button class="auth-tab" id="tabRegister" type="button">Registro</button>
         </div>
 
-        <!-- LOGIN FORM -->
         <div id="loginForm">
           <div class="grid1">
             <div>
@@ -1678,7 +1836,6 @@
           </div>
         </div>
 
-        <!-- REGISTER FORM -->
         <div id="registerForm" class="hidden">
           <div class="grid2">
             <div>
@@ -1752,11 +1909,11 @@
     </div>
   </section>
 
-  <!-- ====== JS UI + SLIDER + NAV ====== -->
   <script>
     const homeSection = document.getElementById("homeSection");
     const pageRepuestos = document.getElementById("pageRepuestos");
     const pageEquipos = document.getElementById("pageEquipos");
+    const pagePiezas = document.getElementById("pagePiezas");
     const authSection = document.getElementById("authSection");
     const productDetailSection = document.getElementById("productDetailSection");
 
@@ -1771,6 +1928,7 @@
     const navHome = document.getElementById("navHome");
     const navRepuestos = document.getElementById("navRepuestos");
     const navEquipos = document.getElementById("navEquipos");
+    const navPiezas = document.getElementById("navPiezas");
     const allProductsBtn = document.getElementById("allProductsBtn");
 
     const tabLogin = document.getElementById("tabLogin");
@@ -1805,6 +1963,7 @@
       homeSection?.classList.add("hidden");
       pageRepuestos?.classList.add("hidden");
       pageEquipos?.classList.add("hidden");
+      pagePiezas?.classList.add("hidden");
       productDetailSection?.classList.add("hidden");
     }
 
@@ -1819,6 +1978,7 @@
 
       if(name === "repuestos") pageRepuestos?.classList.remove("hidden");
       else if(name === "equipos") pageEquipos?.classList.remove("hidden");
+      else if(name === "piezas") pagePiezas?.classList.remove("hidden");
       else homeSection?.classList.remove("hidden");
 
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1851,10 +2011,10 @@
     navHome?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("home"); });
     navRepuestos?.addEventListener("click",(e)=>{ e.preventDefault(); goPage("repuestos"); });
     navEquipos?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("equipos"); });
+    navPiezas?.addEventListener("click", (e)=>{ e.preventDefault(); goPage("piezas"); });
 
     allProductsBtn?.addEventListener("click", () => goPage("repuestos"));
 
-    // Slider HOME
     document.addEventListener("DOMContentLoaded", () => {
       const slider = document.getElementById("homeSlider");
       const slides = slider ? slider.querySelectorAll(".slide") : [];
@@ -1876,7 +2036,6 @@
       setInterval(next, 5000);
     });
 
-    // Topbar user pill
     function setTopbarUser(userData) {
       if (!userData) {
         btnLogin.classList.remove("hidden");
@@ -1905,7 +2064,6 @@
     window.setTopbarUser = setTopbarUser;
   </script>
 
-  <!-- ====== Carrusel “Más vendidos” INFINITO ====== -->
   <script>
   document.addEventListener("DOMContentLoaded", () => {
     const track = document.getElementById("bestTrack");
@@ -1969,7 +2127,6 @@
   });
   </script>
 
-  <!-- ====== Acordeón + filtro (funciona en Repuestos y Equipos) ====== -->
   <script>
   document.addEventListener("DOMContentLoaded", () => {
 
@@ -2048,13 +2205,10 @@
 
     setupCatalog("productsGrid", "productsTitle", "productsMeta");
     setupCatalog("equiposGrid", "equiposTitle", "equiposMeta");
+    setupCatalog("piezasGrid", "piezasTitle", "piezasMeta");
   });
   </script>
 
-  <!-- =========================================================
-       ✅ FIX JS: “Ver” -> “Comprar ahora” + abrir detalle con galería real
-       (YA NO repite 4 veces la misma imagen)
-       ========================================================= -->
   <script>
   document.addEventListener("DOMContentLoaded", () => {
     const cartCountEl = document.getElementById("cartCount");
@@ -2074,13 +2228,11 @@
       </svg>
     `;
 
-    // 1) Cambiar textos de botones (sin tocar tu HTML)
     document.querySelectorAll(".pbtn, .best-btn").forEach(btn => {
       btn.innerHTML = `Comprar ahora ${cartIcon}`;
       btn.setAttribute("data-action", "buy");
     });
 
-    // ======= Lógica de detalle =======
     const detail = {
       titleEl: document.getElementById("detailTitle"),
       modelEl: document.getElementById("detailModel"),
@@ -2153,13 +2305,10 @@
       detail.descEl.textContent = product.desc || "—";
       detail.modelEl.textContent = product.model ? `Modelo: ${product.model}` : "Modelo: —";
 
-      // ✅ Tab info por producto
       detail.tabInfo.classList.add("active");
       detail.tabReviews.classList.remove("active");
       detail.tabBody.textContent = product.info || "Sin información.";
 
-      // ✅ Galería real: si hay data-images usa esas.
-      // ✅ Si no, NO repite 4 veces: solo usa la imagen principal.
       galleryImages = (product.images && product.images.length)
         ? product.images
         : [product.img].filter(Boolean);
@@ -2197,7 +2346,6 @@
       return null;
     }
 
-    // Click global: Comprar ahora
     document.addEventListener("click", (e) => {
       const btn = e.target.closest('[data-action="buy"]');
       if(!btn) return;
@@ -2207,46 +2355,44 @@
 
       if(!homeSection.classList.contains("hidden")) lastPageName = "home";
       else if(!pageEquipos.classList.contains("hidden")) lastPageName = "equipos";
+      else if(!pagePiezas.classList.contains("hidden")) lastPageName = "piezas";
       else if(!pageRepuestos.classList.contains("hidden")) lastPageName = "repuestos";
 
       showDetail(product);
     });
 
-    // Volver
     detail.backBtn.addEventListener("click", () => {
       productDetailSection.classList.add("hidden");
       goPage(lastPageName || "home");
     });
 
-    // Galería flechas
     detail.prevBtn.addEventListener("click", () => {
       if(!galleryImages.length) return;
       galleryIndex = (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
       renderGallery();
     });
+
     detail.nextBtn.addEventListener("click", () => {
       if(!galleryImages.length) return;
       galleryIndex = (galleryIndex + 1) % galleryImages.length;
       renderGallery();
     });
 
-    // Qty
     detail.qtyMinus.addEventListener("click", () => setQty(qty - 1));
     detail.qtyPlus.addEventListener("click", () => setQty(qty + 1));
 
-    // Añadir al carrito
     detail.addBtn.addEventListener("click", () => {
       const current = parseInt(cartCountEl.textContent || "0", 10) || 0;
       cartCountEl.textContent = String(current + qty);
       window.showSuccessOverlay?.("✅ Añadido al carrito", `Agregaste ${qty} unidad(es).`, 900);
     });
 
-    // Tabs
     detail.tabInfo.addEventListener("click", () => {
       detail.tabInfo.classList.add("active");
       detail.tabReviews.classList.remove("active");
       detail.tabBody.textContent = currentProduct?.info || "Sin información.";
     });
+
     detail.tabReviews.addEventListener("click", () => {
       detail.tabReviews.classList.add("active");
       detail.tabInfo.classList.remove("active");
@@ -2255,7 +2401,6 @@
   });
   </script>
 
-  <!-- ====== FIREBASE (módulo) ====== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
     import {
@@ -2340,7 +2485,6 @@
       });
     });
 
-    // LOGIN EMAIL
     btnDoLogin?.addEventListener("click", async () => {
       try {
         const email = (loginEmail.value || "").trim();
@@ -2357,7 +2501,6 @@
       }
     });
 
-    // LOGIN GOOGLE
     btnGoogleLogin?.addEventListener("click", async () => {
       try {
         const result = await signInWithPopup(auth, provider);
@@ -2380,7 +2523,6 @@
       }
     });
 
-    // REGISTER EMAIL
     btnDoRegister?.addEventListener("click", async () => {
       try {
         const nombre = (regName.value || "").trim();
@@ -2416,7 +2558,6 @@
       }
     });
 
-    // REGISTER GOOGLE
     btnGoogleRegister?.addEventListener("click", async () => {
       try {
         const result = await signInWithPopup(auth, provider);
@@ -2439,7 +2580,6 @@
       }
     });
 
-    // LOGOUT
     btnLogout?.addEventListener("click", async () => {
       try {
         await signOut(auth);
@@ -2454,4 +2594,3 @@
   </script>
 </body>
 </html>
-
