@@ -336,14 +336,21 @@
     .grid1 { display:grid; gap:10px; grid-template-columns: 1fr; }
 
     label { font-size: 13px; font-weight: 800; color:#111; }
-    input {
+    input, select, textarea {
       width:100%;
       padding: 10px 12px;
       border-radius: 12px;
       border: 1px solid #e5e7eb;
       outline: none;
+      font-family: inherit;
     }
-    input:focus {
+    textarea{
+      resize: vertical;
+      min-height: 90px;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
       border-color: #2563eb;
       box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
     }
@@ -722,44 +729,6 @@
     .best-arrow.right{ right: 6px; }
     .best-arrow:hover{ filter: brightness(1.08); }
 
-    /* Responsive general */
-    @media (max-width: 980px){
-      .catalog{ grid-template-columns: 1fr; }
-      .products-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 560px){
-      .hero-wide img{ height: 200px; }
-      .hero-title{ font-size: 24px; }
-      .products-grid{ grid-template-columns: 1fr; }
-      .best-card{ flex-basis: 220px; }
-      .best-track{ padding: 6px 40px; }
-    }
-
-    /* Responsive top/sub */
-    @media (max-width: 860px){
-      .subbar-inner{ flex-wrap: wrap; }
-      .subbar ul{ justify-content: flex-start; flex-wrap: wrap; }
-    }
-
-    @media (max-width: 760px) {
-      .search { display: none; }
-      .slides { height: 260px; }
-      .logo-img { height: 60px; }
-      .grid2 { grid-template-columns: 1fr; }
-
-      .subbar-inner{
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-      }
-      .subbar ul{ justify-content: center; }
-      .subbar a{
-        padding: 9px 12px;
-        font-size: 14px;
-      }
-      .all-products{ justify-content:center; }
-    }
-
     /* ====== DETALLE PRODUCTO ====== */
     .detail-wrap{
       width: min(1200px, 92%);
@@ -897,9 +866,9 @@
       font-weight: 900;
     }
 
-    .add-btn{
+    .add-btn,
+    .buy-btn{
       border:none;
-      background:#1B0561;
       color:#FFF;
       font-weight: 900;
       padding: 10px 14px;
@@ -909,7 +878,17 @@
       align-items:center;
       gap:8px;
     }
+    .add-btn{
+      background:#1B0561;
+    }
     .add-btn:hover{ filter: brightness(1.04); }
+
+    .buy-btn{
+      background:#16a34a;
+    }
+    .buy-btn:hover{
+      filter: brightness(1.04);
+    }
 
     .tabs{
       margin-top: 14px;
@@ -946,9 +925,101 @@
       min-height: 90px;
     }
 
+    /* ====== CHECKOUT ====== */
+    .checkout-wrap{
+      width: min(1200px, 92%);
+      margin: 18px auto 40px;
+    }
+    .checkout-card{
+      background:#fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      overflow:hidden;
+      padding: 16px;
+    }
+    .checkout-topbar{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .checkout-grid{
+      display:grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 16px;
+      align-items:start;
+    }
+    .checkout-box{
+      background:#f9fafb;
+      border:1px solid #eef2f7;
+      border-radius:16px;
+      padding:16px;
+    }
+    .checkout-title{
+      font-size: 20px;
+      font-weight: 900;
+      color:#1B0561;
+      margin-bottom: 12px;
+    }
+    .checkout-summary-row{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap:10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #e5e7eb;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .checkout-summary-row:last-child{
+      border-bottom: none;
+    }
+    .checkout-total{
+      font-size: 20px;
+      font-weight: 900;
+      color:#1B0561;
+    }
+
     @media (max-width: 980px){
+      .catalog{ grid-template-columns: 1fr; }
+      .products-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .detail-grid{ grid-template-columns: 1fr; }
       .gallery-viewport{ height: 300px; }
+      .checkout-grid{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px){
+      .hero-wide img{ height: 200px; }
+      .hero-title{ font-size: 24px; }
+      .products-grid{ grid-template-columns: 1fr; }
+      .best-card{ flex-basis: 220px; }
+      .best-track{ padding: 6px 40px; }
+    }
+
+    /* Responsive top/sub */
+    @media (max-width: 860px){
+      .subbar-inner{ flex-wrap: wrap; }
+      .subbar ul{ justify-content: flex-start; flex-wrap: wrap; }
+    }
+
+    @media (max-width: 760px) {
+      .search { display: none; }
+      .slides { height: 260px; }
+      .logo-img { height: 60px; }
+      .grid2 { grid-template-columns: 1fr; }
+
+      .subbar-inner{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+      .subbar ul{ justify-content: center; }
+      .subbar a{
+        padding: 9px 12px;
+        font-size: 14px;
+      }
+      .all-products{ justify-content:center; }
     }
   </style>
 </head>
@@ -1772,6 +1843,8 @@
                   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
                 </svg>
               </button>
+
+              <button class="buy-btn" id="buyNowBtn" type="button">COMPRAR</button>
             </div>
 
             <div class="tabs">
@@ -1782,6 +1855,107 @@
               <div class="tab-body" id="tabBody">
                 Aquí luego podrás escribir toda la información del producto (materiales, compatibilidad, uso, garantía, etc.).
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section id="checkoutSection" class="page hidden">
+    <div class="checkout-wrap">
+      <div class="checkout-card">
+        <div class="checkout-topbar">
+          <button class="back-btn" id="checkoutBackBtn" type="button">← Volver</button>
+          <div style="font-weight:900; color:#1B0561;">Finalizar compra</div>
+        </div>
+
+        <div class="checkout-grid">
+          <div class="checkout-box">
+            <div class="checkout-title">Datos del cliente</div>
+
+            <div class="grid2">
+              <div>
+                <label for="checkoutName">Nombre</label>
+                <input id="checkoutName" type="text" placeholder="Tu nombre completo" />
+              </div>
+              <div>
+                <label for="checkoutPhone">Teléfono</label>
+                <input id="checkoutPhone" type="tel" placeholder="Ej: 999 999 999" />
+              </div>
+            </div>
+
+            <div class="grid2" style="margin-top:10px;">
+              <div>
+                <label for="checkoutCountry">País</label>
+                <input id="checkoutCountry" type="text" placeholder="Ej: Perú" />
+              </div>
+              <div>
+                <label for="checkoutDistrict">Distrito</label>
+                <input id="checkoutDistrict" type="text" placeholder="Ej: Los Olivos" />
+              </div>
+            </div>
+
+            <div class="grid1" style="margin-top:10px;">
+              <div>
+                <label for="checkoutAddress">Dirección</label>
+                <input id="checkoutAddress" type="text" placeholder="Ej: Av. ... #..." />
+              </div>
+            </div>
+
+            <div class="grid2" style="margin-top:10px;">
+              <div>
+                <label for="checkoutEmail">Correo</label>
+                <input id="checkoutEmail" type="email" placeholder="correo@email.com" />
+              </div>
+              <div>
+                <label for="checkoutPayment">Método de pago</label>
+                <select id="checkoutPayment">
+                  <option value="">Selecciona un método</option>
+                  <option value="Yape">Yape</option>
+                  <option value="Plin">Plin</option>
+                  <option value="Transferencia">Transferencia bancaria</option>
+                  <option value="Efectivo">Efectivo / Contra entrega</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid1" style="margin-top:10px;">
+              <div>
+                <label for="checkoutNotes">Notas del pedido</label>
+                <textarea id="checkoutNotes" placeholder="Escribe aquí detalles de la compra, referencia, consulta, etc."></textarea>
+              </div>
+            </div>
+
+            <div class="btn-row" style="margin-top:16px;">
+              <button class="btn-primary" id="confirmOrderBtn" type="button">Confirmar compra</button>
+              <button class="linkbtn" id="continueShoppingBtn" type="button">Seguir comprando</button>
+            </div>
+          </div>
+
+          <div class="checkout-box">
+            <div class="checkout-title">Resumen del pedido</div>
+
+            <div class="checkout-summary-row">
+              <span>Producto</span>
+              <span id="checkoutProductName">—</span>
+            </div>
+            <div class="checkout-summary-row">
+              <span>Modelo</span>
+              <span id="checkoutProductModel">—</span>
+            </div>
+            <div class="checkout-summary-row">
+              <span>Precio unitario</span>
+              <span id="checkoutUnitPrice">S/ 0.00</span>
+            </div>
+            <div class="checkout-summary-row">
+              <span>Cantidad</span>
+              <span id="checkoutQty">1</span>
+            </div>
+            <div class="checkout-summary-row">
+              <span>Total</span>
+              <span class="checkout-total" id="checkoutTotal">S/ 0.00</span>
             </div>
           </div>
         </div>
@@ -1916,6 +2090,7 @@
     const pagePiezas = document.getElementById("pagePiezas");
     const authSection = document.getElementById("authSection");
     const productDetailSection = document.getElementById("productDetailSection");
+    const checkoutSection = document.getElementById("checkoutSection");
 
     const btnLogin = document.getElementById("btnLogin");
     const btnRegister = document.getElementById("btnRegister");
@@ -1944,6 +2119,8 @@
     const successTitle = document.getElementById("successTitle");
     const successText = document.getElementById("successText");
 
+    window.userProfileData = null;
+
     function clearMsgs() {
       authError.style.display = "none";
       authOk.style.display = "none";
@@ -1965,6 +2142,7 @@
       pageEquipos?.classList.add("hidden");
       pagePiezas?.classList.add("hidden");
       productDetailSection?.classList.add("hidden");
+      checkoutSection?.classList.add("hidden");
     }
 
     let lastPageName = "home";
@@ -2247,15 +2425,49 @@
       qtyPlus: document.getElementById("qtyPlus"),
       qtyVal: document.getElementById("qtyVal"),
       addBtn: document.getElementById("addToCartBtn"),
+      buyBtn: document.getElementById("buyNowBtn"),
       tabInfo: document.getElementById("tabInfo"),
       tabReviews: document.getElementById("tabReviews"),
       tabBody: document.getElementById("tabBody"),
+    };
+
+    const checkout = {
+      section: document.getElementById("checkoutSection"),
+      backBtn: document.getElementById("checkoutBackBtn"),
+      continueBtn: document.getElementById("continueShoppingBtn"),
+      confirmBtn: document.getElementById("confirmOrderBtn"),
+      productName: document.getElementById("checkoutProductName"),
+      productModel: document.getElementById("checkoutProductModel"),
+      unitPrice: document.getElementById("checkoutUnitPrice"),
+      qty: document.getElementById("checkoutQty"),
+      total: document.getElementById("checkoutTotal"),
+
+      name: document.getElementById("checkoutName"),
+      phone: document.getElementById("checkoutPhone"),
+      country: document.getElementById("checkoutCountry"),
+      district: document.getElementById("checkoutDistrict"),
+      address: document.getElementById("checkoutAddress"),
+      email: document.getElementById("checkoutEmail"),
+      payment: document.getElementById("checkoutPayment"),
+      notes: document.getElementById("checkoutNotes"),
     };
 
     let galleryImages = [];
     let galleryIndex = 0;
     let qty = 1;
     let currentProduct = null;
+
+    function parsePrice(priceText){
+      const cleaned = String(priceText || "")
+        .replace(/[^\d.,]/g, "")
+        .replace(",", ".");
+      const num = parseFloat(cleaned);
+      return isNaN(num) ? 0 : num;
+    }
+
+    function formatPrice(num){
+      return `S/ ${num.toFixed(2)}`;
+    }
 
     function setQty(v){
       qty = Math.max(1, Math.min(10, v));
@@ -2317,6 +2529,38 @@
       renderGallery();
 
       setQty(1);
+    }
+
+    function fillCheckoutUserData(){
+      const profile = window.userProfileData || {};
+      checkout.name.value = profile.nombre || "";
+      checkout.phone.value = profile.telefono || "";
+      checkout.country.value = profile.pais || "";
+      checkout.district.value = profile.distrito || "";
+      checkout.address.value = profile.direccion || "";
+      checkout.email.value = profile.email || "";
+    }
+
+    function showCheckout(product){
+      if(!product) return;
+
+      hideAllPages();
+      authSection?.classList.add("hidden");
+      checkout.section.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      const unit = parsePrice(product.price);
+      const total = unit * qty;
+
+      checkout.productName.textContent = product.title || "Producto";
+      checkout.productModel.textContent = product.model || "—";
+      checkout.unitPrice.textContent = formatPrice(unit);
+      checkout.qty.textContent = String(qty);
+      checkout.total.textContent = formatPrice(total);
+
+      fillCheckoutUserData();
+      checkout.payment.value = "";
+      checkout.notes.value = "";
     }
 
     function getProductFromCard(btn){
@@ -2385,6 +2629,43 @@
       const current = parseInt(cartCountEl.textContent || "0", 10) || 0;
       cartCountEl.textContent = String(current + qty);
       window.showSuccessOverlay?.("✅ Añadido al carrito", `Agregaste ${qty} unidad(es).`, 900);
+    });
+
+    detail.buyBtn.addEventListener("click", () => {
+      showCheckout(currentProduct);
+    });
+
+    checkout.backBtn.addEventListener("click", () => {
+      checkout.section.classList.add("hidden");
+      productDetailSection.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    checkout.continueBtn.addEventListener("click", () => {
+      checkout.section.classList.add("hidden");
+      goPage(lastPageName || "home");
+    });
+
+    checkout.confirmBtn.addEventListener("click", () => {
+      const nombre = checkout.name.value.trim();
+      const telefono = checkout.phone.value.trim();
+      const pais = checkout.country.value.trim();
+      const distrito = checkout.district.value.trim();
+      const direccion = checkout.address.value.trim();
+      const correo = checkout.email.value.trim();
+      const pago = checkout.payment.value.trim();
+
+      if(!nombre || !telefono || !pais || !distrito || !direccion || !correo || !pago){
+        alert("Completa todos los datos para finalizar la compra.");
+        return;
+      }
+
+      window.showSuccessOverlay?.("✅ Compra realizada", "Tu pedido fue registrado correctamente.", 1300);
+
+      setTimeout(() => {
+        checkout.section.classList.add("hidden");
+        goPage("home");
+      }, 1300);
     });
 
     detail.tabInfo.addEventListener("click", () => {
@@ -2471,6 +2752,7 @@
 
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
+        window.userProfileData = null;
         window.setTopbarUser?.(null);
         return;
       }
@@ -2478,11 +2760,18 @@
       let profile = null;
       try { profile = await loadProfile(user.uid); } catch(e) {}
 
-      window.setTopbarUser?.({
+      const fullData = {
         nombre: profile?.nombre || user.displayName || "",
-        email: user.email || "",
+        email: profile?.email || user.email || "",
+        telefono: profile?.telefono || "",
+        pais: profile?.pais || "",
+        distrito: profile?.distrito || "",
+        direccion: profile?.direccion || "",
         displayName: user.displayName || ""
-      });
+      };
+
+      window.userProfileData = fullData;
+      window.setTopbarUser?.(fullData);
     });
 
     btnDoLogin?.addEventListener("click", async () => {
@@ -2548,6 +2837,7 @@
         await saveUserProfile(cred.user.uid, { nombre, pais, distrito, direccion, telefono, email });
 
         window.setTopbarUser?.({ nombre, email });
+        window.userProfileData = { nombre, pais, distrito, direccion, telefono, email };
 
         showOk("✅ Cuenta creada y datos guardados.");
         window.showSuccessOverlay?.("✅ Registro completo", "Ya te has registrado.", 1100);
@@ -2572,6 +2862,15 @@
           email: result.user.email || ""
         });
 
+        window.userProfileData = {
+          nombre: result.user.displayName || "",
+          email: result.user.email || "",
+          telefono: "",
+          pais: "",
+          distrito: "",
+          direccion: ""
+        };
+
         showOk("✅ Registrado con Google.");
         window.showSuccessOverlay?.("✅ Registro con Google", "Ya estás dentro.", 1000);
         setTimeout(() => document.getElementById("navHome").click(), 1000);
@@ -2583,6 +2882,7 @@
     btnLogout?.addEventListener("click", async () => {
       try {
         await signOut(auth);
+        window.userProfileData = null;
         window.setTopbarUser?.(null);
         showOk("Sesión cerrada.");
         window.showSuccessOverlay?.("Hasta luego", "Sesión cerrada.", 900);
