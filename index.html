@@ -585,20 +585,18 @@
 
 .pimg{
   width: 100%;
-  height: 220px;
+  height: 230px;
   background: #f3f4f7;
   display: flex;
-  align-items: center;
+  align-items: flex-end; /* 👈 CLAVE */
   justify-content: center;
-  padding: 14px;
+  padding: 8px;
   overflow: hidden;
 }
 
 .pimg img{
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
   object-fit: contain;
   display: block;
 }
