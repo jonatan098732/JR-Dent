@@ -2842,11 +2842,90 @@
       goPage(lastPageName || "home");
     });
 
-    checkout.confirmBtn.addEventListener("click", () => {
+   checkout.confirmBtn.addEventListener("click", async () => {
+  const nombre = checkout.name.value.trim();
+  const telefono = checkout.phone.value.trim();
+  const pais = checkout.country.value.trim();
+  const distrito = checkout.district.value.trim();
+  const direccion = checkout.address.value.trim();
+  const correo = checkout.email.value.trim();
+  const pago = checkout.payment.value.trim();
+  const notas = checkout.notes.value.trim();
+
+  if (!window.currentFirebaseUser) {
+    alert("Primero inicia sesión o crea una cuenta para confirmar tu compra.");
+    showAuth("login");
+    return;
+  }
+
+  if (!nombre || !telefono || !pais || !distrito || !direccion || !correo || !pago) {
+    alert("Completa todos los datos para finalizar la compra.");
+    return;
+  }
+
+  const unitPrice = parsePrice(currentProduct?.price || checkout.unitPrice.textContent);
+  const total = unitPrice * qty;
+
+  const orderData = {
+    cliente: {
+      nombre,
+      telefono,
+      pais,
+      distrito,
+      direccion,
+      correo
+    },
+    producto: {
+      nombre: currentProduct?.title || checkout.productName.textContent,
+      modelo: currentProduct?.model || checkout.productModel.textContent,
+      precioUnitario: unitPrice,
+      cantidad: qty,
+      total: total,
+      imagen: currentProduct?.img || ""
+    },
+    pago: {
+      metodo: pago,
+      estado: "pendiente_confirmacion"
+    },
+    notas,
+    historial: [
+      {
+        estado: "pendiente_pago",
+        mensaje: "Pedido creado por el cliente. Falta confirmar el pago.",
+        fecha: new Date().toISOString()
+      }
+    ]
+  };
+
+  try {
+    checkout.confirmBtn.disabled = true;
+    checkout.confirmBtn.textContent = "Registrando pedido...";
+
+    const orderId = await window.saveOrderToFirestore(orderData);
+
+    window.showSuccessOverlay?.(
+      "✅ Pedido registrado",
+      `Tu pedido fue guardado. Código: ${orderId}`,
+      1800
+    );
+
+    setTimeout(() => {
+      checkout.section.classList.add("hidden");
+      goPage("home");
+    }, 1800);
+
+  } catch (error) {
+    console.error(error);
+    alert(error.message || "No se pudo registrar el pedido.");
+  } finally {
+    checkout.confirmBtn.disabled = false;
+    checkout.confirmBtn.textContent = "Confirmar compra";
+  }
+});
       const nombre = checkout.name.value.trim();
-      const telefono = checkout.phone.value.trim();
+       const telefono = checkout.phone.value.trim();
       const pais = checkout.country.value.trim();
-      const distrito = checkout.district.value.trim();
+     const distrito = checkout.district.value.trim();
       const direccion = checkout.address.value.trim();
       const correo = checkout.email.value.trim();
       const pago = checkout.payment.value.trim();
@@ -2862,8 +2941,8 @@
         checkout.section.classList.add("hidden");
         goPage("home");
       }, 1300);
-    });
-
+    }); 
+   
     detail.tabInfo.addEventListener("click", () => {
       detail.tabInfo.classList.add("active");
       detail.tabReviews.classList.remove("active");
@@ -2885,7 +2964,15 @@
       createUserWithEmailAndPassword, signInWithEmailAndPassword,
       onAuthStateChanged, signOut, updateProfile
     } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+    import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDFSDPcgPmtDiNWVHZg46RKxE8ygPV99FM",
@@ -2901,7 +2988,24 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
     const provider = new GoogleAuthProvider();
+window.saveOrderToFirestore = async function(orderData) {
+  const user = auth.currentUser;
 
+  if (!user) {
+    throw new Error("Debes iniciar sesión para confirmar la compra.");
+  }
+
+  const docRef = await addDoc(collection(db, "orders"), {
+    ...orderData,
+    userId: user.uid,
+    userEmail: user.email || orderData?.cliente?.correo || "",
+    status: "pendiente_pago",
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp()
+  });
+
+  return docRef.id;
+};v
     const authError = document.getElementById("authError");
     const authOk = document.getElementById("authOk");
 
@@ -2946,7 +3050,8 @@
       return snap.exists() ? snap.data() : null;
     }
 
-    onAuthStateChanged(auth, async (user) => {
+    onAuthStateChanged(auth, async (user) => 
+      { window.currentFirebaseUser = user;
       if (!user) {
         window.userProfileData = null;
         window.setTopbarUser?.(null);
