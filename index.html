@@ -2922,27 +2922,7 @@
     checkout.confirmBtn.textContent = "Confirmar compra";
   }
 });
-      const nombre = checkout.name.value.trim();
-       const telefono = checkout.phone.value.trim();
-      const pais = checkout.country.value.trim();
-     const distrito = checkout.district.value.trim();
-      const direccion = checkout.address.value.trim();
-      const correo = checkout.email.value.trim();
-      const pago = checkout.payment.value.trim();
-
-      if(!nombre || !telefono || !pais || !distrito || !direccion || !correo || !pago){
-        alert("Completa todos los datos para finalizar la compra.");
-        return;
-      }
-
-      window.showSuccessOverlay?.("✅ Compra realizada", "Tu pedido fue registrado correctamente.", 1300);
-
-      setTimeout(() => {
-        checkout.section.classList.add("hidden");
-        goPage("home");
-      }, 1300);
-    }); 
-   
+     
     detail.tabInfo.addEventListener("click", () => {
       detail.tabInfo.classList.add("active");
       detail.tabReviews.classList.remove("active");
